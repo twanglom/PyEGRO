@@ -1,8 +1,8 @@
-name: Deploy MkDocs
+name: Documentation
 on:
   push:
-    branches: 
-      - main  # Changed from master to main
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
+      - run: |
           pip install mkdocs-material
-          pip install --upgrade setuptools wheel twine
+          pip install pillow cairosvg
       - name: Build and deploy documentation
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
           mkdocs gh-deploy --force

@@ -1,6 +1,7 @@
 site_name: PyEGRO Documentation
 site_url: https://twanglom.github.io/PyEGRO/
-docs_dir: docs
+repo_url: https://github.com/twanglom/PyEGRO
+repo_name: twanglom/PyEGRO
 
 theme:
   name: material
@@ -73,5 +74,3 @@ nav:
   - API Reference: api-reference.md
 
 
-repo_name: twanglom/PyEGRO
-repo_url: https://github.com/twanglom/PyEGRO
