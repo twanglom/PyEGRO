@@ -1,8 +1,6 @@
 site_name: PyEGRO Documentation
-site_description: Python Efficient Global Robust Optimization Library
-site_author: Thanasak Wanglomklang
 site_url: https://twanglom.github.io/PyEGRO/
-repo_url: https://github.com/twanglom/PyEGRO.git
+docs_dir: docs
 
 theme:
   name: material
@@ -73,3 +71,7 @@ nav:
       - DOE Examples: examples/doe-examples.md
       - EGO Examples: examples/ego-examples.md
   - API Reference: api-reference.md
+
+
+repo_name: twanglom/PyEGRO
+repo_url: https://github.com/twanglom/PyEGRO
