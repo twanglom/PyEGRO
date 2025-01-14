@@ -1,0 +1,27 @@
+/* Adjust the logo size */
+.md-header__button.md-logo img {
+    width: 90px;  /* Adjust this value to make logo smaller/larger */
+    height: 60px;
+}
+
+/* Center the logo */
+.md-header__button.md-logo {
+    margin: auto;
+    padding: 0.3rem;
+}
+
+/* Adjust header height if needed */
+.md-header {
+    height: 3rem;
+}
+
+/* Make site title larger or smaller */
+.md-header__title {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+/* Optional: Add some spacing between logo and title */
+.md-header__title {
+    margin-left: 1rem;
+}
