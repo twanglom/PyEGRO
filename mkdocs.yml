@@ -1,7 +1,7 @@
 site_name: PyEGRO Documentation
-site_url: https://twanglom.github.io/PyEGRO/
-repo_url: https://github.com/twanglom/PyEGRO
-repo_name: twanglom/PyEGRO
+site_url: https://twanglom.github.io/pyegro.github.io/  # Updated URL
+repo_url: https://github.com/twanglom/pyegro.github.io  # Updated repo URL
+repo_name: twanglom/pyegro.github.io  # Updated repo name
 
 theme:
   name: material
