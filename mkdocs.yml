@@ -1,8 +1,8 @@
-site_name: Python Efficient Global Robust Optimization
+site_name: PyEGRO Documentation
 site_description: Python Efficient Global Robust Optimization Library
 site_author: Thanasak Wanglomklang
-repo_url: https://github.com/twanglom/PyEGRO  # Replace with your repo URL
-repo_name: PyEGRO  # Replace with your repo name
+site_url: https://twanglom.github.io/PyEGRO/
+repo_url: https://github.com/twanglom/PyEGRO.git
 
 theme:
   name: material
