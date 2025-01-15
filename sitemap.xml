@@ -25,27 +25,51 @@
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/doe/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/doe/overviewdoe/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/ego/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/doe/usagedoe/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/meta/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/ego/overviewego/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/robustopt/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/ego/usageego/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/sensitivity/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/meta/overviewmeta/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/user-guide/uq/</loc>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/meta/usagemeta/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/robustopt/overviewrobust/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/robustopt/usagerobust/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/sensitivity/overviewsensitivity/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/sensitivity/usagesensitivity/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/uq/overviewuq/</loc>
+         <lastmod>2025-01-15</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/user-guide/uq/usageuq/</loc>
          <lastmod>2025-01-15</lastmod>
     </url>
 </urlset>
