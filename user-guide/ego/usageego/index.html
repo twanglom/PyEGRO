@@ -290,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/overview.md" class="md-tabs__link">
+        <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-tabs__link">
           
   
     
@@ -1191,6 +1191,8 @@
       
         
       
+        
+      
     
     
       
@@ -1229,11 +1231,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/overview.md" class="md-nav__link">
+      <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Basics Surrogate Model Training
   </span>
   
 
@@ -1250,11 +1252,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/doe-examples.md" class="md-nav__link">
+      <a href="../../../examples/ego-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    DOE Examples
+    Surrogate Model Training via EGO
   </span>
   
 
@@ -1271,11 +1273,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/ego-examples.md" class="md-nav__link">
+      <a href="../../../examples/uq-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    EGO Examples
+    Uncertainty Propagation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/robust-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robust Optimization
   </span>
   
 
@@ -1331,7 +1354,7 @@
 
 
 <h1 id="efficient-global-optimization-ego-usage">Efficient Global Optimization (EGO) / Usage<a class="headerlink" href="#efficient-global-optimization-ego-usage" title="Permanent link">&para;</a></h1>
-<h3 id="basic-usage-examples"><strong><span style='color: red;'>Basic Usage Examples</span></strong><a class="headerlink" href="#basic-usage-examples" title="Permanent link">&para;</a></h3>
+<h3 id="basic-usage-examples"><strong><span style='color: teal;'>Basic Usage Examples</span></strong><a class="headerlink" href="#basic-usage-examples" title="Permanent link">&para;</a></h3>
 <p><strong>Example 1: Optimizing a Quadratic Function</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1375,7 +1398,7 @@
 <a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">history</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="advanced-usage"><strong><span style='color: red;'>Advanced Usage</span></strong><a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h3>
+<h3 id="advanced-usage"><strong><span style='color: teal;'>Advanced Usage</span></strong><a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h3>
 <p><strong>Example 2: Optimizing with Preloaded Data</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">json</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1418,7 +1441,7 @@
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="n">result</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;output_directory&quot;</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="loading-a-model-for-prediction"><strong><span style='color: red;'>Loading a Model for Prediction</span></strong><a class="headerlink" href="#loading-a-model-for-prediction" title="Permanent link">&para;</a></h3>
+<h3 id="loading-a-model-for-prediction"><strong><span style='color: teal;'>Loading a Model for Prediction</span></strong><a class="headerlink" href="#loading-a-model-for-prediction" title="Permanent link">&para;</a></h3>
 <p>EGO allows loading previously trained models for making predictions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">pyegro.ego</span> <span class="kn">import</span> <span class="n">EfficientGlobalOptimization</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>

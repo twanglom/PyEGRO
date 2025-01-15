@@ -290,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/overview.md" class="md-tabs__link">
+        <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-tabs__link">
           
   
     
@@ -737,6 +737,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basics-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics Formulation
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1173,6 +1191,8 @@
       
         
       
+        
+      
     
     
       
@@ -1211,11 +1231,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/overview.md" class="md-nav__link">
+      <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Basics Surrogate Model Training
   </span>
   
 
@@ -1232,11 +1252,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/doe-examples.md" class="md-nav__link">
+      <a href="../../../examples/ego-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    DOE Examples
+    Surrogate Model Training via EGO
   </span>
   
 
@@ -1253,11 +1273,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/ego-examples.md" class="md-nav__link">
+      <a href="../../../examples/uq-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    EGO Examples
+    Uncertainty Propagation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/robust-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robust Optimization
   </span>
   
 
@@ -1314,11 +1355,11 @@
 
 <h1 id="surrogate-modeling-overview">Surrogate Modeling / Overview<a class="headerlink" href="#surrogate-modeling-overview" title="Permanent link">&para;</a></h1>
 <p>Surrogate modeling is a powerful tool used to approximate response of complex systems with represent mathematical models.</p>
-<h3 id="gaussian-process-regression-gpr">Gaussian Process Regression (GPR)<a class="headerlink" href="#gaussian-process-regression-gpr" title="Permanent link">&para;</a></h3>
+<h3 id="gaussian-process-regression-gpr"><strong><span style='color: teal;'>Gaussian Process Regression (GPR)</span></strong><a class="headerlink" href="#gaussian-process-regression-gpr" title="Permanent link">&para;</a></h3>
 <p><img alt="alt text" src="../gprmodel.png" /></p>
 <p>The <strong>PyEGRO</strong> library supports <strong>Gaussian Process Regression (GPR)</strong>, which is ideal for capturing nonlinear relationships while providing model uncertainty estimation. Built on top of <a href="https://gpytorch.ai/">GPyTorch</a> which support using GPU computing, this library simplifies the construction of GPR models and is designed for seamless integration within the PyEGRO modular framework.</p>
-<p><strong>Key Features</strong>
-<strong>Gaussian Process Regression (GPR):</strong></p>
+<h3 id="key-features"><strong><span style=color:teal;>Key Features</span></strong><a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<p><strong>Gaussian Process Regression (GPR):</strong></p>
 <ul>
 <li>Supports Matérn Kernel with Automatic Relevance Determination (ARD).</li>
 <li>Provides posterior mean and variance for predictions.</li>
@@ -1343,7 +1384,7 @@
 <ul>
 <li>Enable to save trained model allow importing for prediction.</li>
 </ul>
-<p><strong>Basics Formulation</strong></p>
+<h3 id="basics-formulation"><strong><span style=color:teal;>Basics Formulation</span></strong><a class="headerlink" href="#basics-formulation" title="Permanent link">&para;</a></h3>
 <p><strong>Gaussian Process Regression:</strong></p>
 <p>Given training data <span class="arithmatex">\( (X, y) \)</span>, a <strong><em>GPR model</em></strong> assumes:</p>
 <div class="arithmatex">\[ y(X) \sim \mathcal{GP}(m(X), k(X, X')) \]</div>

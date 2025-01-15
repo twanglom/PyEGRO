@@ -290,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/overview.md" class="md-tabs__link">
+        <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-tabs__link">
           
   
     
@@ -1200,6 +1200,8 @@
       
         
       
+        
+      
     
     
       
@@ -1238,11 +1240,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/overview.md" class="md-nav__link">
+      <a href="../../../examples/basics-surrogate-examples/basics-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Overview
+    Basics Surrogate Model Training
   </span>
   
 
@@ -1259,11 +1261,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/doe-examples.md" class="md-nav__link">
+      <a href="../../../examples/ego-surrogate-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    DOE Examples
+    Surrogate Model Training via EGO
   </span>
   
 
@@ -1280,11 +1282,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/ego-examples.md" class="md-nav__link">
+      <a href="../../../examples/uq-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    EGO Examples
+    Uncertainty Propagation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/robust-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robust Optimization
   </span>
   
 
@@ -1342,7 +1365,7 @@
 <h1 id="efficient-global-optimization-ego-overview">Efficient Global Optimization (EGO) / Overview<a class="headerlink" href="#efficient-global-optimization-ego-overview" title="Permanent link">&para;</a></h1>
 <p><strong>Applications for enhancing Global Model Accuracy</strong></p>
 <p>Efficient Global Optimization (EGO) is widely applied to improve the accuracy of global models for predictive tasks across the entire input domain. By leveraging surrogate models, such as Gaussian Processes (GP), EGO provides high-fidelity approximations of complex systems, ensuring accurate predictions for areas that are underexplored or uncertain.</p>
-<h3 id="key-features"><strong><span style='color: red;'>Key Features</span></strong><a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<h3 id="key-features"><strong><span style='color: teal;'>Key Features</span></strong><a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <p><strong>Surrogate Modeling</strong>:</p>
 <ul>
 <li>Uses Gaussian Processes Regression (GPR) to approximate expensive-to-evaluate objective functions.</li>
@@ -1374,9 +1397,9 @@
 <li>Metrics tracking for each iteration</li>
 <li>Integration with rich progress bars for an interactive experience</li>
 </ul>
-<h3 id="acquisition-functions"><strong><span style='color: red;'>Acquisition Functions</span></strong><a class="headerlink" href="#acquisition-functions" title="Permanent link">&para;</a></h3>
+<h3 id="acquisition-functions"><strong><span style='color: teal;'>Acquisition Functions</span></strong><a class="headerlink" href="#acquisition-functions" title="Permanent link">&para;</a></h3>
 <p>Acquisition functions guide the optimization process. Below are the formulations:</p>
-<p><strong><span style='color: silver;'>Expected Improvement (EI)</span></strong></p>
+<p><strong><span style='color: Coral;'>Expected Improvement (EI)</span></strong></p>
 <div class="arithmatex">\[
 EI(x) =
 \begin{cases} 
@@ -1388,7 +1411,7 @@ EI(x) =
 Z = \frac{y_{\text{min}} - \mu(x)}{\sigma(x)}
 \]</div>
 <p>where <span class="arithmatex">\(\phi(Z)\)</span> is the Probability Density Function (PDF) and <span class="arithmatex">\(\Phi(Z)\)</span> is the Cumulative Density Function (CDF).</p>
-<p><strong><span style='color: silver;'><span class="arithmatex">\(\zeta\)</span>-Expected Improvement (<span class="arithmatex">\(\zeta\)</span>-EI)</span></strong></p>
+<p><strong><span style='color: Coral;'><span class="arithmatex">\(\zeta\)</span>-Expected Improvement (<span class="arithmatex">\(\zeta\)</span>-EI)</span></strong></p>
 <div class="arithmatex">\[
 \zeta-EI(x) =
 \begin{cases} 
@@ -1399,7 +1422,7 @@ Z = \frac{y_{\text{min}} - \mu(x)}{\sigma(x)}
 <div class="arithmatex">\[
 Z = \frac{y_{\text{min}} - \mu(x) - \zeta}{\sigma(x)}
 \]</div>
-<p><strong><span style='color: silver;'>Exploration Enhanced EI (E3I)</span></strong> [<a href="#reference-1" style="color:red; text-decoration:underline;">1</a>]</p>
+<p><strong><span style='color: Coral;'>Exploration Enhanced EI (E3I)</span></strong> [ <a href="#reference-1" style="color:blue; text-decoration:underline;">1</a> ]</p>
 <div class="arithmatex">\[
 \alpha^{E3I}(x) = \frac{1}{M}\mathbb{E}_x\left[I(x, g_m)\right] =
 \begin{cases} 
@@ -1411,7 +1434,7 @@ Z = \frac{y_{\text{min}} - \mu(x) - \zeta}{\sigma(x)}
 \tau(Z) = Z\Phi(Z) + \phi(Z), \quad Z = \frac{y_{\text{min}} - g_m(x)}{\sigma(x)}
 \]</div>
 <p>where <span class="arithmatex">\(g_m\)</span> is the maximum value from <span class="arithmatex">\(M\)</span> Thompson samples.</p>
-<p><strong><span style='color: silver;'>Expected Improvement for Global Fit (EIGF)</span></strong> [<a href="#reference-2" style="color:red; text-decoration:underline;">2</a>]</p>
+<p><strong><span style='color: Coral;'>Expected Improvement for Global Fit (EIGF)</span></strong> [ <a href="#reference-2" style="color:blue; text-decoration:underline;">2</a> ]</p>
 <div class="arithmatex">\[
 EIGF(x) = (\hat{y}(x) - y(x_{\text{nearest}}))^2 + \sigma^2(x)
 \]</div>
@@ -1419,7 +1442,7 @@ EIGF(x) = (\hat{y}(x) - y(x_{\text{nearest}}))^2 + \sigma^2(x)
 - <span class="arithmatex">\(\hat{y}(x)\)</span>: Predicted mean at point <span class="arithmatex">\(x\)</span>.
 - <span class="arithmatex">\(y(x_{\text{nearest}})\)</span>: Observed output at the nearest sampled point to <span class="arithmatex">\(x\)</span>.
 - <span class="arithmatex">\(\sigma^2(x)\)</span>: Variance of the prediction at <span class="arithmatex">\(x\)</span>.</p>
-<p><strong><span style='color: silver;'>Distance-Enhanced Gradient (CRI3)</span></strong> [<a href="#reference-3" style="color:red; text-decoration:underline;">3</a>]</p>
+<p><strong><span style='color: Coral;'>Distance-Enhanced Gradient (CRI3)</span></strong> [ <a href="#reference-3" style="color:blue; text-decoration:underline;">3</a> ]</p>
 <div class="arithmatex">\[
 \text{Crit}(\xi) = (\left|\frac{\partial \hat{f}(\xi)}{\partial \xi}\right| \Delta(\xi) + D_f(\xi)) \hat{\sigma}(\xi) PDF(\xi).
 \]</div>
@@ -1435,7 +1458,7 @@ EIGF(x) = (\hat{y}(x) - y(x_{\text{nearest}}))^2 + \sigma^2(x)
 <p><span class="arithmatex">\(\hat{\sigma}(\xi)PDF(\xi)\)</span>: Predictive variance multiplied by the PDF of the input space.</p>
 </li>
 </ul>
-<h3 id="output-and-files"><strong><span style='color: red;'>Output and Files</span></strong><a class="headerlink" href="#output-and-files" title="Permanent link">&para;</a></h3>
+<h3 id="output-and-files"><strong><span style='color: teal;'>Output and Files</span></strong><a class="headerlink" href="#output-and-files" title="Permanent link">&para;</a></h3>
 <p>Each EGO run produces:</p>
 <ol>
 <li>
@@ -1454,7 +1477,7 @@ EIGF(x) = (\hat{y}(x) - y(x_{\text{nearest}}))^2 + \sigma^2(x)
 <p><a id="reference-2"></a>2. Lam, C. Q. (2008). Sequential adaptive designs in computer experiments for response surface model fit (Doctoral dissertation, The Ohio State University).</p>
 <p><a id="reference-3"></a>3. Shimoyama, K., &amp; Kawai, S. (2019). A kriging-based dynamic adaptive sampling method for uncertainty quantification. <em>Transactions of the Japan Society for Aeronautical and Space Sciences, 62</em>(3), 137-150.</p>
 <hr />
-<h3 id="algorithm-comparison"><strong><span style='color: red;'>Algorithm Comparison</span></strong><a class="headerlink" href="#algorithm-comparison" title="Permanent link">&para;</a></h3>
+<h3 id="algorithm-comparison"><strong><span style='color: teal;'>Algorithm Comparison</span></strong><a class="headerlink" href="#algorithm-comparison" title="Permanent link">&para;</a></h3>
 
 
 
