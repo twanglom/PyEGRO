@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#efficient-global-optimization-ego-overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -778,6 +783,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -788,6 +806,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acquisition-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acquisition Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-and-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Comparison
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1266,9 +1339,122 @@
   
 
 
-  <h1>Overview</h1>
-
-
+<h1 id="efficient-global-optimization-ego-overview">Efficient Global Optimization (EGO) / Overview<a class="headerlink" href="#efficient-global-optimization-ego-overview" title="Permanent link">&para;</a></h1>
+<p><strong>Applications for enhancing Global Model Accuracy</strong></p>
+<p>Efficient Global Optimization (EGO) is widely applied to improve the accuracy of global models for predictive tasks across the entire input domain. By leveraging surrogate models, such as Gaussian Processes (GP), EGO provides high-fidelity approximations of complex systems, ensuring accurate predictions for areas that are underexplored or uncertain.</p>
+<h3 id="key-features"><strong><span style='color: blue;'>Key Features</span></strong><a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<p><strong>Surrogate Modeling</strong>:</p>
+<ul>
+<li>Uses Gaussian Processes Regression (GPR) to approximate expensive-to-evaluate objective functions.</li>
+</ul>
+<p><strong>Acquisition Functions</strong></p>
+<ul>
+<li>Expected Improvement (EI)</li>
+<li><span class="arithmatex">\(\zeta\)</span>-Expected Improvement (<span class="arithmatex">\(\zeta\)</span>-EI)</li>
+<li>Exploration Enhanced EI (E3I)</li>
+<li>Expected Improvement for Global Fit (EIGF)</li>
+<li>Distance-Enhanced Gradient (CRI3)</li>
+</ul>
+<p><strong>Optimization Configuration</strong></p>
+<ul>
+<li>Maximum iterations and stopping criteria</li>
+<li>RMSE thresholds and patience settings</li>
+<li>Relative improvement thresholds</li>
+<li>Flexible device selection (CPU/GPU)</li>
+</ul>
+<p><strong>Visualization Tools</strong></p>
+<ul>
+<li>1D and 2D optimization problem visualizations</li>
+<li>Convergence plots</li>
+<li>Uncertainty analysis and parameter tracking</li>
+</ul>
+<p><strong>Progress Tracking</strong></p>
+<ul>
+<li>Detailed console outputs</li>
+<li>Metrics tracking for each iteration</li>
+<li>Integration with rich progress bars for an interactive experience</li>
+</ul>
+<h3 id="acquisition-functions"><strong><span style='color: blue;'>Acquisition Functions</span></strong><a class="headerlink" href="#acquisition-functions" title="Permanent link">&para;</a></h3>
+<p>Acquisition functions guide the optimization process. Below are the formulations:</p>
+<p><strong><span style='color: red;'>Expected Improvement (EI)</span></strong></p>
+<div class="arithmatex">\[
+EI(x) =
+\begin{cases} 
+\sigma(x)\phi(Z) + (y_{\text{min}} - \mu(x))\Phi(Z) &amp; \text{if } \sigma(x) &gt; 0 \\
+0 &amp; \text{if } \sigma(x) = 0 
+\end{cases}
+\]</div>
+<div class="arithmatex">\[
+Z = \frac{y_{\text{min}} - \mu(x)}{\sigma(x)}
+\]</div>
+<p>where <span class="arithmatex">\(\phi(Z)\)</span> is the Probability Density Function (PDF) and <span class="arithmatex">\(\Phi(Z)\)</span> is the Cumulative Density Function (CDF).</p>
+<p><strong><span style='color: red;'><span class="arithmatex">\(\zeta\)</span>-Expected Improvement (<span class="arithmatex">\(\zeta\)</span>-EI)</span></strong></p>
+<div class="arithmatex">\[
+\zeta-EI(x) =
+\begin{cases} 
+\sigma(x)\phi(Z) + (y_{\text{min}} - \mu(x) - \zeta)\Phi(Z) &amp; \text{if } \sigma(x) &gt; 0 \\
+0 &amp; \text{if } \sigma(x) = 0 
+\end{cases}
+\]</div>
+<div class="arithmatex">\[
+Z = \frac{y_{\text{min}} - \mu(x) - \zeta}{\sigma(x)}
+\]</div>
+<p><strong><span style='color: red;'>Exploration Enhanced EI (E3I)</span></strong> [<a href="#reference-1" style="color:blue; text-decoration:underline;">1</a>]</p>
+<div class="arithmatex">\[
+\alpha^{E3I}(x) = \frac{1}{M}\mathbb{E}_x\left[I(x, g_m)\right] =
+\begin{cases} 
+\frac{\sigma(x)}{M}\sum_{m=1}^{M}\tau(Z) &amp; \text{if } \sigma(x) &gt; 0 \\
+0 &amp; \text{if } \sigma(x) = 0
+\end{cases}
+\]</div>
+<div class="arithmatex">\[
+\tau(Z) = Z\Phi(Z) + \phi(Z), \quad Z = \frac{y_{\text{min}} - g_m(x)}{\sigma(x)}
+\]</div>
+<p>where <span class="arithmatex">\(g_m\)</span> is the maximum value from <span class="arithmatex">\(M\)</span> Thompson samples.</p>
+<p><strong><span style='color: red;'>Expected Improvement for Global Fit (EIGF)</span></strong> [<a href="#reference-2" style="color:blue; text-decoration:underline;">2</a>]</p>
+<div class="arithmatex">\[
+EIGF(x) = (\hat{y}(x) - y(x_{\text{nearest}}))^2 + \sigma^2(x)
+\]</div>
+<p>where:
+- <span class="arithmatex">\(\hat{y}(x)\)</span>: Predicted mean at point <span class="arithmatex">\(x\)</span>.
+- <span class="arithmatex">\(y(x_{\text{nearest}})\)</span>: Observed output at the nearest sampled point to <span class="arithmatex">\(x\)</span>.
+- <span class="arithmatex">\(\sigma^2(x)\)</span>: Variance of the prediction at <span class="arithmatex">\(x\)</span>.</p>
+<p><strong><span style='color: red;'>Distance-Enhanced Gradient (CRI3)</span></strong> [<a href="#reference-3" style="color:blue; text-decoration:underline;">3</a>]</p>
+<div class="arithmatex">\[
+\text{Crit}(\xi) = \left|\frac{\partial \hat{f}(\xi)}{\partial \xi}\right| \Delta(\xi) + D_f(\xi) \hat{\sigma}(\xi) PDF(\xi).
+\]</div>
+<p>where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\Delta(\xi) = \min_{i=1,2,...,N}|\xi - \xi^{(i)}|\)</span>: Distance to the nearest sample.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(D_f(\xi) = |\hat{f}(\xi|\theta) - \hat{f}(\xi|2\theta)|\)</span>: Polynomial error estimate.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\hat{\sigma}(\xi)PDF(\xi)\)</span>: Predictive variance multiplied by the PDF of the input space.</p>
+</li>
+</ul>
+<h3 id="output-and-files"><strong><span style='color: blue;'>Output and Files</span></strong><a class="headerlink" href="#output-and-files" title="Permanent link">&para;</a></h3>
+<p>Each EGO run produces:</p>
+<ol>
+<li>
+<p><strong>Optimization History:</strong> Tracks iteration details, objective values, and model parameters.</p>
+</li>
+<li>
+<p><strong>Trained Models:</strong> Stores the final GP model and associated hyperparameters.</p>
+</li>
+<li>
+<p><strong>Visualization Plots:</strong> For tracking optimization progress and uncertainty.</p>
+</li>
+</ol>
+<hr />
+<p><strong>References</strong></p>
+<p><a id="reference-1"></a>1. Berk, J., Nguyen, V., Gupta, S., Rana, S., &amp; Venkatesh, S. (2019). Exploration enhanced expected improvement for Bayesian optimization. In <em>Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2018, Dublin, Ireland, September 10–14, 2018, Proceedings, Part II 18</em> (pp. 621-637). Springer International Publishing.</p>
+<p><a id="reference-2"></a>2. Lam, C. Q. (2008). Sequential adaptive designs in computer experiments for response surface model fit (Doctoral dissertation, The Ohio State University).</p>
+<p><a id="reference-3"></a>3. Shimoyama, K., &amp; Kawai, S. (2019). A kriging-based dynamic adaptive sampling method for uncertainty quantification. <em>Transactions of the Japan Society for Aeronautical and Space Sciences, 62</em>(3), 137-150.</p>
+<hr />
+<h3 id="algorithm-comparison"><strong><span style='color: blue;'>Algorithm Comparison</span></strong><a class="headerlink" href="#algorithm-comparison" title="Permanent link">&para;</a></h3>
 
 
 
@@ -1354,11 +1540,9 @@
     
       <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
-        <script src="../../../scripts/custom-nav.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="../../../scripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

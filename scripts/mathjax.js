@@ -1,35 +1,3 @@
-// window.MathJax = {
-//     tex: {
-//       inlineMath: [["\\(", "\\)"]],
-//       displayMath: [["\\[", "\\]"], ["$$", "$$"]],
-//       processEscapes: true,
-//       processEnvironments: true
-//     },
-//     options: {
-//       ignoreHtmlClass: ".*|",
-//       processHtmlClass: "arithmatex"
-//     },
-//     startup: {
-//     pageReady: () => {
-//       return MathJax.startup.defaultPageReady().then(() => {
-//         // Add a hook for instant loading
-//         document.addEventListener('DOMContentLoaded', () => {
-//           if (typeof MathJax !== 'undefined') {
-//             MathJax.typeset();
-//           }
-//         });
-        
-//         // Add hook for Material for MkDocs instant loading
-//         document$.subscribe(() => {
-//           if (typeof MathJax !== 'undefined') {
-//             MathJax.typeset();
-//           }
-//         });
-//       });
-//     }
-//   }
-// };
-
 
 
 window.MathJax = {
@@ -50,33 +18,55 @@ window.MathJax = {
   }
 };
 
-// Function to render equations
-function renderMathJax() {
-  if (window.MathJax) {
-      window.MathJax.typesetPromise && window.MathJax.typesetPromise();
-  }
+// Function to handle equation rendering
+function renderMathInElement(elem) {
+    if (typeof MathJax !== 'undefined') {
+        MathJax.typesetPromise([elem]).catch((err) => console.log('MathJax error:', err));
+    }
 }
 
-// Listen for navigation events
+// Handle initial page load
 document.addEventListener('DOMContentLoaded', () => {
-  renderMathJax();
+    renderMathInElement(document.body);
 });
 
-// For Material for MkDocs instant loading
+// Handle Material for MkDocs instant navigation
+document.addEventListener('mdx-navigate', () => {
+    setTimeout(() => {
+        renderMathInElement(document.body);
+    }, 0);
+});
+
+// Handle navigation through tabs and links
 if (document$) {
-  document$.subscribe(() => {
-      renderMathJax();
-  });
+    document$.subscribe(() => {
+        setTimeout(() => {
+            renderMathInElement(document.body);
+        }, 0);
+    });
 }
 
-// For navigation events
-document.addEventListener('navigation', () => {
-  renderMathJax();
+// Optional: Add a loading state for equations
+document.addEventListener('DOMContentLoaded', () => {
+    const style = document.createElement('style');
+    style.textContent = `
+        .math-loading { 
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .math-loaded {
+            visibility: visible;
+            opacity: 1;
+        }
+    `;
+    document.head.appendChild(style);
 });
 
-// For tab changes
-document.addEventListener('click', (e) => {
-  if (e.target.closest('.md-tabs__link') || e.target.closest('.md-nav__link')) {
-      setTimeout(renderMathJax, 100);
-  }
-});
+
+
+
+
+
+
+
