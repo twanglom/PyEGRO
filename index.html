@@ -65,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -120,7 +120,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -130,7 +130,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -443,18 +443,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-efficient-global-optimization-ego" class="md-nav__link">
+  <a href="#2-surrogate-modeling" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Efficient Global Optimization (EGO)
+      2. Surrogate Modeling
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-surrogate-modeling" class="md-nav__link">
+  <a href="#3-efficient-global-optimization-ego-for-surrogate-modeling" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Surrogate Modeling
+      3. Efficient Global Optimization (EGO) for Surrogate Modeling
     </span>
   </a>
   
@@ -1467,25 +1467,23 @@
 <li>Multi-dimensional and complex domains.</li>
 <li>Customizable sampling criteria for enhanced precision.</li>
 </ul>
-<h3 id="2-efficient-global-optimization-ego">2. <strong>Efficient Global Optimization (EGO)</strong><a class="headerlink" href="#2-efficient-global-optimization-ego" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Provides multiple acquisition functions:</li>
-<li><strong>Expected Improvement (EI)</strong></li>
-<li><strong>Probability of Improvement (PI)</strong></li>
-<li><strong>Lower Confidence Bound (LCB)</strong></li>
-<li><strong>Exploration Enhanced EI (E3I)</strong> [<a href="#reference-1" style="color:blue; text-decoration:underline;">1</a>]</li>
-<li><strong>Expected Improvement for Global Fit (EIGF)</strong> [<a href="#reference-2" style="color:blue; text-decoration:underline;">2</a>]</li>
-<li><strong>Distance-Enhanced Gradient (CRI3)</strong> [<a href="#reference-3" style="color:blue; text-decoration:underline;">3</a>]</li>
-<li>Key Features:</li>
-<li>Comprehensive training configurations for surrogate models.</li>
-<li>Built-in visualization and performance tracking.</li>
-<li>Parallel processing support.</li>
-</ul>
-<h3 id="3-surrogate-modeling">3. <strong>Surrogate Modeling</strong><a class="headerlink" href="#3-surrogate-modeling" title="Permanent link">&para;</a></h3>
+<h3 id="2-surrogate-modeling">2. <strong>Surrogate Modeling</strong><a class="headerlink" href="#2-surrogate-modeling" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Supports <strong>Gaussian Process Regression (GPR)</strong> and <strong>Artificial Neural Network (ANN)</strong>.</li>
 <li>Hyperparameter optimization using <a href="https://optuna.org/">Optuna</a>.</li>
 <li>Real-time progress visualization.</li>
+</ul>
+<h3 id="3-efficient-global-optimization-ego-for-surrogate-modeling">3. <strong>Efficient Global Optimization (EGO) for Surrogate Modeling</strong><a class="headerlink" href="#3-efficient-global-optimization-ego-for-surrogate-modeling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Provides multiple acquisition functions:</li>
+<li><strong><em>Expected Improvement (EI) and Boosting the Exploration term (𝜁-EI)</em></strong></li>
+<li><strong><em>Probability of Improvement (PI)</em></strong></li>
+<li><strong><em>Lower Confidence Bound (LCB)</em></strong></li>
+<li><strong><em>Exploration Enhanced EI (E3I)</em></strong> [<a href="#reference-1" style="color:blue; text-decoration:underline;">1</a>]</li>
+<li><strong><em>Expected Improvement for Global Fit (EIGF)</em></strong> [<a href="#reference-2" style="color:blue; text-decoration:underline;">2</a>]</li>
+<li><strong><em>Distance-Enhanced Gradient (CRI3)</em></strong> [<a href="#reference-3" style="color:blue; text-decoration:underline;">3</a>]</li>
+<li>Comprehensive training configurations for surrogate models.</li>
+<li>Built-in visualization and performance tracking.</li>
 </ul>
 <h3 id="4-robust-optimization">4. <strong>Robust Optimization</strong><a class="headerlink" href="#4-robust-optimization" title="Permanent link">&para;</a></h3>
 <ul>

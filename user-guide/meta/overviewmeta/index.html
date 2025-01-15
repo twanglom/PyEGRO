@@ -67,13 +67,18 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#surrogate-modeling-overview" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -117,7 +122,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -127,7 +132,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -684,6 +689,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -694,6 +712,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-process-regression-gpr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gaussian Process Regression (GPR)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1266,9 +1312,58 @@
   
 
 
-  <h1>Overview</h1>
-
-
+<h1 id="surrogate-modeling-overview">Surrogate Modeling / Overview<a class="headerlink" href="#surrogate-modeling-overview" title="Permanent link">&para;</a></h1>
+<p>Surrogate modeling is a powerful tool used to approximate response of complex systems with represent mathematical models.</p>
+<h3 id="gaussian-process-regression-gpr">Gaussian Process Regression (GPR)<a class="headerlink" href="#gaussian-process-regression-gpr" title="Permanent link">&para;</a></h3>
+<p><img alt="alt text" src="../gprmodel.png" /></p>
+<p>The <strong>PyEGRO</strong> library supports <strong>Gaussian Process Regression (GPR)</strong>, which is ideal for capturing nonlinear relationships while providing model uncertainty estimation. Built on top of <a href="https://gpytorch.ai/">GPyTorch</a> which support using GPU computing, this library simplifies the construction of GPR models and is designed for seamless integration within the PyEGRO modular framework.</p>
+<p><strong>Key Features</strong>
+<strong>Gaussian Process Regression (GPR):</strong></p>
+<ul>
+<li>Supports Matérn Kernel with Automatic Relevance Determination (ARD).</li>
+<li>Provides posterior mean and variance for predictions.</li>
+<li>Device-agnostic implementation (CPU/GPU support).</li>
+</ul>
+<p><strong>Device Management:</strong></p>
+<ul>
+<li>Automatically selects CPU or GPU based on system availability.</li>
+<li>Optimized training and evaluation for hardware capabilities.</li>
+</ul>
+<p><strong>Model Evaluation:</strong></p>
+<ul>
+<li>Scalable evaluation of predictions with batch processing.</li>
+<li>Automatic scaling of inputs and outputs for stable training.</li>
+</ul>
+<p><strong>Progress Tracking:</strong></p>
+<ul>
+<li>Rich progress bars for training loops.</li>
+<li>Early stopping with customizable patience levels.</li>
+</ul>
+<p><strong>Model Saving:</strong></p>
+<ul>
+<li>Enable to save trained model allow importing for prediction.</li>
+</ul>
+<p><strong>Basics Formulation</strong></p>
+<p><strong>Gaussian Process Regression:</strong></p>
+<p>Given training data <span class="arithmatex">\( (X, y) \)</span>, a <strong><em>GPR model</em></strong> assumes:</p>
+<div class="arithmatex">\[ y(X) \sim \mathcal{GP}(m(X), k(X, X')) \]</div>
+<p>where:
+- <span class="arithmatex">\( m(X) \)</span>: Mean function (constant by default).
+- <span class="arithmatex">\( k(X, X') \)</span>: Covariance function (Matérn kernel).</p>
+<p><strong>Matérn Kernel with ARD:</strong></p>
+<p>The covariance function for inputs <span class="arithmatex">\( X \)</span> and <span class="arithmatex">\( X' \)</span> is:</p>
+<div class="arithmatex">\[ k(X, X') = \sigma^2 \left(1 + \frac{\sqrt{5} r}{l} + \frac{5r^2}{3l^2}\right) \exp\left(-\frac{\sqrt{5} r}{l}\right) \]</div>
+<p>where:
+- <span class="arithmatex">\( r = \|X - X'\| \)</span>: Euclidean distance.
+- <span class="arithmatex">\( l \)</span>: Lengthscale parameter (ARD for input dimensions).
+- <span class="arithmatex">\( \sigma^2 \)</span>: Signal variance.</p>
+<p><strong>Training Objective:</strong></p>
+<p>The model minimizes the negative marginal log likelihood (NMLL):</p>
+<div class="arithmatex">\[ \mathcal{L} = -\log p(y \mid X) \]</div>
+<p><strong>Response and prediction variance estimation:</strong></p>
+<p>Predictions provide both mean and variance:</p>
+<div class="arithmatex">\[ \hat{y} = m(X) + k(X, X')k(X', X')^{-1}(y - m(X')) \]</div>
+<div class="arithmatex">\[ \sigma^2(X) = k(X, X) - k(X, X')k(X', X')^{-1}k(X', X) \]</div>
 
 
 

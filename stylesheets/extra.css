@@ -25,3 +25,13 @@
 .md-header__title {
     margin-left: 1rem;
 }
+
+
+.mathjax-loading {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.mathjax-loaded {
+    opacity: 1;
+}

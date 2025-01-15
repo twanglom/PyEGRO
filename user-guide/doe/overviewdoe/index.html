@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mathematical-formulation" class="md-skip">
+        <a href="#design-of-experiment-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +122,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -132,7 +132,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -1273,28 +1273,71 @@
   
 
 
-<h1 id="mathematical-formulation">Mathematical Formulation<a class="headerlink" href="#mathematical-formulation" title="Permanent link">&para;</a></h1>
+<!-- # Design of Experiment / Overview
+
+**Sampling Methods**
+
+1. **Latin Hypercube Sampling (LHS):** Divides each variable's range into equal intervals and ensures one sample is drawn from each interval. The process ensures balanced coverage by sampling from:
+
+    $$ x_i \sim U\left(\frac{k-1}{N}, \frac{k}{N}\right), \quad k = 1, \ldots, N $$
+
+    where $N$ is the total number of samples.
+
+2. **Sobol Sequence:** Generates low-discrepancy sequences with uniformity, minimizing discrepancy $D$:
+
+    $$ D \leq \frac{\log(N)^d}{N} $$
+
+    where $d$ is the dimensionality of the problem.
+
+3. **Random Sampling:** Random sampling draws samples $x$ uniformly from the range $[a_i, b_i]$:
+
+    $$ x_i \sim U(a_i, b_i) $$
+
+**Objective Function Evaluation**
+
+Samples $x$ are evaluated using an objective function $f(x)$:
+
+$$ \text{Result} = f(x) $$
+
+This provides flexibility for custom functions during design optimization. -->
+
+<h1 id="design-of-experiment-overview">Design of Experiment / Overview<a class="headerlink" href="#design-of-experiment-overview" title="Permanent link">&para;</a></h1>
 <p><strong>Sampling Methods</strong></p>
 <ol>
 <li>
-<p><strong>Latin Hypercube Sampling (LHS):</strong> Divides each variable's range into equal intervals and ensures one sample is drawn from each interval. The process ensures balanced coverage by sampling from:</p>
+<p><strong>Latin Hypercube Sampling (LHS):</strong>
+   Latin Hypercube Sampling divides each variable's range into <span class="arithmatex">\(N\)</span> equal intervals and ensures one sample is drawn from each interval without repetition. It maximizes uniformity in the sampling process:</p>
 <div class="arithmatex">\[ x_i \sim U\left(\frac{k-1}{N}, \frac{k}{N}\right), \quad k = 1, \ldots, N \]</div>
-<p>where <span class="arithmatex">\(N\)</span> is the total number of samples.</p>
+<p>where:
+- <span class="arithmatex">\( N \)</span>: Total number of samples
+- <span class="arithmatex">\( U(a, b) \)</span>: Uniform distribution between <span class="arithmatex">\( a \)</span> and <span class="arithmatex">\( b \)</span></p>
 </li>
 <li>
-<p><strong>Sobol Sequence:</strong> Generates low-discrepancy sequences with uniformity, minimizing discrepancy <span class="arithmatex">\(D\)</span>:</p>
+<p><strong>Sobol Sequence:</strong>
+   Sobol sequences are quasi-random low-discrepancy sequences designed to achieve uniformity in the sampling space. The discrepancy <span class="arithmatex">\( D \)</span> measures the uniformity, which is minimized in Sobol sampling:</p>
 <div class="arithmatex">\[ D \leq \frac{\log(N)^d}{N} \]</div>
-<p>where <span class="arithmatex">\(d\)</span> is the dimensionality of the problem.</p>
+<p>where:
+- <span class="arithmatex">\( N \)</span>: Total number of samples
+- <span class="arithmatex">\( d \)</span>: Dimensionality of the problem</p>
 </li>
 <li>
-<p><strong>Random Sampling:</strong> Random sampling draws samples <span class="arithmatex">\(x\)</span> uniformly from the range <span class="arithmatex">\([a_i, b_i]\)</span>:</p>
+<p><strong>Random Sampling:</strong>
+   Random sampling draws samples <span class="arithmatex">\( x \)</span> uniformly from the range <span class="arithmatex">\( [a_i, b_i] \)</span>:</p>
 <div class="arithmatex">\[ x_i \sim U(a_i, b_i) \]</div>
 </li>
 </ol>
+<p><strong>Sampling Criteria</strong></p>
+<p>Sampling criteria are additional constraints or goals applied during sampling, such as:
+- <strong>Maximin Criterion:</strong> Maximizes the minimum distance between samples.
+- <strong>Centering Criterion:</strong> Ensures that samples are centered within each interval.</p>
 <p><strong>Objective Function Evaluation</strong></p>
-<p>Samples <span class="arithmatex">\(x\)</span> are evaluated using an objective function <span class="arithmatex">\(f(x)\)</span>:</p>
+<p>Once the samples <span class="arithmatex">\( x \)</span> are generated, they are passed to an <strong>objective function</strong> <span class="arithmatex">\( f(x) \)</span> to evaluate the desired output:</p>
 <div class="arithmatex">\[ \text{Result} = f(x) \]</div>
-<p>This provides flexibility for custom functions during design optimization.</p>
+<p>Where:
+- <span class="arithmatex">\( x \)</span>: Sampled input vector
+- <span class="arithmatex">\( f(x) \)</span>: User-defined objective function</p>
+<p><strong>Performance Metrics for Sampling</strong></p>
+<p>To evaluate the quality of the sampling, metrics such as <strong>space-filling</strong>, <strong>discrepancy</strong>, and <strong>variance</strong> are often used.</p>
 
 
 
