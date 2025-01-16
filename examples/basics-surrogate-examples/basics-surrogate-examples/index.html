@@ -1217,6 +1217,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deterministic-optimal-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deterministic Optimal Points
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-define-the-test-function" class="md-nav__link">
     <span class="md-ellipsis">
       1. Define the Test Function
@@ -1372,16 +1390,52 @@
 <p>Where:</p>
 <ul>
 <li>
-<p><span class="arithmatex">\(A_1, A_2\)</span>: Amplitudes of the Gaussian peaks.</p>
+<p><span class="arithmatex">\(A_1, A_2\)</span>: Amplitudes of the Gaussian peaks.  </p>
 </li>
 <li>
-<p><span class="arithmatex">\(\mu_1, \mu_2, \mu_3, \mu_4\)</span>: Centers of the peaks.</p>
+<p><span class="arithmatex">\(\mu_1, \mu_2, \mu_3, \mu_4\)</span>: Centers of the peaks.  </p>
 </li>
 <li>
-<p><span class="arithmatex">\(\sigma_1, \sigma_2, \sigma_3, \sigma_4\)</span>: Standard deviations controlling the spread of the peaks.</p>
+<p><span class="arithmatex">\(\sigma_1, \sigma_2, \sigma_3, \sigma_4\)</span>: Standard deviations controlling the spread of the peaks.  </p>
 </li>
 </ul>
-<p>This function represents two Gaussian peaks with a global minimum and a local minimum.</p>
+<hr />
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<p>The constants for the Gaussian peaks are defined as follows:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A_1 = 100, A_2 = 150\)</span>  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mu_1 = 3, \mu_2 = 2.1, \mu_3 = -1.5, \mu_4 = -1.2\)</span>  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\sigma_1 = 3, \sigma_2 = 3, \sigma_3 = 1, \sigma_4 = 1\)</span>  </p>
+</li>
+</ul>
+<hr />
+<h2 id="deterministic-optimal-points">Deterministic Optimal Points<a class="headerlink" href="#deterministic-optimal-points" title="Permanent link">&para;</a></h2>
+<p>The deterministic solution yields the following minima in the design variables <span class="arithmatex">\(X_1\)</span> and <span class="arithmatex">\(X_2\)</span> from the ranges <span class="arithmatex">\([-5, 5]\)</span> and <span class="arithmatex">\([-6, 6]\)</span>:</p>
+<p><strong>Global Minimum:</strong></p>
+<ul>
+<li>
+<p>Function Value: <span class="arithmatex">\(f(X_1, X_2) = -31.85\)</span>  </p>
+</li>
+<li>
+<p>At <span class="arithmatex">\((X_1, X_2) = (-1.44, -1.16)\)</span>  </p>
+</li>
+</ul>
+<p><strong>Local Minimum:</strong></p>
+<ul>
+<li>
+<p>Function Value: <span class="arithmatex">\(f(X_1, X_2) = -100\)</span>  </p>
+</li>
+<li>
+<p>At <span class="arithmatex">\((X_1, X_2) = (3.0, 2.10)\)</span>  </p>
+</li>
+</ul>
+<hr />
+<p>This setup allows the function to test optimization algorithms for their ability to handle varying sensitivities across both global and local optima, as demonstrated by the deterministic solutions. The response surface across the entire design variable range is visualized in the Figure.</p>
 <h2 id="1-define-the-test-function"><strong>1. Define the Test Function</strong><a class="headerlink" href="#1-define-the-test-function" title="Permanent link">&para;</a></h2>
 <p>To define the Gaussian-shaped test function, create a separate Python file named <code>objective.py</code>:</p>
 <p><strong>File: objective.py</strong>
