@@ -1,6 +1,6 @@
 ## Installation packages depends
 
-The PyEGRO GPR module depends on the following packages:
+The PyEGRO depends on the following packages:
 
 - numpy
 

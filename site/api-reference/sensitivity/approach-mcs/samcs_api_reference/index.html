@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/sensitivity/approach-mcs/samcs_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>MCS Approach - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MCS Approach";
+        var mkdocs_page_input_path = "api-reference\\sensitivity\\approach-mcs\\samcs_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/sensitivity/approach-mcs/samcs_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Sensitivity Analysis</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MCS Approach</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-classes">Main Classes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#mcssensitivityanalysis">MCSSensitivityAnalysis</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sensitivityvisualization">SensitivityVisualization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-function">Main Function</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#run_sensitivity_analysis">run_sensitivity_analysis</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-notes">Usage Notes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#sample-size-considerations">Sample Size Considerations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#computational-considerations">Computational Considerations</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Sensitivity Analysis</li>
+      <li class="breadcrumb-item active">MCS Approach</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/sensitivity/approach-mcs/samcs_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegrosensitivitysamcs-api-reference">PyEGRO.sensitivity.SAmcs API Reference<a class="headerlink" href="#pyegrosensitivitysamcs-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API documentation for the PyEGRO.sensitivity.SAmcs module, a framework for sensitivity analysis using Monte Carlo Simulation (MCS) with the Sobol method based on Saltelli's sampling approach.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#main-classes">Main Classes</a></li>
+<li><a href="#mcssensitivityanalysis">MCSSensitivityAnalysis</a></li>
+<li><a href="#sensitivityvisualization">SensitivityVisualization</a></li>
+<li><a href="#main-function">Main Function</a></li>
+<li><a href="#run_sensitivity_analysis">run_sensitivity_analysis</a></li>
+<li><a href="#usage-notes">Usage Notes</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The PyEGRO.SAmcs module provides tools for global sensitivity analysis using Monte Carlo Simulation with the Sobol method. This approach offers insights into how different input variables affect the output of a model or function. The module focuses on calculating first-order and total-order sensitivity indices.</p>
+<p>Key features:
+- Implementation of Sobol method using Saltelli's sampling approach
+- Support for both true function evaluation and surrogate models
+- Automatic visualization of sensitivity indices
+- Comprehensive reporting of results</p>
+<hr />
+<h2 id="main-classes">Main Classes<a class="headerlink" href="#main-classes" title="Permanent link">&para;</a></h2>
+<h3 id="mcssensitivityanalysis">MCSSensitivityAnalysis<a class="headerlink" href="#mcssensitivityanalysis" title="Permanent link">&para;</a></h3>
+<p>Main class for performing sensitivity analysis using the Monte Carlo Simulation with Sobol method.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">MCSSensitivityAnalysis</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">analyzer</span> <span class="o">=</span> <span class="n">MCSSensitivityAnalysis</span><span class="p">(</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">your_objective_function</span><span class="p">,</span>  <span class="c1"># or use model_handler</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">results_df</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="constructor-parameters">Constructor Parameters<a class="headerlink" href="#constructor-parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data_info_path</code> (str): Path to the data configuration file</li>
+<li><code>model_handler</code> (Any, optional): Model handler for surrogate model (if using surrogate)</li>
+<li><code>true_func</code> (callable, optional): True objective function (if using direct evaluation)</li>
+<li><code>model_path</code> (str, optional): Path to trained GPR model (if using surrogate)</li>
+<li><code>output_dir</code> (str): Directory for saving results</li>
+<li><code>show_variables_info</code> (bool): Whether to display variable information</li>
+<li><code>random_seed</code> (int): Random seed for reproducibility</li>
+</ul>
+<h4 id="alternative-constructor">Alternative Constructor<a class="headerlink" href="#alternative-constructor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">analyzer</span> <span class="o">=</span> <span class="n">MCSSensitivityAnalysis</span><span class="o">.</span><span class="n">from_initial_design</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">design</span><span class="o">=</span><span class="n">your_design_object</span><span class="p">,</span>  <span class="c1"># InitialDesign instance</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">true_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Optional override for objective function</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="run_analysisnum_samples-int-1024-show_progress-bool-true-pddataframe"><code>run_analysis(num_samples: int = 1024, show_progress: bool = True) -&gt; pd.DataFrame</code><a class="headerlink" href="#run_analysisnum_samples-int-1024-show_progress-bool-true-pddataframe" title="Permanent link">&para;</a></h5>
+<p>Run the Monte Carlo-based sensitivity analysis using Sobol method.</p>
+<p><strong>Parameters:</strong>
+- <code>num_samples</code> (int): Base sample size for Sobol sequence generation. Actual evaluations will be N*(D+2).
+- <code>show_progress</code> (bool): Whether to show progress information.</p>
+<p><strong>Returns:</strong>
+- <code>pd.DataFrame</code>: DataFrame containing the sensitivity indices.</p>
+<h5 id="display_variable_info"><code>display_variable_info()</code><a class="headerlink" href="#display_variable_info" title="Permanent link">&para;</a></h5>
+<p>Display detailed information about all variables.</p>
+<h3 id="sensitivityvisualization">SensitivityVisualization<a class="headerlink" href="#sensitivityvisualization" title="Permanent link">&para;</a></h3>
+<p>Handles visualization of sensitivity analysis results.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">SensitivityVisualization</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">visualizer</span> <span class="o">=</span> <span class="n">SensitivityVisualization</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">visualizer</span><span class="o">.</span><span class="n">create_visualization</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="constructor-parameters_1">Constructor Parameters<a class="headerlink" href="#constructor-parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>output_dir</code> (str, optional): Directory for saving visualization outputs.</li>
+</ul>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="create_visualizationsensitivity_df-pddataframe"><code>create_visualization(sensitivity_df: pd.DataFrame)</code><a class="headerlink" href="#create_visualizationsensitivity_df-pddataframe" title="Permanent link">&para;</a></h5>
+<p>Create visualization for sensitivity indices.</p>
+<p><strong>Parameters:</strong>
+- <code>sensitivity_df</code> (pd.DataFrame): DataFrame containing sensitivity analysis results.</p>
+<hr />
+<h2 id="main-function">Main Function<a class="headerlink" href="#main-function" title="Permanent link">&para;</a></h2>
+<h3 id="run_sensitivity_analysis">run_sensitivity_analysis<a class="headerlink" href="#run_sensitivity_analysis" title="Permanent link">&para;</a></h3>
+<p>Convenience function to run Monte Carlo-based sensitivity analysis with Sobol method.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">results_df</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">your_objective_function</span><span class="p">,</span>  <span class="c1"># or model_handler</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data_info_path</code> (str): Path to the data configuration file</li>
+<li><code>true_func</code> (callable, optional): True objective function (if using direct evaluation)</li>
+<li><code>model_handler</code> (Any, optional): Model handler for surrogate model</li>
+<li><code>model_path</code> (str, optional): Path to trained GPR model (if using surrogate)</li>
+<li><code>num_samples</code> (int): Base sample size for Sobol sequence generation</li>
+<li><code>output_dir</code> (str): Directory for saving results</li>
+<li><code>random_seed</code> (int): Random seed for reproducibility</li>
+<li><code>show_progress</code> (bool): Whether to show progress bar</li>
+</ul>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>pd.DataFrame</code>: DataFrame containing the sensitivity indices</li>
+</ul>
+<hr />
+<h2 id="usage-notes">Usage Notes<a class="headerlink" href="#usage-notes" title="Permanent link">&para;</a></h2>
+<h3 id="sample-size-considerations">Sample Size Considerations<a class="headerlink" href="#sample-size-considerations" title="Permanent link">&para;</a></h3>
+<p>The total number of model evaluations will be <code>num_samples * (D + 2)</code>, where:
+- <code>num_samples</code> is the base sample size
+- <code>D</code> is the number of variables</p>
+<p>This is due to the Saltelli sampling method's requirements.</p>
+<h3 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h3>
+<p>The analysis produces several outputs in the specified output directory:
+- <code>sensitivity_analysis_results.csv</code>: CSV file with all sensitivity indices
+- <code>sensitivity_indices.png</code>: Visualization of first-order and total-order indices
+- <code>sensitivity_indices.fig.pkl</code>: Pickled matplotlib figure for further customization
+- <code>analysis_summary.json</code>: Summary statistics including most influential parameters and interaction strengths</p>
+<h3 id="computational-considerations">Computational Considerations<a class="headerlink" href="#computational-considerations" title="Permanent link">&para;</a></h3>
+<p>For computationally expensive models, consider:
+1. Using surrogate models with the <code>model_handler</code> parameter
+2. Starting with a smaller <code>num_samples</code> and gradually increasing for convergence
+3. Using <code>show_progress=True</code> to monitor the analysis progress</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/" class="btn btn-neutral float-left" title="NNMCS Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../approach-pce/sapce_api_reference/" class="btn btn-neutral float-right" title="PCE Approach">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../approach-pce/sapce_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

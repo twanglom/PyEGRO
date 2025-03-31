@@ -3,7 +3,6 @@
 This document provides practical examples of using the PyEGRO GPR module for Gaussian Process Regression modeling tasks.
 
 ## Table of Contents
-- [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Working with Synthetic Data](#working-with-synthetic-data)
 - [Working with CSV Data](#working-with-csv-data)

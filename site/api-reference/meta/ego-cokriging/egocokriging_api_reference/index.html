@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/meta/ego-cokriging/egocokriging_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>EGO-Cokriging - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "EGO-Cokriging";
+        var mkdocs_page_input_path = "api-reference\\meta\\ego-cokriging\\egocokriging_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/meta/ego-cokriging/egocokriging_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Metamodeling</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">EGO-Cokriging</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-optimizer">Main Optimizer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#efficientglobaloptimization">EfficientGlobalOptimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-fidelity-model">Multi-Fidelity Model</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cokrigingkernel">CoKrigingKernel</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cokrigingmodel">CoKrigingModel</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#trainingconfig">TrainingConfig</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#acquisition-functions">Acquisition Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#base-class">Base Class</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#specific-acquisition-functions">Specific Acquisition Functions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#factory-functions">Factory Functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#utilities">Utilities</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#training-utilities">Training Utilities</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#model-storage-utilities">Model Storage Utilities</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#evaluation-utilities">Evaluation Utilities</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#data-preparation-utilities">Data Preparation Utilities</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#directory-utilities">Directory Utilities</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualization">Visualization</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#egoanimator">EGOAnimator</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#modelvisualizer">ModelVisualizer</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Metamodeling</li>
+      <li class="breadcrumb-item active">EGO-Cokriging</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/meta/ego-cokriging/egocokriging_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegrometaegocokriging-api-reference">PyEGRO.meta.egocokriging API Reference<a class="headerlink" href="#pyegrometaegocokriging-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API documentation for the PyEGRO.meta.egocokriging module, a framework for multi-fidelity surrogate modeling and optimization using Co-Kriging.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#main-optimizer">Main Optimizer</a></li>
+<li><a href="#multi-fidelity-model">Multi-Fidelity Model</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#acquisition-functions">Acquisition Functions</a></li>
+<li><a href="#utilities">Utilities</a></li>
+<li><a href="#visualization">Visualization</a></li>
+</ol>
+<hr />
+<h2 id="main-optimizer">Main Optimizer<a class="headerlink" href="#main-optimizer" title="Permanent link">&para;</a></h2>
+<h3 id="efficientglobaloptimization"><code>EfficientGlobalOptimization</code><a class="headerlink" href="#efficientglobaloptimization" title="Permanent link">&para;</a></h3>
+<p>Main class for Efficient Global Optimization with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">EfficientGlobalOptimization</span>
+</code></pre></div>
+<h4 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">EfficientGlobalOptimization</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">objective_func</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">bounds</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">variable_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">TrainingConfig</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">initial_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">low_fidelity_func</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong>
+- <code>objective_func</code> (callable): High-fidelity objective function to be optimized
+- <code>bounds</code> (np.ndarray): Bounds for each variable, shape (n_dimensions, 2)
+- <code>variable_names</code> (list): Names of input variables
+- <code>config</code> (TrainingConfig, optional): Configuration for the optimization process
+- <code>initial_data</code> (pd.DataFrame, optional): Initial data points with optional 'fidelity' column
+- <code>low_fidelity_func</code> (callable, optional): Low-fidelity objective function (faster but less accurate)</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="run"><code>run()</code><a class="headerlink" href="#run" title="Permanent link">&para;</a></h5>
+<p>Run the optimization process with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">history</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Returns:</strong>
+- <code>dict</code>: History of the optimization process containing iterations, performance metrics, rho values, and chosen points</p>
+<hr />
+<h2 id="multi-fidelity-model">Multi-Fidelity Model<a class="headerlink" href="#multi-fidelity-model" title="Permanent link">&para;</a></h2>
+<h3 id="cokrigingkernel"><code>CoKrigingKernel</code><a class="headerlink" href="#cokrigingkernel" title="Permanent link">&para;</a></h3>
+<p>Co-Kriging kernel for multi-fidelity Gaussian process modeling.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">CoKrigingKernel</span>
+</code></pre></div>
+<h4 id="constructor_1">Constructor<a class="headerlink" href="#constructor_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">CoKrigingKernel</span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">base_kernel</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">num_dims</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">active_dims</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong>
+- <code>base_kernel</code> (gpytorch.kernels.Kernel): Base kernel to use for both kernel_c and kernel_d
+- <code>num_dims</code> (int): Number of input dimensions
+- <code>active_dims</code> (Tuple[int, ...], optional): Dimensions to apply kernel to</p>
+<h4 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h4>
+<h5 id="rho"><code>rho</code><a class="headerlink" href="#rho" title="Permanent link">&para;</a></h5>
+<p>The scaling parameter that controls correlation between fidelity levels.</p>
+<p><strong>Returns:</strong>
+- <code>torch.Tensor</code>: Transformed rho parameter value</p>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="forwardx1-torchtensor-x2-torchtensor-diag-bool-false-params"><code>forward(x1: torch.Tensor, x2: torch.Tensor, diag: bool = False, **params)</code><a class="headerlink" href="#forwardx1-torchtensor-x2-torchtensor-diag-bool-false-params" title="Permanent link">&para;</a></h5>
+<p>Forward pass to compute kernel matrix.</p>
+<p><strong>Parameters:</strong>
+- <code>x1</code> (torch.Tensor): First input tensor with fidelity indicator in last column
+- <code>x2</code> (torch.Tensor): Second input tensor with fidelity indicator in last column
+- <code>diag</code> (bool, optional): Whether to return only diagonal elements</p>
+<p><strong>Returns:</strong>
+- <code>torch.Tensor</code>: Kernel matrix</p>
+<h3 id="cokrigingmodel"><code>CoKrigingModel</code><a class="headerlink" href="#cokrigingmodel" title="Permanent link">&para;</a></h3>
+<p>Co-Kriging Gaussian Process Model for multi-fidelity optimization.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">CoKrigingModel</span>
+</code></pre></div>
+<h4 id="constructor_2">Constructor<a class="headerlink" href="#constructor_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">CoKrigingModel</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">train_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">train_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">likelihood</span><span class="p">:</span> <span class="n">gpytorch</span><span class="o">.</span><span class="n">likelihoods</span><span class="o">.</span><span class="n">Likelihood</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">kernel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;matern15&#39;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong>
+- <code>train_x</code> (torch.Tensor): Training input data with fidelity indicator in last column
+- <code>train_y</code> (torch.Tensor): Training target data
+- <code>likelihood</code> (gpytorch.likelihoods.Likelihood): GPyTorch likelihood
+- <code>kernel</code> (str, optional): Kernel type ('matern25', 'matern15', 'matern05', 'rbf')</p>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="forwardx-torchtensor"><code>forward(x: torch.Tensor)</code><a class="headerlink" href="#forwardx-torchtensor" title="Permanent link">&para;</a></h5>
+<p>Forward pass of Co-Kriging model.</p>
+<p><strong>Parameters:</strong>
+- <code>x</code> (torch.Tensor): Input data with fidelity indicator in last column</p>
+<p><strong>Returns:</strong>
+- <code>gpytorch.distributions.MultivariateNormal</code>: Distribution representing GP predictions</p>
+<h5 id="get_hyperparameters"><code>get_hyperparameters()</code><a class="headerlink" href="#get_hyperparameters" title="Permanent link">&para;</a></h5>
+<p>Get current hyperparameter values including both kernel components and rho.</p>
+<p><strong>Returns:</strong>
+- <code>dict</code>: Dictionary containing the hyperparameters</p>
+<h5 id="predictx-torchtensor"><code>predict(x: torch.Tensor)</code><a class="headerlink" href="#predictx-torchtensor" title="Permanent link">&para;</a></h5>
+<p>Make predictions with the Co-Kriging model.</p>
+<p><strong>Parameters:</strong>
+- <code>x</code> (torch.Tensor): Input points with fidelity indicator in last column</p>
+<p><strong>Returns:</strong>
+- <code>tuple</code>: (mean predictions, standard deviations)</p>
+<hr />
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="trainingconfig"><code>TrainingConfig</code><a class="headerlink" href="#trainingconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for EGO training parameters with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">TrainingConfig</span>
+</code></pre></div>
+<h4 id="constructor_3">Constructor<a class="headerlink" href="#constructor_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">TrainingConfig</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">max_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">rmse_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">rmse_patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">relative_improvement</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">acquisition_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ei&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">acquisition_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">),</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">training_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="n">show_summary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RESULT_MODEL_COKRIGING&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="n">early_stopping_patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>    <span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    <span class="n">kernel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matern15&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">multi_fidelity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="n">rho_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="n">rho_patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong>
+- <code>max_iterations</code> (int): Maximum number of optimization iterations
+- <code>rmse_threshold</code> (float): RMSE threshold for early stopping
+- <code>rmse_patience</code> (int): Number of iterations without improvement before stopping
+- <code>relative_improvement</code> (float): Minimum relative improvement required
+- <code>acquisition_name</code> (str): Name of acquisition function
+- <code>acquisition_params</code> (Dict[str, Any]): Parameters for the acquisition function
+- <code>training_iter</code> (int): Number of training iterations for GP model
+- <code>verbose</code> (bool): Whether to print detailed training information
+- <code>show_summary</code> (bool): Whether to show parameter summary before training
+- <code>device</code> (str): Device to use for training ('cpu' or 'cuda')
+- <code>save_dir</code> (str): Directory to save results and models
+- <code>learning_rate</code> (float): Learning rate for model optimization
+- <code>early_stopping_patience</code> (int): Patience for early stopping during model training
+- <code>jitter</code> (float): Jitter value for numerical stability
+- <code>kernel</code> (str): Kernel type for base kernel
+- <code>multi_fidelity</code> (bool): Whether to use multi-fidelity modeling
+- <code>rho_threshold</code> (float): Convergence threshold for rho parameter (as percentage)
+- <code>rho_patience</code> (int): Number of iterations without improvement in rho before stopping</p>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="to_dict"><code>to_dict()</code><a class="headerlink" href="#to_dict" title="Permanent link">&para;</a></h5>
+<p>Convert configuration to dictionary.</p>
+<p><strong>Returns:</strong>
+- <code>dict</code>: Dictionary containing all configuration parameters</p>
+<hr />
+<h2 id="acquisition-functions">Acquisition Functions<a class="headerlink" href="#acquisition-functions" title="Permanent link">&para;</a></h2>
+<h3 id="base-class">Base Class<a class="headerlink" href="#base-class" title="Permanent link">&para;</a></h3>
+<h4 id="acquisitionfunction"><code>AcquisitionFunction</code><a class="headerlink" href="#acquisitionfunction" title="Permanent link">&para;</a></h4>
+<p>Base class for all acquisition functions with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging.acquisition</span> <span class="kn">import</span> <span class="n">AcquisitionFunction</span>
+</code></pre></div>
+<h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
+<h5 id="evaluatex"><code>evaluate(X)</code><a class="headerlink" href="#evaluatex" title="Permanent link">&para;</a></h5>
+<p>Evaluate the acquisition function at points X.</p>
+<p><strong>Parameters:</strong>
+- <code>X</code> (np.ndarray): Points to evaluate</p>
+<p><strong>Returns:</strong>
+- <code>np.ndarray</code>: Acquisition function values (negated for minimization)</p>
+<h5 id="optimize"><code>optimize()</code><a class="headerlink" href="#optimize" title="Permanent link">&para;</a></h5>
+<p>Optimize the acquisition function to find the next sampling point.</p>
+<p><strong>Returns:</strong>
+- <code>np.ndarray</code>: Next point to evaluate</p>
+<h5 id="_prepare_input_with_fidelityx-fidelity1"><code>_prepare_input_with_fidelity(X, fidelity=1)</code><a class="headerlink" href="#_prepare_input_with_fidelityx-fidelity1" title="Permanent link">&para;</a></h5>
+<p>Add fidelity indicator to input if the model is multi-fidelity.</p>
+<p><strong>Parameters:</strong>
+- <code>X</code> (torch.Tensor): Input data without fidelity indicator
+- <code>fidelity</code> (int): Fidelity level (0 for low, 1 for high)</p>
+<p><strong>Returns:</strong>
+- <code>torch.Tensor</code>: Input data suitable for the model</p>
+<h3 id="specific-acquisition-functions">Specific Acquisition Functions<a class="headerlink" href="#specific-acquisition-functions" title="Permanent link">&para;</a></h3>
+<h4 id="expectedimprovement"><code>ExpectedImprovement</code><a class="headerlink" href="#expectedimprovement" title="Permanent link">&para;</a></h4>
+<p>Expected Improvement acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">ExpectedImprovement</span>
+</code></pre></div>
+<h4 id="lowerconfidencebound"><code>LowerConfidenceBound</code><a class="headerlink" href="#lowerconfidencebound" title="Permanent link">&para;</a></h4>
+<p>Lower Confidence Bound acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">LowerConfidenceBound</span>
+</code></pre></div>
+<h4 id="predictivevariance"><code>PredictiveVariance</code><a class="headerlink" href="#predictivevariance" title="Permanent link">&para;</a></h4>
+<p>Predictive Variance acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">PredictiveVariance</span>
+</code></pre></div>
+<h4 id="probabilityimprovement"><code>ProbabilityImprovement</code><a class="headerlink" href="#probabilityimprovement" title="Permanent link">&para;</a></h4>
+<p>Probability of Improvement acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">ProbabilityImprovement</span>
+</code></pre></div>
+<h4 id="expectedimprovementglobalfit"><code>ExpectedImprovementGlobalFit</code><a class="headerlink" href="#expectedimprovementglobalfit" title="Permanent link">&para;</a></h4>
+<p>Expected Improvement for Global Fit acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">ExpectedImprovementGlobalFit</span>
+</code></pre></div>
+<h4 id="criterion3"><code>Criterion3</code><a class="headerlink" href="#criterion3" title="Permanent link">&para;</a></h4>
+<p>Implementation of Criterion 3 acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">Criterion3</span>
+</code></pre></div>
+<h4 id="explorationenhancedei"><code>ExplorationEnhancedEI</code><a class="headerlink" href="#explorationenhancedei" title="Permanent link">&para;</a></h4>
+<p>Exploration Enhanced Expected Improvement (E³I) acquisition function with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">ExplorationEnhancedEI</span>
+</code></pre></div>
+<h3 id="factory-functions">Factory Functions<a class="headerlink" href="#factory-functions" title="Permanent link">&para;</a></h3>
+<h4 id="create_acquisition_function"><code>create_acquisition_function</code><a class="headerlink" href="#create_acquisition_function" title="Permanent link">&para;</a></h4>
+<p>Create an acquisition function by name with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">create_acquisition_function</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">acquisition</span> <span class="o">=</span> <span class="n">create_acquisition_function</span><span class="p">(</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">bounds</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">scaler_x</span><span class="p">,</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="n">scaler_y</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="n">y_train</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="propose_location"><code>propose_location</code><a class="headerlink" href="#propose_location" title="Permanent link">&para;</a></h4>
+<p>Find the next location to sample using a specified acquisition function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">propose_location</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">X_next</span> <span class="o">=</span> <span class="n">propose_location</span><span class="p">(</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="n">acquisition_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">y_train</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="n">bounds</span><span class="p">,</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="n">scaler_x</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">scaler_y</span><span class="p">,</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">&para;</a></h2>
+<h3 id="training-utilities">Training Utilities<a class="headerlink" href="#training-utilities" title="Permanent link">&para;</a></h3>
+<h4 id="train_ck_model"><code>train_ck_model</code><a class="headerlink" href="#train_ck_model" title="Permanent link">&para;</a></h4>
+<p>Train a Co-Kriging model with optimization settings.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">train_ck_model</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">rho_value</span> <span class="o">=</span> <span class="n">train_ck_model</span><span class="p">(</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="n">X_train</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="n">y_train</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">TrainingConfig</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Returns:</strong>
+- <code>float</code>: Current rho value after training</p>
+<h4 id="check_rho_convergence"><code>check_rho_convergence</code><a class="headerlink" href="#check_rho_convergence" title="Permanent link">&para;</a></h4>
+<p>Check if rho parameter has converged.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">check_rho_convergence</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">has_converged</span> <span class="o">=</span> <span class="n">check_rho_convergence</span><span class="p">(</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">rho_history</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">TrainingConfig</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Returns:</strong>
+- <code>bool</code>: True if rho has converged, False otherwise</p>
+<h3 id="model-storage-utilities">Model Storage Utilities<a class="headerlink" href="#model-storage-utilities" title="Permanent link">&para;</a></h3>
+<h4 id="save_model_data"><code>save_model_data</code><a class="headerlink" href="#save_model_data" title="Permanent link">&para;</a></h4>
+<p>Save model, scalers, hyperparameters and metadata with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">save_model_data</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">save_model_data</span><span class="p">(</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    <span class="n">scalers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="n">metadata</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="load_model_data"><code>load_model_data</code><a class="headerlink" href="#load_model_data" title="Permanent link">&para;</a></h4>
+<p>Load saved model data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">load_model_data</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">data</span> <span class="o">=</span> <span class="n">load_model_data</span><span class="p">(</span><span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="evaluation-utilities">Evaluation Utilities<a class="headerlink" href="#evaluation-utilities" title="Permanent link">&para;</a></h3>
+<h4 id="evaluate_model_performance"><code>evaluate_model_performance</code><a class="headerlink" href="#evaluate_model_performance" title="Permanent link">&para;</a></h4>
+<p>Calculate model performance metrics using LOOCV.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging.utils</span> <span class="kn">import</span> <span class="n">evaluate_model_performance</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate_model_performance</span><span class="p">(</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    <span class="n">X_train</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="n">y_train</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="data-preparation-utilities">Data Preparation Utilities<a class="headerlink" href="#data-preparation-utilities" title="Permanent link">&para;</a></h3>
+<h4 id="prepare_data_with_fidelity"><code>prepare_data_with_fidelity</code><a class="headerlink" href="#prepare_data_with_fidelity" title="Permanent link">&para;</a></h4>
+<p>Prepare input data with fidelity indicator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">prepare_data_with_fidelity</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">X_with_fidelity</span> <span class="o">=</span> <span class="n">prepare_data_with_fidelity</span><span class="p">(</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">fidelity</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong>
+- <code>X</code> (np.ndarray): Input data without fidelity indicator
+- <code>fidelity</code> (int): Fidelity level (0 for low, 1 for high)</p>
+<p><strong>Returns:</strong>
+- <code>np.ndarray</code>: Input data with fidelity indicator in the last column</p>
+<h3 id="directory-utilities">Directory Utilities<a class="headerlink" href="#directory-utilities" title="Permanent link">&para;</a></h3>
+<h4 id="setup_directories"><code>setup_directories</code><a class="headerlink" href="#setup_directories" title="Permanent link">&para;</a></h4>
+<p>Create necessary directories for saving results.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">setup_directories</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">setup_directories</span><span class="p">(</span><span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">create_plots</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="visualization">Visualization<a class="headerlink" href="#visualization" title="Permanent link">&para;</a></h2>
+<h3 id="egoanimator"><code>EGOAnimator</code><a class="headerlink" href="#egoanimator" title="Permanent link">&para;</a></h3>
+<p>Class for creating animations of the optimization process with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">EGOAnimator</span>
+</code></pre></div>
+<h4 id="constructor_4">Constructor<a class="headerlink" href="#constructor_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">EGOAnimator</span><span class="p">(</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;RESULT_MODEL_COKRIGING/animation&#39;</span><span class="p">,</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="n">frame_duration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
+<h5 id="save_1d_frame"><code>save_1D_frame</code><a class="headerlink" href="#save_1d_frame" title="Permanent link">&para;</a></h5>
+<p>Save a 1D visualization frame with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">animator</span><span class="o">.</span><span class="n">save_1D_frame</span><span class="p">(</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">model</span><span class="p">:</span> <span class="n">gpytorch</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExactGP</span><span class="p">,</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="n">likelihood</span><span class="p">:</span> <span class="n">gpytorch</span><span class="o">.</span><span class="n">likelihoods</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">,</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="n">scaler_x</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>    <span class="n">scaler_y</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="n">bounds</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="n">iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="n">variable_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="n">true_function</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>    <span class="n">fidelities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="p">)</span>
+</code></pre></div>
+<h5 id="save_2d_frame"><code>save_2D_frame</code><a class="headerlink" href="#save_2d_frame" title="Permanent link">&para;</a></h5>
+<p>Save a 2D visualization frame with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">animator</span><span class="o">.</span><span class="n">save_2D_frame</span><span class="p">(</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="n">model</span><span class="p">:</span> <span class="n">gpytorch</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ExactGP</span><span class="p">,</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="n">likelihood</span><span class="p">:</span> <span class="n">gpytorch</span><span class="o">.</span><span class="n">likelihoods</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">,</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="n">scaler_x</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="n">scaler_y</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="n">bounds</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>    <span class="n">iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>    <span class="n">variable_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>    <span class="n">n_initial_samples</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>    <span class="n">n_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>    <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>    <span class="n">fidelities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="p">)</span>
+</code></pre></div>
+<h5 id="create_gif"><code>create_gif</code><a class="headerlink" href="#create_gif" title="Permanent link">&para;</a></h5>
+<p>Create GIF animation from saved frames.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">animator</span><span class="o">.</span><span class="n">create_gif</span><span class="p">(</span><span class="n">duration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="modelvisualizer"><code>ModelVisualizer</code><a class="headerlink" href="#modelvisualizer" title="Permanent link">&para;</a></h3>
+<p>Class for creating final model visualizations with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egocokriging</span> <span class="kn">import</span> <span class="n">ModelVisualizer</span>
+</code></pre></div>
+<h4 id="constructor_5">Constructor<a class="headerlink" href="#constructor_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">ModelVisualizer</span><span class="p">(</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="n">likelihood</span><span class="p">,</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="n">scaler_x</span><span class="p">,</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    <span class="n">scaler_y</span><span class="p">,</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    <span class="n">bounds</span><span class="p">,</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    <span class="n">variable_names</span><span class="p">,</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    <span class="n">history</span><span class="p">,</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    <span class="n">device</span><span class="p">,</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    <span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_COKRIGING&#39;</span><span class="p">,</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    <span class="n">multi_fidelity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    <span class="n">rho_history</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h4>
+<h5 id="plot_rho_evolution"><code>plot_rho_evolution</code><a class="headerlink" href="#plot_rho_evolution" title="Permanent link">&para;</a></h5>
+<p>Plot the evolution of rho parameter over iterations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">visualizer</span><span class="o">.</span><span class="n">plot_rho_evolution</span><span class="p">()</span>
+</code></pre></div>
+<h5 id="plot_final_prediction"><code>plot_final_prediction</code><a class="headerlink" href="#plot_final_prediction" title="Permanent link">&para;</a></h5>
+<p>Create final prediction plots with multi-fidelity support.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">visualizer</span><span class="o">.</span><span class="n">plot_final_prediction</span><span class="p">(</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="n">X_train</span><span class="p">,</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="n">y_train</span><span class="p">,</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="n">true_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="n">fidelities</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="p">)</span>
+</code></pre></div>
+<h5 id="plot_convergence_metrics"><code>plot_convergence_metrics</code><a class="headerlink" href="#plot_convergence_metrics" title="Permanent link">&para;</a></h5>
+<p>Plot optimization metrics over iterations including rho values.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">visualizer</span><span class="o">.</span><span class="n">plot_convergence_metrics</span><span class="p">(</span><span class="n">history</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="plot_error_analysis"><code>plot_error_analysis</code><a class="headerlink" href="#plot_error_analysis" title="Permanent link">&para;</a></h5>
+<p>Plot prediction errors and residuals with separate plots for high and low fidelity data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">visualizer</span><span class="o">.</span><span class="n">plot_error_analysis</span><span class="p">(</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">X_train</span><span class="p">,</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="n">y_train</span><span class="p">,</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="n">fidelities</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="p">)</span>
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../ego-gpr/egogpr_api_reference/" class="btn btn-neutral float-left" title="EGO-GPR"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../model-evalulation/modeltesting_api_reference/" class="btn btn-neutral float-right" title="Model Evaluation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../ego-gpr/egogpr_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../model-evalulation/modeltesting_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

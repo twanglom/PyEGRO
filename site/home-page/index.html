@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/home-page/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Home - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "home-page.md";
+        var mkdocs_page_url = "/PyEGRO/home-page/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-modules">Key Modules</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-design-of-experiments">1. Design of Experiments</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-metamodeling">2. Metamodeling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-ego-for-metamodeling">3. EGO for Metamodeling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-robust-optimization">4. Robust Optimization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-global-sensitivity-analysis">5. Global Sensitivity Analysis</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-uncertainty-quantification">6. Uncertainty Quantification</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#about-the-author">👤 About the Author</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#community-and-contributions">👥 Community and Contributions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#license">License</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api-reference/doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api-reference/uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/home-page.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <figure>
+<p><img alt="PyEGRO Logo" src="../assets/logo.png" width="400" /></p>
+</figure>
+<h1 id="pyegro-python-efficient-global-robust-optimization">PyEGRO: Python Efficient Global Robust Optimization<a class="headerlink" href="#pyegro-python-efficient-global-robust-optimization" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p><strong>PyEGRO</strong> is a Python library designed for solving complex engineering problems with efficient global robust optimization. It provides tools for initial design sampling, metamodeling, sensitivity analysis, uncertainty quantification and robust optimization. </p>
+<hr />
+<h2 id="key-modules">Key Modules<a class="headerlink" href="#key-modules" title="Permanent link">&para;</a></h2>
+<h3 id="1-design-of-experiments">1. <strong>Design of Experiments</strong><a class="headerlink" href="#1-design-of-experiments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Advanced sampling methods:</li>
+<li><strong>Latin Hypercube Sampling (LHS)</strong></li>
+<li><strong>Sobol Sequence</strong></li>
+<li><strong>Halton Sequence</strong></li>
+<li>Design variables and environmental variables (deterministic and stochastic).</li>
+<li>Multi-dimensional Input.</li>
+<li>Customizable sampling criteria for enhanced precision.</li>
+</ul>
+<h3 id="2-metamodeling">2. <strong>Metamodeling</strong><a class="headerlink" href="#2-metamodeling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Supports <strong>Gaussian Process Regression (GPR) or Kriging</strong>  and Multi-Fidelity using <strong>Co-Kriging</strong> metamodel</p>
+</li>
+<li>
+<p>Using <strong>Polynomial Chaos Expansion (PCE)</strong> in uncertainty quntification and support in robust optimization loop</p>
+</li>
+<li>
+<p>Real-time progress visualization.</p>
+</li>
+</ul>
+<h3 id="3-ego-for-metamodeling">3. <strong>EGO for Metamodeling</strong><a class="headerlink" href="#3-ego-for-metamodeling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Provides multiple acquisition functions:</li>
+<li><strong><em>Expected Improvement (EI) and Boosting the Exploration term (𝜁-EI)</em></strong></li>
+<li><strong><em>Probability of Improvement (PI)</em></strong></li>
+<li><strong><em>Lower Confidence Bound (LCB)</em></strong></li>
+<li><strong><em>Exploration Enhanced EI (E3I)</em></strong> [<a href="#reference-1" style="color:red; text-decoration:underline;">1</a>]</li>
+<li><strong><em>Expected Improvement for Global Fit (EIGF)</em></strong> [<a href="#reference-2" style="color:red; text-decoration:underline;">2</a>]</li>
+<li><strong><em>Distance-Enhanced Gradient (CRI3)</em></strong> [<a href="#reference-3" style="color:red; text-decoration:underline;">3</a>]</li>
+<li>Comprehensive training configurations for surrogate models.</li>
+<li>Built-in visualization and performance tracking.</li>
+</ul>
+<h3 id="4-robust-optimization">4. <strong>Robust Optimization</strong><a class="headerlink" href="#4-robust-optimization" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Support techniques: <strong>Monte Carlo Simulation (MCS)</strong> and <strong>Polynomial Chaos Expansion (PCE)</strong> </li>
+<li>Able to use <strong>Artificial Neural Network (ANN)</strong> in robust optimization loop call Two-Stage approach.</li>
+<li>Hyperparameter optimization using <a href="https://optuna.org/">Optuna</a>.</li>
+<li>Multi-objective Pareto solutions.</li>
+<li>Both direct function and surrogate-based evaluations supported.</li>
+</ul>
+<h3 id="5-global-sensitivity-analysis">5. <strong>Global Sensitivity Analysis</strong><a class="headerlink" href="#5-global-sensitivity-analysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Sobol indices</strong> for quantifying sensitivity.</li>
+<li>Seamless analysis with true or surrogate functions.</li>
+<li>Built-in visualization tools for insightful results.</li>
+</ul>
+<h3 id="6-uncertainty-quantification">6. <strong>Uncertainty Quantification</strong><a class="headerlink" href="#6-uncertainty-quantification" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Methods for uncertainty propagation:</li>
+<li>Moment estimation.</li>
+<li>Distribution analysis (Kernel density function, KDF).</li>
+<li>Visualization of Mean and Confidence bounds on surrogate model (1D and 2D)</li>
+<li>Data logging in .csv for post-processing </li>
+</ul>
+<hr />
+<h2 id="about-the-author">👤 About the Author<a class="headerlink" href="#about-the-author" title="Permanent link">&para;</a></h2>
+<p><strong>Thanasak Wanglomklang</strong><br />
+PhD Student in Mechanical Engineering  </p>
+<ul>
+<li><strong>Email</strong>: <a href="mailto:thanasak.wanglomklang@ec-lyon.fr">thanasak.wanglomklang@ec-lyon.fr</a>  </li>
+<li><strong>Phone</strong>: +33 06 51 22 45 69  </li>
+<li><strong>Location</strong>: Lyon, France  </li>
+<li><strong>Personal Website</strong>: <a href="https://twanglom.github.io">twanglom.github.io</a>  </li>
+</ul>
+<p>Hi, I’m Thanasak, a PhD student in Mechanical Engineering at École Centrale de Lyon, supervised by <a href="https://scholar.google.com/citations?user=mX1HMLcAAAAJ&amp;hl=en">Sébastien Besset</a> and <a href="https://scholar.google.fr/citations?user=SuvV3LoAAAAJ&amp;hl=fr">Frédéric Gillot</a>. My research focuses on optimization under uncertainty, and computational vibro-acoustics, with applications in aircraft cabin shape optimization for noise reduction. I’m developing PyEGRO, a tool to address these challenges in my research. In future, aiming to support uncertainty-aware engineering design.</p>
+<hr />
+<h2 id="community-and-contributions">👥 Community and Contributions<a class="headerlink" href="#community-and-contributions" title="Permanent link">&para;</a></h2>
+<p>We welcome contributions to <strong>PyEGRO</strong>! Visit our <a href="https://github.com/twanglom/PyEGRO">GitHub repository</a> to raise issues, submit pull requests, or explore the source code.</p>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p><a id="reference-1"></a>1. Berk, J., Nguyen, V., Gupta, S., Rana, S., &amp; Venkatesh, S. (2019). Exploration enhanced expected improvement for Bayesian optimization. In <em>Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2018, Dublin, Ireland, September 10–14, 2018, Proceedings, Part II 18</em> (pp. 621-637). Springer International Publishing.</p>
+<p><a id="reference-2"></a>2. Lam, C. Q. (2008). Sequential adaptive designs in computer experiments for response surface model fit (Doctoral dissertation, The Ohio State University).</p>
+<p><a id="reference-3"></a>3. Shimoyama, K., &amp; Kawai, S. (2019). A kriging-based dynamic adaptive sampling method for uncertainty quantification. <em>Transactions of the Japan Society for Aeronautical and Space Sciences, 62</em>(3), 137-150.</p>
+<hr />
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p><strong>---</strong></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../getting-started/installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="../getting-started/installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

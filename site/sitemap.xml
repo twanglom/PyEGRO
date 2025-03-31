@@ -2,82 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://your-username.github.io/PyEGRO/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/api-reference/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <loc>https://your-username.github.io/PyEGRO/home-page/</loc>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/examples/ego-surrogate-examples/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/doe/doe_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/meta/cokriging/cokriging_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/meta/ego-cokriging/egocokriging_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/meta/ego-gpr/egogpr_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/meta/gpr/gpr_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/meta/model-evalulation/modeltesting_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/robustopt/approach-mcs/robust_mcs_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/robustopt/approach-pce/robust_pce_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/sensitivity/approach-mcs/samcs_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/sensitivity/approach-pce/sapce_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/api-reference/uncertainty/approach-mcs/uqmcs_api_reference/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/doe/doe_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/meta/cokriging/cokriging_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/meta/ego-cokriging/egocokriging_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/meta/ego-gpr/egogpr_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/meta/gpr/gpr_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/meta/model-evalulation/modeltesting_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/robustopt/approach-nnmcs/robust_nnmcs_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/robustopt/approach-pce/robust_pce_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/sensitivity/approach-mcs/samcs_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/sensitivity/approach-pce/sapce_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/basic-usage/uncertainty/approach-mcs/uqmcs_examples/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://your-username.github.io/PyEGRO/examples/ego-metamodel-examples/</loc>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/examples/robust-example/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/examples/uq-examples/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
-         <loc>https://your-username.github.io/PyEGRO/examples/basics-surrogate-examples/basics-surrogate-examples/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <loc>https://your-username.github.io/PyEGRO/examples/basics-metamodel-examples/basics-metamodel-examples/</loc>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/getting-started/installation/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/getting-started/quickstart/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/doe/overviewdoe/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/doe/usagedoe/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/ego/overviewego/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/ego/usageego/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/meta/overviewmeta/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/meta/usagemeta/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/robustopt/overviewrobust/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/robustopt/usagerobust/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/sensitivity/overviewsensitivity/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/sensitivity/usagesensitivity/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/uq/overviewuq/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
     <url>
          <loc>https://your-username.github.io/PyEGRO/user-guide/uq/usageuq/</loc>
-         <lastmod>2025-01-16</lastmod>
+         <lastmod>2025-03-31</lastmod>
     </url>
 </urlset>

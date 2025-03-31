@@ -1,6 +1,6 @@
 site_name: PyEGRO Documentation
-site_url: https://your-username.github.io/PyEGRO/
-repo_url: https://github.com/your-username/PyEGRO.git
+site_url: https://twanglom.github.io/PyEGRO/
+repo_url: https://github.com/twanglom/PyEGRO.git
 
 theme: 
   name: readthedocs
@@ -9,7 +9,7 @@ theme:
 
 # JavaScript for math rendering - this is the key part for math support
 extra_javascript:
-  - javascripts/mathjax.js  # Custom configuration file
+  - scripts/mathjax.js  # Custom configuration file
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
@@ -41,7 +41,7 @@ plugins:
 
 
 nav:
-  - Home: home-page.md
+  - Home: index.md
   - Getting Started:
       - Installation: getting-started/installation.md
       - Quick Start: getting-started/quickstart.md
@@ -76,9 +76,9 @@ nav:
           - EGO-Cokriging: api-reference/meta/ego-cokriging/egocokriging_api_reference.md         
           - Model Evaluation: api-reference/meta/model-evalulation/modeltesting_api_reference.md
       - Robust Optimization:
-          - MCS Approach: api-reference/robustopt/approach-mcs/robust_mcs_api_reference.md
-          - PCE Approach: api-reference/robustopt/approach-pce/robust_pce_api_reference.md
-          - NNMCS Approach: api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference.md
+          - MCS Approach: api-reference/robustopt/approach-mcs/robustopt_mcs_api_reference.md
+          - PCE Approach: api-reference/robustopt/approach-pce/robustopt_pce_api_reference.md
+          - NNMCS Approach: api-reference/robustopt/approach-nnmcs/robustopt_nnmcs_api_reference.md
       - Sensitivity Analysis:
           - MCS Approach: api-reference/sensitivity/approach-mcs/samcs_api_reference.md
           - PCE Approach: api-reference/sensitivity/approach-pce/sapce_api_reference.md

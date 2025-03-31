@@ -2,14 +2,14 @@
   ![PyEGRO Logo](assets/logo.png){ width="400" }
 </figure>
 
-# PyEGRO: Python Efficient Global Robust Optimization
+# PyEGRO: Python for Efficient Global Robust Optimization
 
 ## Overview
-**PyEGRO** is a Python library designed for solving complex engineering problems with efficient global robust optimization. It provides tools for initial design sampling, surrogate modeling, sensitivity analysis, and robust optimization. 
+**PyEGRO** is a Python library designed for solving complex engineering problems with efficient global robust optimization. It provides tools for initial design sampling, metamodeling, sensitivity analysis, uncertainty quantification and robust optimization. 
 
 ---
 
-## 🔑 Key Modules
+## Key Modules
 
 ### 1. **Design of Experiments**
 - Advanced sampling methods:
@@ -17,16 +17,18 @@
   - **Sobol Sequence**
   - **Halton Sequence**
   - Design variables and environmental variables (deterministic and stochastic).
-  - Multi-dimensional and complex domains.
+  - Multi-dimensional Input.
 - Customizable sampling criteria for enhanced precision.
 
-### 2. **Surrogate Modeling**
-- Supports **Gaussian Process Regression (GPR)** and **Artificial Neural Network (ANN)**.
-- Hyperparameter optimization using [Optuna](https://optuna.org/).
+### 2. **Metamodeling**
+- Supports **Gaussian Process Regression (GPR) or Kriging**  and Multi-Fidelity using **Co-Kriging** metamodel
+
+- Using **Polynomial Chaos Expansion (PCE)** in uncertainty quntification and support in robust optimization loop
+
 - Real-time progress visualization.
 
 
-### 3. **EGO for Surrogate Modeling**
+### 3. **EGO for Metamodeling**
 - Provides multiple acquisition functions:
   - ***Expected Improvement (EI) and Boosting the Exploration term (𝜁-EI)***
   - ***Probability of Improvement (PI)***
@@ -40,50 +42,37 @@
 
 ### 4. **Robust Optimization**
 - Support techniques: **Monte Carlo Simulation (MCS)** and **Polynomial Chaos Expansion (PCE)** 
+- Able to use **Artificial Neural Network (ANN)** in robust optimization loop call Two-Stage approach.
+- Hyperparameter optimization using [Optuna](https://optuna.org/).
 - Multi-objective Pareto solutions.
 - Both direct function and surrogate-based evaluations supported.
 
-### 5. **Sensitivity Analysis**
+### 5. **Global Sensitivity Analysis**
 - **Sobol indices** for quantifying sensitivity.
 - Seamless analysis with true or surrogate functions.
 - Built-in visualization tools for insightful results.
 
 ### 6. **Uncertainty Quantification**
-- Methods for uncertainty propagation:
-  - Moment estimation.
-  - Distribution analysis (PDF/CDF).
-  - Visualization of Mean and Confidence bounds on surrogate model
+- Monte Carlo Simulation methods for uncertainty propagation:
+- Moment estimation.
+- Distribution analysis (Kernel density function, KDF).
+- Visualization of Mean and Confidence bounds on surrogate model (1D and 2D)
+- Data logging in .csv for post-processing 
 
 ---
 
-## 🛠 Installation
-To install **PyEGRO**, use the following pip command:
-```bash
-pip install PyEGRO
-```
+## 👤 About the Author
 
----
+**Thanasak Wanglomklang**  
+PhD Student in Mechanical Engineering  
 
-## 🔗 Documentation Structure
+- **Email**: [thanasak.wanglomklang@ec-lyon.fr](mailto:thanasak.wanglomklang@ec-lyon.fr)  
+- **Phone**: +33 06 51 22 45 69  
+- **Location**: Lyon, France  
+- **Personal Website**: [twanglom.github.io](https://twanglom.github.io)  
 
-### Getting Started
-Learn how to install and configure **PyEGRO**, with quick-start examples.
+Hi, I’m Thanasak, a PhD student in Mechanical Engineering at École Centrale de Lyon, supervised by [Sébastien Besset](https://scholar.google.com/citations?user=mX1HMLcAAAAJ&hl=en) and [Frédéric Gillot](https://scholar.google.fr/citations?user=SuvV3LoAAAAJ&hl=fr). My research focuses on optimization under uncertainty, and computational vibro-acoustics, with applications in aircraft cabin shape optimization for noise reduction. I’m developing PyEGRO, a tool to address these challenges in my research. In future, aiming to support uncertainty-aware engineering design.
 
-### User Guide
-Detailed explanations of each module, including:
-
-- Design of Experiments
-- Efficient Global Optimization
-- Surrogate Modeling
-- Robust Optimization
-- Sensitivity Analysis
-- Uncertainty Quantification
-
-### Application Examples
-Explore real-world use cases and examples for common problems solved using PyEGRO.
-
-### API Reference
-Comprehensive reference for all PyEGRO functions and classes.
 
 ---
 
@@ -100,19 +89,6 @@ We welcome contributions to **PyEGRO**! Visit our [GitHub repository](https://gi
 <a id="reference-3"></a>3. Shimoyama, K., & Kawai, S. (2019). A kriging-based dynamic adaptive sampling method for uncertainty quantification. *Transactions of the Japan Society for Aeronautical and Space Sciences, 62*(3), 137-150.
 
 ---
-
-# 👤 About the Author
-
-**Thanasak Wanglomklang**  
-PhD Student in Mechanical Engineering  
-
-- **Email**: [thanasak.wanglomklang@ec-lyon.fr](mailto:thanasak.wanglomklang@ec-lyon.fr)  
-- **Phone**: +33 06 51 22 45 69  
-- **Location**: Lyon, France  
-- **Personal Website**: [twanglom.github.io](https://twanglom.github.io)  
-
-Hi, I’m Thanasak, a PhD student in Mechanical Engineering at École Centrale de Lyon, supervised by [Sébastien Besset](https://scholar.google.com/citations?user=mX1HMLcAAAAJ&hl=en) and [Frédéric Gillot](https://scholar.google.fr/citations?user=SuvV3LoAAAAJ&hl=fr). My research focuses on optimization under uncertainty, and computational vibro-acoustics, with applications in aircraft cabin shape optimization for noise reduction. I’m developing PyEGRO, a tool to address these challenges in my research. In future, aiming to support uncertainty-aware engineering design.
-
 
 ## License
 **---**

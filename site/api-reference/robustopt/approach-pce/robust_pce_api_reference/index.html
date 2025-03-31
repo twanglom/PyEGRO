@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/robustopt/approach-pce/robust_pce_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>PCE Approach - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PCE Approach";
+        var mkdocs_page_input_path = "api-reference\\robustopt\\approach-pce\\robust_pce_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/robustopt/approach-pce/robust_pce_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Robust Optimization</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">PCE Approach</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#problem-definition">Problem Definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-optimization-function">Main Optimization Function</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#run_robust_optimization">run_robust_optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pce-classes">PCE Classes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pcesampler">PCESampler</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#robustoptimizationproblempce">RobustOptimizationProblemPCE</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#algorithm-setup">Algorithm Setup</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#setup_algorithm">setup_algorithm</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#results-handling">Results Handling</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#save_optimization_results">save_optimization_results</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Robust Optimization</li>
+      <li class="breadcrumb-item active">PCE Approach</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/robustopt/approach-pce/robust_pce_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegrorobustoptmethod_pce-api-reference">PyEGRO.robustopt.method_pce API Reference<a class="headerlink" href="#pyegrorobustoptmethod_pce-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API documentation for the PyEGRO.robustopt.method_pce module, a framework for robust optimization using Polynomial Chaos Expansion (PCE) for uncertainty quantification.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#problem-definition">Problem Definition</a></li>
+<li><a href="#main-optimization-function">Main Optimization Function</a></li>
+<li><a href="#pce-classes">PCE Classes</a></li>
+<li><a href="#algorithm-setup">Algorithm Setup</a></li>
+<li><a href="#results-handling">Results Handling</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Polynomial Chaos Expansion (PCE) is a powerful spectral method for uncertainty quantification that represents stochastic responses using a series of orthogonal polynomials. Compared to Monte Carlo Simulation (MCS), PCE often requires fewer samples to achieve accurate statistical moments and offers rapid convergence for smooth responses.</p>
+<p>The PyEGRO.robustopt.method_pce module implements PCE-based uncertainty quantification within a robust optimization framework. The optimization is performed using the NSGA-II algorithm to find solutions that balance performance (mean) and robustness (standard deviation).</p>
+<hr />
+<h2 id="problem-definition">Problem Definition<a class="headerlink" href="#problem-definition" title="Permanent link">&para;</a></h2>
+<p>The robust optimization problem can be defined in three different ways, just as with the MCS method:</p>
+<ol>
+<li>Using a dictionary format with variables and their properties</li>
+<li>Loading a pre-defined problem from a JSON file</li>
+</ol>
+<p>For detailed variable definition formats and supported distributions, please refer to the <a href="PyEGRO.robustopt.method_mcs.md">PyEGRO.robustopt.method_mcs API Reference</a>.</p>
+<hr />
+<h2 id="main-optimization-function">Main Optimization Function<a class="headerlink" href="#main-optimization-function" title="Permanent link">&para;</a></h2>
+<h3 id="run_robust_optimization"><code>run_robust_optimization</code><a class="headerlink" href="#run_robust_optimization" title="Permanent link">&para;</a></h3>
+<p>Runs robust optimization using Polynomial Chaos Expansion for uncertainty quantification.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_pce</span> <span class="kn">import</span> <span class="n">run_robust_optimization</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">results</span> <span class="o">=</span> <span class="n">run_robust_optimization</span><span class="p">(</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">data_info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">model_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">pce_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">pce_order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">pop_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">n_gen</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;hv&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">reference_point</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">show_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data_info</code> (Dict): Problem definition data containing variables</li>
+<li><code>true_func</code> (callable, optional): True objective function for direct evaluation</li>
+<li><code>model_handler</code> (Any, optional): Handler for surrogate model evaluations</li>
+<li><code>pce_samples</code> (int): Number of PCE samples per evaluation</li>
+<li><code>pce_order</code> (int): Order of the PCE polynomial expansion</li>
+<li><code>pop_size</code> (int): Population size for NSGA-II</li>
+<li><code>n_gen</code> (int): Number of generations</li>
+<li><code>metric</code> (str): Performance metric ('hv' for hypervolume)</li>
+<li><code>reference_point</code> (np.ndarray, optional): Reference point for hypervolume calculation</li>
+<li><code>show_info</code> (bool): Whether to display information during optimization</li>
+<li><code>verbose</code> (bool): Whether to print detailed progress</li>
+</ul>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>Dict</code>: Results dictionary containing:</li>
+<li><code>pareto_front</code>: Array of objective values (Mean, StdDev)</li>
+<li><code>pareto_set</code>: Array of decision variables</li>
+<li><code>convergence_history</code>: Dict with metric history</li>
+<li><code>runtime</code>: Total optimization time</li>
+<li><code>success</code>: Bool indicating successful completion</li>
+</ul>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Either <code>true_func</code> or <code>model_handler</code> must be provided</li>
+<li>The optimization minimizes both mean performance and standard deviation</li>
+<li>PCE parameters (<code>pce_samples</code> and <code>pce_order</code>) control the accuracy and computational cost of the uncertainty quantification</li>
+<li>Higher PCE orders provide more accurate approximations but require more samples</li>
+</ul>
+<hr />
+<h2 id="pce-classes">PCE Classes<a class="headerlink" href="#pce-classes" title="Permanent link">&para;</a></h2>
+<h3 id="pcesampler"><code>PCESampler</code><a class="headerlink" href="#pcesampler" title="Permanent link">&para;</a></h3>
+<p>Class for generating samples using Polynomial Chaos Expansion techniques.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_pce</span> <span class="kn">import</span> <span class="n">PCESampler</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">sampler</span> <span class="o">=</span> <span class="n">PCESampler</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>n_samples</code> (int): Number of samples to generate</li>
+<li><code>order</code> (int): Order of the polynomial expansion</li>
+</ul>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="generate_samplesmean-float-std-float-bounds-optionaltuple-none-npndarray"><code>generate_samples(mean: float, std: float, bounds: Optional[tuple] = None) -&gt; np.ndarray</code><a class="headerlink" href="#generate_samplesmean-float-std-float-bounds-optionaltuple-none-npndarray" title="Permanent link">&para;</a></h5>
+<p>Generate PCE samples with improved uncertainty quantification.</p>
+<p><strong>Parameters:</strong>
+- <code>mean</code> (float): Mean value
+- <code>std</code> (float): Standard deviation
+- <code>bounds</code> (tuple, optional): Tuple containing (lower, upper) bounds</p>
+<p><strong>Returns:</strong> numpy.ndarray of samples</p>
+<h3 id="robustoptimizationproblempce"><code>RobustOptimizationProblemPCE</code><a class="headerlink" href="#robustoptimizationproblempce" title="Permanent link">&para;</a></h3>
+<p>Multi-objective optimization problem using Polynomial Chaos Expansion for uncertainty quantification.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_pce</span> <span class="kn">import</span> <span class="n">RobustOptimizationProblemPCE</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">problem</span> <span class="o">=</span> <span class="n">RobustOptimizationProblemPCE</span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">variables</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">model_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">num_pce_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">pce_order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>variables</code> (List): List of variable definitions (dicts or Variable objects)</li>
+<li><code>true_func</code> (callable, optional): True objective function for direct evaluation</li>
+<li><code>model_handler</code> (Any, optional): Handler for surrogate model evaluations</li>
+<li><code>num_pce_samples</code> (int): Number of PCE samples per evaluation</li>
+<li><code>pce_order</code> (int): Order of the PCE polynomial expansion</li>
+<li><code>batch_size</code> (int): Batch size for model evaluations</li>
+</ul>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="_generate_samplesdesign_point-npndarray-npndarray"><code>_generate_samples(design_point: np.ndarray) -&gt; np.ndarray</code><a class="headerlink" href="#_generate_samplesdesign_point-npndarray-npndarray" title="Permanent link">&para;</a></h5>
+<p>Generate PCE samples for a given design point.</p>
+<h5 id="_evaluate_samplessamples-npndarray-npndarray"><code>_evaluate_samples(samples: np.ndarray) -&gt; np.ndarray</code><a class="headerlink" href="#_evaluate_samplessamples-npndarray-npndarray" title="Permanent link">&para;</a></h5>
+<p>Evaluate samples using either the true function or surrogate model.</p>
+<h5 id="_evaluatex-npndarray-out-dict-args-kwargs"><code>_evaluate(X: np.ndarray, out: Dict, *args, **kwargs)</code><a class="headerlink" href="#_evaluatex-npndarray-out-dict-args-kwargs" title="Permanent link">&para;</a></h5>
+<p>Evaluate objectives using PCE-based uncertainty quantification.</p>
+<hr />
+<h2 id="algorithm-setup">Algorithm Setup<a class="headerlink" href="#algorithm-setup" title="Permanent link">&para;</a></h2>
+<h3 id="setup_algorithm"><code>setup_algorithm</code><a class="headerlink" href="#setup_algorithm" title="Permanent link">&para;</a></h3>
+<p>Sets up the NSGA-II algorithm with standard parameters.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_pce</span> <span class="kn">import</span> <span class="n">setup_algorithm</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">algorithm</span> <span class="o">=</span> <span class="n">setup_algorithm</span><span class="p">(</span><span class="n">pop_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>pop_size</code> (int): Population size for NSGA-II</li>
+</ul>
+<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>NSGA2</code>: Configured NSGA-II algorithm</li>
+</ul>
+<hr />
+<h2 id="results-handling">Results Handling<a class="headerlink" href="#results-handling" title="Permanent link">&para;</a></h2>
+<h3 id="save_optimization_results"><code>save_optimization_results</code><a class="headerlink" href="#save_optimization_results" title="Permanent link">&para;</a></h3>
+<p>Saves optimization results and creates visualizations.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_pce</span> <span class="kn">import</span> <span class="n">save_optimization_results</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">save_optimization_results</span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">results</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">data_info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">save_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;RESULT_PARETO_FRONT_PCE&#39;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>results</code> (Dict): Optimization results dictionary</li>
+<li><code>data_info</code> (Dict): Problem definition data</li>
+<li><code>save_dir</code> (str): Directory to save results</li>
+</ul>
+<h4 id="saved-outputs">Saved Outputs<a class="headerlink" href="#saved-outputs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>pareto_solutions.csv</code>: CSV file with Pareto front solutions</li>
+<li><code>optimization_summary.txt</code>: Text summary of optimization results</li>
+<li><code>convergence.csv</code>: CSV file with convergence history</li>
+<li>Various visualization plots:</li>
+<li>Pareto front plot</li>
+<li>Convergence plot</li>
+<li>Parameter correlation plots</li>
+<li>Trade-off analysis</li>
+</ul>
+<h4 id="notes_1">Notes<a class="headerlink" href="#notes_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The summary output includes PCE-specific information such as PCE evaluations</li>
+<li>Creates specified directory if it doesn't exist</li>
+<li>Automatically determines appropriate visualizations based on problem dimension</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../approach-mcs/robust_mcs_api_reference/" class="btn btn-neutral float-left" title="MCS Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../approach-nnmcs/robust_nnmcs_api_reference/" class="btn btn-neutral float-right" title="NNMCS Approach">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../approach-mcs/robust_mcs_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../approach-nnmcs/robust_nnmcs_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
