@@ -10,7 +10,7 @@ pre {
     position: absolute;
     top: 0;
     right: 0;
-    background: #2980b9;
+    background: #2980b9; 
     color: white;
     padding: 2px 7px;
     font-size: 12px;
@@ -59,7 +59,7 @@ pre {
   
   /* Additional styles to make ReadTheDocs navigation better */ 
   .wy-nav-side {
-    background: #2e3d4d;
+    background: #28282B; /* #2e3d4d */
   }
   
   .wy-menu-vertical li.current {

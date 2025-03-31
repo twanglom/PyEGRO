@@ -311,37 +311,34 @@ calculate_input_bounds(variables)
 
 The following distributions are supported for design and environment variables:
 
-1. **Uniform**: Constant probability within range
-   - Required parameters for env variables: `low`/`high` or `min`/`max`
-   - For design variables: `delta` (when using uniform uncertainty)
+**Uniform**: Constant probability within interval
 
-2. **Normal**: Gaussian distribution
-   - Required parameters for env variables: `mean` plus either `cov` or `std` 
-   - For design variables: `cov` or `std` for uncertainty specification
-   - Optional parameters: `lower`, `upper` (for truncation)
+- Required parameters  
 
-3. **Lognormal**: Natural logarithm follows normal distribution
-   - Required parameters: `mean` plus either `cov` or `std`
-   - Optional parameters: `lower`, `upper` (for truncation)
+    env variables: `low`/`high` or `min`/`max`
 
-## Uncertainty Specification Methods
+    design variables: `delta` 
 
-PyEGRO supports three approaches for specifying uncertainty in design variables:
+**Normal**: Gaussian distribution
 
-1. **Coefficient of Variation (CoV)**: Uses a value proportional to the design point
-   - Good for: Variables where uncertainty scales with magnitude
-   - Parameter: `cov` 
-   - Example: `cov=0.1` means 10% uncertainty around design point
+- Required parameters 
+   
+    env variables: `mean` plus either `cov` or `std` 
 
-2. **Standard Deviation (Std)**: Uses a fixed value for all design points
-   - Good for: Variables where uncertainty is constant regardless of magnitude
-   - Parameter: `std`
-   - Example: `std=0.5` means fixed uncertainty of 0.5 units
+    design variables: `cov` or `std` 
 
-3. **Delta (Uniform Uncertainty)**: Uses uniform distribution with fixed half-width
-   - Good for: Variables with bounded, uniform uncertainty
-   - Parameter: `delta`
-   - Example: `delta=0.1` means uniform distribution ±0.1 around design point
+    Optional parameters: `lower`, `upper` (for truncation)
+
+**Lognormal**: Natural logarithm follows normal distribution
+
+- Required parameters 
+
+    env variables: `mean` plus either `cov` or `std` 
+
+    design variables: `cov` or `std` 
+
+    Optional parameters: `lower`, `upper` (for truncation)
+
 
 ## Module Functions
 

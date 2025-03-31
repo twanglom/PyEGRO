@@ -247,9 +247,9 @@ Result folder:
 
 Looking at the Pareto front and the final solutions, we can observe two distinct regions:
 
-1. **Solution A (around x=10)**: This solution offers the best mean performance (lowest function value) but has higher uncertainty (standard deviation). This is because the peak at x=10 is very narrow, so small variations in x can lead to large changes in the output.
+<span style="color:blue">**Solution A (around x=10)**</span>: This solution offers the best mean performance (lowest function value) but has higher uncertainty (standard deviation). This is because the peak at x=10 is very narrow, so small variations in x can lead to large changes in the output.
 
-2. **Solution B (around x=20)**: This solution has slightly worse mean performance but much better robustness (lower standard deviation). The peak at x=20 is wider, making the function less sensitive to variations in x.
+<span style="color:blue">**Solution B (around x=20)**</span>: This solution has slightly worse mean performance but much better robustness (lower standard deviation). The peak at x=20 is wider, making the function less sensitive to variations in x.
 
 This trade-off is clearly visible in the convergence history and final Pareto front, where we have two distinct clusters of solutions. A decision maker would need to choose between better performance (Solution A) or better robustness (Solution B) based on their specific requirements.
 
@@ -284,11 +284,53 @@ results = propagation.run_analysis(
 )
 ```
 
-The uncertainty quantification analysis clearly shows how the uncertainty in the input variable propagates through the model:
-
-![Uncertainty Analysis](uncertainty_analysis.png){ width="400" }
-
 The upper plot shows the mean response (blue line) with a ±2σ confidence band (light blue region). The lower plot shows the standard deviation across the input space. Notice how the standard deviation increases dramatically around x=10, confirming our observation about the sensitivity of this region to small variations in input.
+
+
+![Uncertainty Analysis (STD of X = 0.8)](uncertainty_analysis.png){ width="400" }
+
+##### Effect of Increasing Uncertainty
+
+To further demonstrate the importance of robust optimization, we can increase the uncertainty in our input variable from <span style="color:blue">σ = 0.5</span> to <span style="color:blue">σ = 1.5</span>:
+
+```python
+# Create UncertaintyPropagation with higher standard deviation
+propagation_high_std = UncertaintyPropagation(
+    data_info_path='DATA_PREPARATION/data_info.json',
+    model_handler=model_handler,
+    output_dir='UQ_GPR_HIGH_STD',
+    show_variables_info=True,
+    use_gpu=True
+)
+
+# Modify the standard deviation in the data_info
+with open('DATA_PREPARATION/data_info.json', 'r') as f:
+    data_info_high_std = json.load(f)
+    
+for var in data_info_high_std['variables']:
+    if var['name'] == 'X1':
+        var['std'] = 1.5  # Increase std from 0.5 to 1.5
+
+# Save modified data_info
+with open('UQ_GPR_HIGH_STD/data_info_high_std.json', 'w') as f:
+    json.dump(data_info_high_std, f, indent=2)
+
+# Run analysis with increased uncertainty
+results_high_std = propagation_high_std.run_analysis(
+    num_design_samples=1000,
+    num_mcs_samples=10000,
+    data_info=data_info_high_std,
+    show_progress=True
+)
+```
+
+![Uncertainty Analysis (STD of X = 1.5)](uncertainty_analysis-2.png){ width="400" }
+
+
+As shown in the figure, with increased uncertainty (σ=1.5), the global minimum at x=10 is no longer reliable, with extremely wide confidence bounds. 
+
+Meanwhile, the solution at x=20 maintains relatively stable performance, confirming it as the robust optimum for this problem.
+
 
 ### 2. Efficient Global Optimization (EGO)
 
@@ -352,4 +394,3 @@ This quick start guide demonstrated a complete workflow using PyEGRO for robust 
 
 With this workflow, you can find robust solutions to your own optimization problems, even when dealing with uncertainty in the input variables. 
 
-The key insight from this example is that the **global optimum (at x=10) may not be the most robust solution** when uncertainties are considered - **a more robust solution exists at x=20**, which sacrifices some performance for significantly lower sensitivity to input variations.

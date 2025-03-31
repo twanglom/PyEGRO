@@ -124,6 +124,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#supported-distributions">Supported Distributions</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uncertainty-specification-methods">Uncertainty Specification Methods</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#module-functions">Module Functions</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#get_version">get_version</a>
@@ -138,6 +140,10 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#basic-example">Basic Example</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-standard-deviation-instead-of-cov">Using Standard Deviation Instead of CoV</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-delta-for-uniform-uncertainty">Using Delta for Uniform Uncertainty</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#with-multiple-distribution-types">With Multiple Distribution Types</a>
     </li>
         </ul>
@@ -147,6 +153,16 @@
     <li class="toctree-l3"><a class="reference internal" href="#data_infojson">data_info.json</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#training_datacsv">training_data.csv</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#when-to-use-each-uncertainty-specification-method">When to use each uncertainty specification method</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#choosing-a-sampling-method">Choosing a sampling method</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#handling-environmental-variables">Handling environmental variables</a>
     </li>
         </ul>
     </li>
@@ -244,17 +260,31 @@
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="add_design_variable"><code>add_design_variable</code><a class="headerlink" href="#add_design_variable" title="Permanent link">&para;</a></h5>
 <p>Add a design variable to the experiment.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">range_bounds</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">range_bounds</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">)</span>
 </code></pre></div>
 <h6 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h6>
 <ul>
 <li><code>name</code> (str): Name of the variable</li>
 <li><code>range_bounds</code> (List[float]): List containing [min, max] bounds</li>
-<li><code>cov</code> (float, optional): Coefficient of variation</li>
-<li><code>std</code> (float, optional): Standard deviation</li>
-<li><code>delta</code> (float, optional): -+ Uniform bounds</li>
-<li><code>distribution</code> (str, optional): Distribution type ('normal' or 'lognormal'). Default: 'normal'</li>
+<li><code>cov</code> (float, optional): Coefficient of variation (uncertainty as a proportion of the mean)</li>
+<li><code>std</code> (float, optional): Standard deviation (fixed uncertainty value)</li>
+<li><code>delta</code> (float, optional): Half-width for uniform uncertainty around design points</li>
+<li><code>distribution</code> (str, optional): Distribution type ('normal', 'uniform', 'lognormal'). Default: 'normal'</li>
 <li><code>description</code> (str, optional): Optional description of the variable. Default: ''</li>
+</ul>
+<h6 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Specify exactly one of <code>cov</code>, <code>std</code>, or <code>delta</code> for uncertain variables.</li>
+<li>For deterministic variables, don't specify any uncertainty parameter.</li>
+<li>If <code>delta</code> is specified, using 'uniform' distribution is recommended.</li>
 </ul>
 <h6 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h6>
 <ul>
@@ -262,7 +292,18 @@
 </ul>
 <h5 id="add_env_variable"><code>add_env_variable</code><a class="headerlink" href="#add_env_variable" title="Permanent link">&para;</a></h5>
 <p>Add an environmental variable to the experiment.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">add_env_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">distribution</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">low</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">high</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nb">max</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">)</span>
 </code></pre></div>
 <h6 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h6>
 <ul>
@@ -274,6 +315,14 @@
 <li><code>std</code> (float, optional): Standard deviation (alternative to cov). Default: None</li>
 <li><code>low</code> (float, optional): Lower bound (for uniform, triangular, etc.). Default: None</li>
 <li><code>high</code> (float, optional): Upper bound (for uniform, triangular, etc.). Default: None</li>
+<li><code>min</code> (float, optional): Lower bound (alternative to low). Default: None</li>
+<li><code>max</code> (float, optional): Upper bound (alternative to high). Default: None</li>
+</ul>
+<h6 id="notes_1">Notes<a class="headerlink" href="#notes_1" title="Permanent link">&para;</a></h6>
+<ul>
+<li>For normal/lognormal distributions, specify <code>mean</code> and exactly one of <code>cov</code> or <code>std</code>.</li>
+<li>For uniform distributions, specify either <code>low</code>/<code>high</code> or <code>min</code>/<code>max</code>.</li>
+<li>The parameters <code>min</code>/<code>max</code> are provided for backward compatibility with <code>low</code>/<code>high</code>.</li>
 </ul>
 <h6 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h6>
 <ul>
@@ -338,7 +387,17 @@
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="generate_samples"><code>generate_samples</code><a class="headerlink" href="#generate_samples" title="Permanent link">&para;</a></h5>
 <p>Generate samples for a given distribution type.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">generate_samples</span><span class="p">(</span><span class="n">distribution</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">generate_samples</span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">distribution</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">lower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">)</span>
 </code></pre></div>
 <h6 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h6>
 <ul>
@@ -346,6 +405,7 @@
 <li><code>mean</code> (float, optional): Mean value. Default: None</li>
 <li><code>cov</code> (float, optional): Coefficient of variation. Default: None</li>
 <li><code>std</code> (float, optional): Standard deviation (alternative to cov). Default: None</li>
+<li><code>delta</code> (float, optional): Half-width for uniform distribution. Default: None</li>
 <li><code>lower</code> (float, optional): Lower bound. Default: None</li>
 <li><code>upper</code> (float, optional): Upper bound. Default: None</li>
 <li><code>size</code> (int, optional): Number of samples to generate. Default: 1000</li>
@@ -411,39 +471,61 @@
 <li>List[List[float]] containing [min, max] bounds for each variable</li>
 </ul>
 <h3 id="variable"><code>Variable</code><a class="headerlink" href="#variable" title="Permanent link">&para;</a></h3>
-<p>A dataclass representing a variable in the design.</p>
 <h4 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>name</code> (str): Name of the variable</li>
-<li><code>vars_type</code> (str): Variable type ('design_vars' or 'env_vars')</li>
-<li><code>distribution</code> (str): Distribution type (see Supported Distributions)</li>
-<li><code>description</code> (str): Optional description</li>
-<li><code>range_bounds</code> (List[float], optional): List containing [min, max] bounds (for design variables)</li>
-<li><code>low</code> (float, optional): Lower bound (for various distributions)</li>
-<li><code>high</code> (float, optional): Upper bound (for various distributions)</li>
-<li><code>mean</code> (float, optional): Mean value (for various distributions)</li>
 <li><code>cov</code> (float, optional): Coefficient of variation</li>
 <li><code>std</code> (float, optional): Standard deviation (alternative to cov)</li>
+<li><code>delta</code> (float, optional): Half-width for uniform uncertainty</li>
+<li><code>low</code> (float, optional): Lower bound (for various distributions)</li>
+<li><code>high</code> (float, optional): Upper bound (for various distributions)</li>
+<li><code>min</code> (float, optional): Lower bound (alternative to low)</li>
+<li><code>max</code> (float, optional): Upper bound (alternative to high)</li>
 </ul>
 <h2 id="supported-distributions">Supported Distributions<a class="headerlink" href="#supported-distributions" title="Permanent link">&para;</a></h2>
-<p>The following distributions are supported for environment variables:</p>
+<p>The following distributions are supported for design and environment variables:</p>
 <ol>
 <li><strong>Uniform</strong>: Constant probability within range</li>
+<li>Required parameters for env variables: <code>low</code>/<code>high</code> or <code>min</code>/<code>max</code></li>
 <li>
-<p>Required parameters: <code>low</code>, <code>high</code></p>
+<p>For design variables: <code>delta</code> (when using uniform uncertainty)</p>
 </li>
 <li>
 <p><strong>Normal</strong>: Gaussian distribution</p>
 </li>
-<li>Required parameters: <code>mean</code> plus either <code>cov</code> or <code>std</code> </li>
+<li>Required parameters for env variables: <code>mean</code> plus either <code>cov</code> or <code>std</code> </li>
+<li>For design variables: <code>cov</code> or <code>std</code> for uncertainty specification</li>
 <li>
-<p>Optional parameters: <code>low</code>, <code>high</code> (for truncation)</p>
+<p>Optional parameters: <code>lower</code>, <code>upper</code> (for truncation)</p>
 </li>
 <li>
 <p><strong>Lognormal</strong>: Natural logarithm follows normal distribution</p>
 </li>
 <li>Required parameters: <code>mean</code> plus either <code>cov</code> or <code>std</code></li>
-<li>Optional parameters: <code>low</code>, <code>high</code> (for truncation)</li>
+<li>Optional parameters: <code>lower</code>, <code>upper</code> (for truncation)</li>
+</ol>
+<h2 id="uncertainty-specification-methods">Uncertainty Specification Methods<a class="headerlink" href="#uncertainty-specification-methods" title="Permanent link">&para;</a></h2>
+<p>PyEGRO supports three approaches for specifying uncertainty in design variables:</p>
+<ol>
+<li><strong>Coefficient of Variation (CoV)</strong>: Uses a value proportional to the design point</li>
+<li>Good for: Variables where uncertainty scales with magnitude</li>
+<li>Parameter: <code>cov</code> </li>
+<li>
+<p>Example: <code>cov=0.1</code> means 10% uncertainty around design point</p>
+</li>
+<li>
+<p><strong>Standard Deviation (Std)</strong>: Uses a fixed value for all design points</p>
+</li>
+<li>Good for: Variables where uncertainty is constant regardless of magnitude</li>
+<li>Parameter: <code>std</code></li>
+<li>
+<p>Example: <code>std=0.5</code> means fixed uncertainty of 0.5 units</p>
+</li>
+<li>
+<p><strong>Delta (Uniform Uncertainty)</strong>: Uses uniform distribution with fixed half-width</p>
+</li>
+<li>Good for: Variables with bounded, uniform uncertainty</li>
+<li>Parameter: <code>delta</code></li>
+<li>Example: <code>delta=0.1</code> means uniform distribution ±0.1 around design point</li>
 </ol>
 <h2 id="module-functions">Module Functions<a class="headerlink" href="#module-functions" title="Permanent link">&para;</a></h2>
 <h3 id="get_version"><code>get_version</code><a class="headerlink" href="#get_version" title="Permanent link">&para;</a></h3>
@@ -494,46 +576,88 @@
 <a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># Run sampling</span>
 <a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func_2D</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="with-multiple-distribution-types">With Multiple Distribution Types<a class="headerlink" href="#with-multiple-distribution-types" title="Permanent link">&para;</a></h3>
+<h3 id="using-standard-deviation-instead-of-cov">Using Standard Deviation Instead of CoV<a class="headerlink" href="#using-standard-deviation-instead-of-cov" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Create design</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span><span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span><span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">)</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Add design variables</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Add environmental variables with different distributions</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;normal_var&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  <span class="c1"># Using std instead of cov</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="p">)</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;uniform_var&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>    <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="p">)</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
-<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lognormal_var&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;lognormal&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  
-<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="p">)</span>
-<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>
-<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="c1"># Define objective function that uses all variables</span>
-<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="k">def</span> <span class="nf">objective_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>    <span class="n">design_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>    <span class="n">normal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>    <span class="n">uniform_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>    <span class="n">lognormal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
-<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>
-<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>    <span class="k">return</span> <span class="n">design_var</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">normal_var</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">uniform_var</span> <span class="o">+</span> <span class="n">lognormal_var</span>
-<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>
-<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="c1"># Run sampling</span>
-<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Add design variables with standard deviation</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> 
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">0.2</span>  <span class="c1"># Fixed standard deviation</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> 
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">0.3</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="p">)</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func_2D</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="using-delta-for-uniform-uncertainty">Using Delta for Uniform Uncertainty<a class="headerlink" href="#using-delta-for-uniform-uncertainty" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Create design</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span><span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Add design variables with uniform uncertainty</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> 
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">delta</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Half-width of uniform distribution</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="p">)</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> 
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    <span class="n">delta</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="p">)</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func_2D</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="with-multiple-distribution-types">With Multiple Distribution Types<a class="headerlink" href="#with-multiple-distribution-types" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Create design</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span><span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Add design variables</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Add environmental variables with different distributions</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;normal_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  <span class="c1"># Using std instead of cov</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="p">)</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;uniform_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>    <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="p">)</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lognormal_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;lognormal&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="p">)</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a><span class="c1"># Define objective function that uses all variables</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="k">def</span> <span class="nf">objective_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>    <span class="n">design_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>    <span class="n">normal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>    <span class="n">uniform_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>    <span class="n">lognormal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>    <span class="k">return</span> <span class="n">design_var</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">normal_var</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">uniform_var</span> <span class="o">+</span> <span class="n">lognormal_var</span>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a>
+<a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="output-file-formats">Output File Formats<a class="headerlink" href="#output-file-formats" title="Permanent link">&para;</a></h2>
 <h3 id="data_infojson">data_info.json<a class="headerlink" href="#data_infojson" title="Permanent link">&para;</a></h3>
@@ -541,10 +665,68 @@
 - Variable definitions (name, type, distribution, bounds, etc.)
 - Sampling configuration (method, criterion)
 - Metadata (creation time, variable counts)</p>
+<p>Example structure:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x1&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;design_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">      </span><span class="nt">&quot;range_bounds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">      </span><span class="nt">&quot;std&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Design variable with std uncertainty&quot;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;noise&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;env_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">      </span><span class="nt">&quot;mean&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">      </span><span class="nt">&quot;std&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Environmental noise&quot;</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">  </span><span class="nt">&quot;variable_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;noise&quot;</span><span class="p">],</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">  </span><span class="nt">&quot;input_bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">-1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]],</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">  </span><span class="nt">&quot;sampling_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lhs&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="nt">&quot;criterion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maximin&quot;</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">    </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-31T12:34:56.789Z&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">    </span><span class="nt">&quot;total_variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="p">}</span>
+</code></pre></div></p>
 <h3 id="training_datacsv">training_data.csv<a class="headerlink" href="#training_datacsv" title="Permanent link">&para;</a></h3>
 <p>Contains the sample data:
 - Columns for each variable (design and environmental)
 - Final column 'y' with objective function values</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>x1,noise,y
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>-3.2,0.12,-10.24
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>2.1,-0.42,-4.41
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>4.5,0.31,-20.25
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>-1.8,0.05,-3.24
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>...
+</code></pre></div></p>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="when-to-use-each-uncertainty-specification-method">When to use each uncertainty specification method<a class="headerlink" href="#when-to-use-each-uncertainty-specification-method" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Use <code>cov</code></strong>: When uncertainty is proportional to the design value (e.g., manufacturing tolerance as a percentage)</li>
+<li><strong>Use <code>std</code></strong>: When uncertainty is fixed regardless of design value or near zero regions exist</li>
+<li><strong>Use <code>delta</code></strong>: When uncertainty follows a uniform distribution with fixed width</li>
+</ul>
+<h3 id="choosing-a-sampling-method">Choosing a sampling method<a class="headerlink" href="#choosing-a-sampling-method" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>LHS</strong>: Good for general-purpose sampling with even coverage</li>
+<li><strong>Sobol/Halton</strong>: Good for progressive sampling where you might need more points later</li>
+<li><strong>Random</strong>: Only use when randomness is specifically required</li>
+</ul>
+<h3 id="handling-environmental-variables">Handling environmental variables<a class="headerlink" href="#handling-environmental-variables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use <code>std</code> instead of <code>cov</code> for normal environmental variables when the mean is near zero</li>
+<li>For uniform distributions, both <code>low</code>/<code>high</code> and <code>min</code>/<code>max</code> are supported for backward compatibility</li>
+</ul>
               
             </div>
           </div><footer>

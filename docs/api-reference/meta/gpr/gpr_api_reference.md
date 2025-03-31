@@ -44,7 +44,7 @@ MetaTraining(
 - `data_dir` (str, optional): Directory containing input data. Default: `'DATA_PREPARATION'`
 - `data_info_file` (str, optional): Path to data info JSON file. Default: `None`
 - `data_training_file` (str, optional): Path to training data CSV file. Default: `None`
-- `kernel` (str, optional): Kernel to use for GPR model. Options: `'matern25'`, `'matern15'`, `'matern05'`, `'rbf'`, `'linear'`. Default: `'matern15'`
+- `kernel` (str, optional): Kernel to use for GPR model. Options: `'matern25'`, `'matern15'`, `'matern05'`, `'rbf'`. Default: `'matern15'`
 - `learning_rate` (float, optional): Learning rate for optimizer. Default: `0.01`
 - `patience` (int, optional): Number of iterations to wait for improvement before early stopping. Default: `50`
 
@@ -129,7 +129,7 @@ GPRegressionModel(train_x, train_y, likelihood, kernel='matern15')
 - `train_x` (torch.Tensor): Training input data
 - `train_y` (torch.Tensor): Training target data
 - `likelihood` (gpytorch.likelihoods.Likelihood): GP likelihood function
-- `kernel` (str, optional): Kernel type. Options: `'matern25'`, `'matern15'`, `'matern05'`, `'rbf'`, `'linear'`. Default: `'matern15'`
+- `kernel` (str, optional): Kernel type. Options: `'matern25'`, `'matern15'`, `'matern05'`, `'rbf'`. Default: `'matern15'`
 
 ### Methods
 

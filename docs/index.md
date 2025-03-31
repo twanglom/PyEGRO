@@ -1,5 +1,5 @@
 <figure markdown>
-  ![PyEGRO Logo](assets/logo.png){ width="400" }
+  ![PyEGRO Logo](assets/logo_2.png){ width="1000" }
 </figure>
 
 # PyEGRO: Python for Efficient Global Robust Optimization
