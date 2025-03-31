@@ -6,7 +6,15 @@ The PyEGRO depends on the following packages:
 
 - pandas
 
+- scipy
+
+- scikit-learn
+
+- matplotlib
+
 - pymoo
+
+- SALib
 
 - PyDOE
 
@@ -16,18 +24,16 @@ The PyEGRO depends on the following packages:
 
 - gpytorch
 
-- scikit-learn
-
-- matplotlib
-
 - joblib
 
 - rich 
 
+- optuna
+
 Ensure these dependencies are installed before using the module:
 
 ```bash
-pip install numpy pandas pymoo PyDOE choaspy torch gpytorch scikit-learn matplotlib joblib rich
+pip install numpy pandas scipy scikit-learn matplotlib pymoo SALib PyDOE choaspy torch gpytorch joblib rich optuna
 ```
 
 

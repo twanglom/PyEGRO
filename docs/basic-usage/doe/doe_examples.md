@@ -448,4 +448,225 @@ design_with_env.add_env_variable(
 )
 
 design_with_env.add_env_variable(
-    name
+    name='noise_multiplicative',
+    distribution='uniform',
+    low=-0.2,  # Using low/high
+    high=0.2,
+    description='multiplicative noise (uniform)'
+)
+
+# Run sampling
+results_env = design_with_env.run(
+    objective_function=objective_with_env_vars,
+    num_samples=50
+)
+
+# Visualize results
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+plt.scatter(results_env['x'], results_env['y'], alpha=0.7)
+plt.title('Design Variable vs Objective')
+plt.xlabel('Design Variable')
+plt.ylabel('Objective Value')
+plt.grid(True)
+
+plt.subplot(1, 2, 2)
+plt.scatter(results_env['noise_additive'], results_env['y'], alpha=0.7)
+plt.title('Normal Env Variable vs Objective')
+plt.xlabel('Normal Environmental Variable')
+plt.ylabel('Objective Value')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Advanced Usage Patterns
+
+### Combining Different Uncertainty Types
+
+```python
+import numpy as np
+from PyEGRO.doe import InitialDesign
+
+# Define objective function
+def multi_uncertain_objective(x):
+    return -np.sum(x**2, axis=1)
+
+# Create design with mixed uncertainty types
+mixed_design = InitialDesign(
+    output_dir='doe_mixed_uncertainty',
+    sampling_method='lhs'
+)
+
+# Add design variables with different uncertainty specifications
+mixed_design.add_design_variable(
+    name='x1',
+    range_bounds=[-5, 5],
+    cov=0.1,  # Using coefficient of variation
+    distribution='normal',
+    description='variable with CoV-based uncertainty'
+)
+
+mixed_design.add_design_variable(
+    name='x2',
+    range_bounds=[-5, 5],
+    std=0.3,  # Using fixed standard deviation
+    distribution='normal',
+    description='variable with std-based uncertainty'
+)
+
+mixed_design.add_design_variable(
+    name='x3',
+    range_bounds=[-5, 5],
+    delta=0.1,  # Using delta for uniform uncertainty
+    distribution='uniform',
+    description='variable with uniform uncertainty'
+)
+
+# Add environmental variable
+mixed_design.add_env_variable(
+    name='noise',
+    distribution='normal',
+    mean=0.0,
+    std=0.5,  # Using std for env var
+    description='background noise'
+)
+
+# Run sampling
+results_mixed = mixed_design.run(
+    objective_function=multi_uncertain_objective,
+    num_samples=100
+)
+
+# Print summary statistics
+print("\nSummary Statistics:")
+print("-" * 50)
+for col in results_mixed.columns:
+    mean_val = results_mixed[col].mean()
+    std_val = results_mixed[col].std()
+    min_val = results_mixed[col].min()
+    max_val = results_mixed[col].max()
+    print(f"{col}: Mean={mean_val:.3f}, Std={std_val:.3f}, Range=[{min_val:.3f}, {max_val:.3f}]")
+```
+
+### Reusing a Design Configuration
+
+```python
+import numpy as np
+from PyEGRO.doe import InitialDesign
+
+# Define a simple objective function
+def objective_func(x):
+    return np.sum(x**2, axis=1)
+
+# First create and save a design
+original_design = InitialDesign(
+    output_dir='doe_reuse_example',
+    sampling_method='lhs'
+)
+
+# Add variables
+original_design.add_design_variable(
+    name='x1',
+    range_bounds=[-5, 5],
+    std=0.2,  # Using std
+    description='first design variable'
+)
+
+original_design.add_design_variable(
+    name='x2',
+    range_bounds=[-5, 5],
+    std=0.2,
+    description='second design variable'
+)
+
+# Save the configuration
+original_design.save('design_config')
+
+# Later, load the configuration for reuse
+new_design = InitialDesign(
+    output_dir='doe_reuse_example',
+    sampling_method='sobol'  # This will be overridden by loaded config
+)
+
+# Load the saved configuration
+new_design.load('design_config')
+
+# Run with different settings
+results = new_design.run(
+    objective_function=objective_func,
+    num_samples=200  # Different number of samples
+)
+
+print(f"Loaded design with {len(results)} samples")
+```
+
+### Custom JSON Variable Definitions
+
+If you need complete control, you can create the variable definitions directly in JSON format:
+
+```python
+import numpy as np
+import json
+from PyEGRO.doe import InitialDesign
+
+# Create a dictionary defining your variables
+data_info = {
+    'variables': [
+        {
+            'name': 'x1',
+            'vars_type': 'design_vars',
+            'range_bounds': [0, 10],
+            'cov': 0.05,  # 5% coefficient of variation
+            'distribution': 'normal',
+            'description': 'First design variable'
+        },
+        {
+            'name': 'x2',
+            'vars_type': 'design_vars',
+            'range_bounds': [-5, 5],
+            'std': 0.2,  # Using standard deviation instead of CoV
+            'distribution': 'normal',
+            'description': 'Second design variable'
+        },
+        {
+            'name': 'x3',
+            'vars_type': 'design_vars',
+            'range_bounds': [0, 1],
+            'delta': 0.05,  # Using delta for uniform uncertainty
+            'distribution': 'uniform',
+            'description': 'Third design variable'
+        },
+        {
+            'name': 'noise',
+            'vars_type': 'env_vars',
+            'distribution': 'normal',
+            'mean': 0,
+            'std': 0.1,  # Using std for environmental variable
+            'description': 'Measurement noise'
+        }
+    ]
+}
+
+# Save the dictionary to a JSON file
+with open('custom_data_info.json', 'w') as f:
+    json.dump(data_info, f, indent=4)
+
+# Load it into PyEGRO
+design = InitialDesign(output_dir='custom_doe')
+design.load('custom_data_info')
+
+# Define objective function
+def custom_objective(x):
+    return np.sum(x[:, 0:3]**2, axis=1) + x[:, 3]
+
+# Run sampling
+results = design.run(
+    objective_function=custom_objective,
+    num_samples=50
+)
+
+print("Custom variable design completed successfully")
+```

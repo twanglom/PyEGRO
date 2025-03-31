@@ -29,15 +29,14 @@
 
 
 ### 3. **EGO for Metamodeling**
-- Provides multiple acquisition functions:
+Provides multiple acquisition functions:
+
   - ***Expected Improvement (EI) and Boosting the Exploration term (𝜁-EI)***
-  - ***Probability of Improvement (PI)***
-  - ***Lower Confidence Bound (LCB)***
   - ***Exploration Enhanced EI (E3I)*** [<a href="#reference-1" style="color:red; text-decoration:underline;">1</a>]
   - ***Expected Improvement for Global Fit (EIGF)*** [<a href="#reference-2" style="color:red; text-decoration:underline;">2</a>]
   - ***Distance-Enhanced Gradient (CRI3)*** [<a href="#reference-3" style="color:red; text-decoration:underline;">3</a>]
-- Comprehensive training configurations for surrogate models.
-- Built-in visualization and performance tracking.
+
+Comprehensive training configurations for meta models and Built-in visualization and performance tracking.
 
 
 ### 4. **Robust Optimization**
@@ -48,7 +47,7 @@
 - Both direct function and surrogate-based evaluations supported.
 
 ### 5. **Global Sensitivity Analysis**
-- **Sobol indices** for quantifying sensitivity.
+- **Sobol' indices** for quantifying sensitivity.
 - Seamless analysis with true or surrogate functions.
 - Built-in visualization tools for insightful results.
 

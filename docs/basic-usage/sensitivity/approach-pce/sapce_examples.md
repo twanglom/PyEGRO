@@ -319,6 +319,10 @@ print("Total-order indices should be approximately:")
 print("x1: 0.558, x2: 0.442, x3: 0.244")
 ```
 
+![alt text](image.png){ width="600" }
+
+[↪ Compare with COMSOL results](https://doc.comsol.com/6.0/doc/com.comsol.help.models.uq.ishigami_function_uncertainty_quantification/ishigami_function_uncertainty_quantification.html)
+
 ### Rosenbrock Function
 
 The Rosenbrock function demonstrates sensitivity analysis on an optimization benchmark:

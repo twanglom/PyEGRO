@@ -39,18 +39,32 @@ InitialDesign(
 Add a design variable to the experiment.
 
 ```python
-add_design_variable(name, range_bounds, cov=None, std=None, delta=None, distribution='normal', description='')
+add_design_variable(
+    name,
+    range_bounds,
+    cov=None,
+    std=None,
+    delta=None,
+    distribution='normal',
+    description=''
+)
 ```
 
 ###### Parameters
 
 - `name` (str): Name of the variable
 - `range_bounds` (List[float]): List containing [min, max] bounds
-- `cov` (float, optional): Coefficient of variation
-- `std` (float, optional): Standard deviation
-- `delta` (float, optional): -+ Uniform bounds
-- `distribution` (str, optional): Distribution type ('normal' or 'lognormal'). Default: 'normal'
+- `cov` (float, optional): Coefficient of variation (uncertainty as a proportion of the mean)
+- `std` (float, optional): Standard deviation (fixed uncertainty value)
+- `delta` (float, optional): Half-width for uniform uncertainty around design points
+- `distribution` (str, optional): Distribution type ('normal', 'uniform', 'lognormal'). Default: 'normal'
 - `description` (str, optional): Optional description of the variable. Default: ''
+
+###### Notes
+
+- Specify exactly one of `cov`, `std`, or `delta` for uncertain variables.
+- For deterministic variables, don't specify any uncertainty parameter.
+- If `delta` is specified, using 'uniform' distribution is recommended.
 
 ###### Returns
 
@@ -61,7 +75,18 @@ add_design_variable(name, range_bounds, cov=None, std=None, delta=None, distribu
 Add an environmental variable to the experiment.
 
 ```python
-add_env_variable(name, distribution, description='', mean=None, cov=None, std=None, low=None, high=None)
+add_env_variable(
+    name,
+    distribution,
+    description='',
+    mean=None,
+    cov=None,
+    std=None,
+    low=None,
+    high=None,
+    min=None,
+    max=None
+)
 ```
 
 ###### Parameters
@@ -74,6 +99,14 @@ add_env_variable(name, distribution, description='', mean=None, cov=None, std=No
 - `std` (float, optional): Standard deviation (alternative to cov). Default: None
 - `low` (float, optional): Lower bound (for uniform, triangular, etc.). Default: None
 - `high` (float, optional): Upper bound (for uniform, triangular, etc.). Default: None
+- `min` (float, optional): Lower bound (alternative to low). Default: None
+- `max` (float, optional): Upper bound (alternative to high). Default: None
+
+###### Notes
+
+- For normal/lognormal distributions, specify `mean` and exactly one of `cov` or `std`.
+- For uniform distributions, specify either `low`/`high` or `min`/`max`.
+- The parameters `min`/`max` are provided for backward compatibility with `low`/`high`.
 
 ###### Returns
 
@@ -160,7 +193,17 @@ A class for generating samples from different distributions.
 Generate samples for a given distribution type.
 
 ```python
-generate_samples(distribution, mean=None, cov=None, std=None, lower=None, upper=None, size=1000, **kwargs)
+generate_samples(
+    distribution,
+    mean=None,
+    cov=None,
+    std=None,
+    delta=None,
+    lower=None,
+    upper=None,
+    size=1000,
+    **kwargs
+)
 ```
 
 ###### Parameters
@@ -169,6 +212,7 @@ generate_samples(distribution, mean=None, cov=None, std=None, lower=None, upper=
 - `mean` (float, optional): Mean value. Default: None
 - `cov` (float, optional): Coefficient of variation. Default: None
 - `std` (float, optional): Standard deviation (alternative to cov). Default: None
+- `delta` (float, optional): Half-width for uniform distribution. Default: None
 - `lower` (float, optional): Lower bound. Default: None
 - `upper` (float, optional): Upper bound. Default: None
 - `size` (int, optional): Number of samples to generate. Default: 1000
@@ -249,37 +293,55 @@ calculate_input_bounds(variables)
 
 - List[List[float]] containing [min, max] bounds for each variable
 
-### `Variable`
 
-A dataclass representing a variable in the design.
 
-#### Attributes
+### `Variable` 
 
-- `name` (str): Name of the variable
-- `vars_type` (str): Variable type ('design_vars' or 'env_vars')
-- `distribution` (str): Distribution type (see Supported Distributions)
-- `description` (str): Optional description
-- `range_bounds` (List[float], optional): List containing [min, max] bounds (for design variables)
-- `low` (float, optional): Lower bound (for various distributions)
-- `high` (float, optional): Upper bound (for various distributions)
-- `mean` (float, optional): Mean value (for various distributions)
+#### Attributes 
+
 - `cov` (float, optional): Coefficient of variation
 - `std` (float, optional): Standard deviation (alternative to cov)
+- `delta` (float, optional): Half-width for uniform uncertainty
+- `low` (float, optional): Lower bound (for various distributions)
+- `high` (float, optional): Upper bound (for various distributions)
+- `min` (float, optional): Lower bound (alternative to low)
+- `max` (float, optional): Upper bound (alternative to high)
 
 ## Supported Distributions
 
-The following distributions are supported for environment variables:
+The following distributions are supported for design and environment variables:
 
 1. **Uniform**: Constant probability within range
-   - Required parameters: `low`, `high`
+   - Required parameters for env variables: `low`/`high` or `min`/`max`
+   - For design variables: `delta` (when using uniform uncertainty)
 
 2. **Normal**: Gaussian distribution
-   - Required parameters: `mean` plus either `cov` or `std` 
-   - Optional parameters: `low`, `high` (for truncation)
+   - Required parameters for env variables: `mean` plus either `cov` or `std` 
+   - For design variables: `cov` or `std` for uncertainty specification
+   - Optional parameters: `lower`, `upper` (for truncation)
 
 3. **Lognormal**: Natural logarithm follows normal distribution
    - Required parameters: `mean` plus either `cov` or `std`
-   - Optional parameters: `low`, `high` (for truncation)
+   - Optional parameters: `lower`, `upper` (for truncation)
+
+## Uncertainty Specification Methods
+
+PyEGRO supports three approaches for specifying uncertainty in design variables:
+
+1. **Coefficient of Variation (CoV)**: Uses a value proportional to the design point
+   - Good for: Variables where uncertainty scales with magnitude
+   - Parameter: `cov` 
+   - Example: `cov=0.1` means 10% uncertainty around design point
+
+2. **Standard Deviation (Std)**: Uses a fixed value for all design points
+   - Good for: Variables where uncertainty is constant regardless of magnitude
+   - Parameter: `std`
+   - Example: `std=0.5` means fixed uncertainty of 0.5 units
+
+3. **Delta (Uniform Uncertainty)**: Uses uniform distribution with fixed half-width
+   - Good for: Variables with bounded, uniform uncertainty
+   - Parameter: `delta`
+   - Example: `delta=0.1` means uniform distribution ±0.1 around design point
 
 ## Module Functions
 
@@ -347,6 +409,54 @@ design.add_design_variable(name='x2', range_bounds=[-5, 5], cov=0.1)
 results = design.run(objective_function=objective_func_2D, num_samples=50)
 ```
 
+### Using Standard Deviation Instead of CoV
+
+```python
+# Create design
+design = InitialDesign(sampling_method='lhs')
+
+# Add design variables with standard deviation
+design.add_design_variable(
+    name='x1', 
+    range_bounds=[-5, 5], 
+    std=0.2  # Fixed standard deviation
+)
+
+design.add_design_variable(
+    name='x2', 
+    range_bounds=[-5, 5], 
+    std=0.3
+)
+
+# Run sampling
+results = design.run(objective_function=objective_func_2D, num_samples=50)
+```
+
+### Using Delta for Uniform Uncertainty
+
+```python
+# Create design
+design = InitialDesign(sampling_method='sobol')
+
+# Add design variables with uniform uncertainty
+design.add_design_variable(
+    name='x1', 
+    range_bounds=[-5, 5], 
+    delta=0.1,  # Half-width of uniform distribution
+    distribution='uniform'
+)
+
+design.add_design_variable(
+    name='x2', 
+    range_bounds=[-5, 5], 
+    delta=0.1,
+    distribution='uniform'
+)
+
+# Run sampling
+results = design.run(objective_function=objective_func_2D, num_samples=50)
+```
+
 ### With Multiple Distribution Types
 
 ```python
@@ -354,7 +464,7 @@ results = design.run(objective_function=objective_func_2D, num_samples=50)
 design = InitialDesign(sampling_method='sobol')
 
 # Add design variables
-design.add_design_variable(name='x1', range_bounds=[-5, 5], cov=0.1)
+design.add_design_variable(name='x1', range_bounds=[-5, 5], std=0.2)
 
 # Add environmental variables with different distributions
 design.add_env_variable(
@@ -400,8 +510,71 @@ Contains configuration information including:
 - Sampling configuration (method, criterion)
 - Metadata (creation time, variable counts)
 
+Example structure:
+```json
+{
+  "variables": [
+    {
+      "name": "x1",
+      "vars_type": "design_vars",
+      "range_bounds": [-5, 5],
+      "std": 0.2,
+      "distribution": "normal",
+      "description": "Design variable with std uncertainty"
+    },
+    {
+      "name": "noise",
+      "vars_type": "env_vars",
+      "distribution": "normal",
+      "mean": 0,
+      "std": 0.5,
+      "description": "Environmental noise"
+    }
+  ],
+  "variable_names": ["x1", "noise"],
+  "input_bound": [[-5, 5], [-1.5, 1.5]],
+  "sampling_config": {
+    "method": "lhs",
+    "criterion": "maximin"
+  },
+  "metadata": {
+    "created_at": "2025-03-31T12:34:56.789Z",
+    "total_variables": 2
+  }
+}
+```
+
 ### training_data.csv
 
 Contains the sample data:
 - Columns for each variable (design and environmental)
 - Final column 'y' with objective function values
+
+Example:
+```
+x1,noise,y
+-3.2,0.12,-10.24
+2.1,-0.42,-4.41
+4.5,0.31,-20.25
+-1.8,0.05,-3.24
+...
+```
+
+## Best Practices
+
+### When to use each uncertainty specification method
+
+- **Use `cov`**: When uncertainty is proportional to the design value (e.g., manufacturing tolerance as a percentage)
+- **Use `std`**: When uncertainty is fixed regardless of design value or near zero regions exist
+- **Use `delta`**: When uncertainty follows a uniform distribution with fixed width
+
+### Choosing a sampling method
+
+- **LHS**: Good for general-purpose sampling with even coverage
+- **Sobol/Halton**: Good for progressive sampling where you might need more points later
+- **Random**: Only use when randomness is specifically required
+
+### Handling environmental variables
+
+- Use `std` instead of `cov` for normal environmental variables when the mean is near zero
+- For uniform distributions, both `low`/`high` and `min`/`max` are supported for backward compatibility
