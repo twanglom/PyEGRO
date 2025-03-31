@@ -1,0 +1,123 @@
+site_name: PyEGRO Documentation
+site_url: https://your-username.github.io/PyEGRO/
+repo_url: https://github.com/your-username/PyEGRO.git
+
+theme: 
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    # Important: Remove navigation.sections and navigation.expand
+    - navigation.indexes
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - navigation.instant
+    - navigation.tracking
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+
+# Include custom JavaScript
+extra_javascript:
+  - scripts/katex.js
+  - scripts/navigation.js  # Add custom navigation script
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+# Add this for left alignment
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 2
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - awesome-pages
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/twanglom/PyEGRO
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/PyEGRO/
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+  - User Guide:
+      - Design of Experiment:
+          - Overview: user-guide/doe/overviewdoe.md
+          - Usage: user-guide/doe/usagedoe.md
+      - Metamodeling:
+          - Overview: user-guide/meta/overviewmeta.md
+          - Usage: user-guide/meta/usagemeta.md
+      - Efficient Global Optimization:
+          - Overview: user-guide/ego/overviewego.md
+          - Usage: user-guide/ego/usageego.md
+      - Robust Optimization:
+          - Overview: user-guide/robustopt/overviewrobust.md
+          - Usage: user-guide/robustopt/usagerobust.md
+      - Sensitivity Analysis:
+          - Overview: user-guide/sensitivity/overviewsensitivity.md
+          - Usage: user-guide/sensitivity/usagesensitivity.md
+      - Uncertainty Quantification:
+          - Overview: user-guide/uq/overviewuq.md
+          - Usage: user-guide/uq/usageuq.md
+  - Application Examples:
+      - Basics Metamodel Training: examples/basics-metamodel-examples/basics-metamodel-examples.md
+      - Metamodel Training via EGO: examples/ego-metamodel-examples.md
+      - Uncertainty Propagation: examples/uq-examples.md
+      - Robust Optimization: examples/robust-example.md
+  - API Reference:
+      - Design of Experiment: api-reference/doe/doe_api_reference.md
+      - Metamodeling:
+          - Cokriging: api-reference/meta/cokriging/cokriging_api_reference.md
+          - EGO-Cokriging: api-reference/meta/ego-cokriging/egocokriging_api_reference.md
+          - EGO-GPR: api-reference/meta/ego-gpr/egogpr_api_reference.md
+          - GPR: api-reference/meta/gpr/gpr_api_reference.md
+          - Model Evaluation: api-reference/meta/model-evalulation/modeltesting_api_reference.md
+      - Robust Optimization:
+          - MCS Approach: api-reference/robustopt/approach-mcs/robust_mcs_api_reference.md
+          - NNMCS Approach: api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference.md
+          - PCE Approach: api-reference/robustopt/approach-pce/robust_pce_api_reference.md
+      - Sensitivity Analysis:
+          - MCS Approach: api-reference/sensitivity/approach-mcs/samcs_api_reference.md
+          - PCE Approach: api-reference/sensitivity/approach-pce/sapce_api_reference.md
+      - Uncertainty Quantification:
+          - MCS Approach: api-reference/uncertainty/approach-mcs/uqmcs_api_reference.md

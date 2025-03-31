@@ -12,7 +12,13 @@ Run the sampling process with default settings for rapid setup and testing.
 **Code**:
 
 ```python
-from pyegro.initial_design import InitialDesign
+from PyEGRO.initial_design import InitialDesign
+
+# Create objective function 
+def objective_function(x):
+    x1, x2 = x[:, 0], x[:, 1] # format of input variable
+    y = x1**2 + x2**2 # Simple quadratic function
+    return y  
 
 # Create design with default settings
 design = InitialDesign(
@@ -23,14 +29,26 @@ design = InitialDesign(
 # Define a basic design variable
 design.add_design_variable(
     name='x1',
-    range_bounds=[0, 1],  # Default range
-    description='Default variable x1'
+    range_bounds=[-5, 5],
+    cov=0.1,
+    description='First variable'
 )
+design.add_design_variable(
+    name='x2',
+    range_bounds=[-6, 6],
+    cov=0.1,
+    description='Second variable'
+)
+
+# Save data to file
+design.save()
 
 # Run the sampling process
 design.run(
+    objective_function=objective_function,
     num_samples=10  # Default number of samples
 )
+
 ```
 
 **Output**:

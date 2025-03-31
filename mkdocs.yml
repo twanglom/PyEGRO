@@ -1,131 +1,26 @@
-# site_name: PyEGRO Documentation
-# site_url: https://your-username.github.io/PyEGRO/
-# repo_url: https://github.com/your-username/PyEGRO.git
-
-# theme:
-#   name: material
-#   logo: assets/logo.png
-#   favicon: assets/favicon.png
-#   palette:
-#     - media: "(prefers-color-scheme: light)"
-#       scheme: default
-#       primary: white
-#       accent: indigo
-#       toggle:
-#         icon: material/brightness-7
-#         name: Switch to dark mode
-#     - media: "(prefers-color-scheme: dark)"
-#       scheme: slate
-#       primary: white
-#       accent: indigo
-#       toggle:
-#         icon: material/brightness-4
-#         name: Switch to light mode
-#   features:
-#     - navigation.tabs
-#     - navigation.sections
-#     - navigation.expand
-#     - toc.integrate
-#     - navigation.top
-#     - search.suggest
-#     - search.highlight
-#     - content.tabs.link
-#   language: en
-#   icon:
-#     repo: fontawesome/brands/github
-
-# # Add this for left alignment
-# extra_css:
-#   - stylesheets/extra.css
-
-# markdown_extensions:
-#   - pymdownx.highlight:
-#       anchor_linenums: true
-#   - pymdownx.inlinehilite
-#   - pymdownx.snippets
-#   - pymdownx.superfences
-#   - attr_list
-#   - md_in_html
-
-# extra:
-#   social:
-#     - icon: fontawesome/brands/github
-#       link: https://github.com/twanglom/pyegro
-#     - icon: fontawesome/brands/python
-#       link: https://pypi.org/project/pyegro/
-
-# nav:
-#   - Home: index.md
-#   - Getting Started:
-#       - Installation: getting-started/installation.md
-#       - Quick Start: getting-started/quickstart.md
-#   - User Guide:
-#       - Design of Experiment: user-guide/doe.md
-#       - Efficient Global Optimization: user-guide/ego.md
-#       - Surrogate Modeling: user-guide/meta.md
-#       - Robust Optimization: user-guide/robustopt.md
-#       - Sensitivity Analysis: user-guide/sensitivity.md
-#       - Uncertainty Quantification: user-guide/uq.md
-#   - Application Examples:
-#       - Overview: examples/overview.md
-#       - DOE Examples: examples/doe-examples.md
-#       - EGO Examples: examples/ego-examples.md
-#   - API Reference: api-reference.md
-
-
-
-
-
 site_name: PyEGRO Documentation
 site_url: https://your-username.github.io/PyEGRO/
 repo_url: https://github.com/your-username/PyEGRO.git
 
-theme:
-  name: material
+theme: 
+  name: readthedocs
   logo: assets/logo.png
-  favicon: assets/favicon.png
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: light-blue
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: light-blue
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  features:
-    - navigation.tabs
-    - navigation.indexes
-    - toc.integrate
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - navigation.instant # Enables instant loading
-    - navigation.collapse
-    - navigation.tracking # Enables viewport tracking
-  language: en
-  icon:
-    repo: fontawesome/brands/github
 
-# Include your custom JavaScript
+
+# JavaScript for math rendering - this is the key part for math support
 extra_javascript:
-  - scripts/custom-nav.js ## for drop dow manu format
-  - scripts/mathjax.js
+  - javascripts/mathjax.js  # Custom configuration file
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-# Add this for left alignment
+# Stylesheets for custom styling
 extra_css:
   - stylesheets/extra.css
 
+# Required extensions for math and code highlighting
 markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true  # This is essential for MathJax 3
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -137,46 +32,55 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
-  - pymdownx.arithmatex:
-      generic: true
+      toc_depth: 3
 
+# Rest of your configuration...
 plugins:
   - search
   - awesome-pages
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/twanglom/PyEGRO
-    - icon: fontawesome/brands/python
-      link: https://pypi.org/project/PyEGRO/
 
 nav:
-  - Home: index.md
+  - Home: home-page.md
   - Getting Started:
       - Installation: getting-started/installation.md
       - Quick Start: getting-started/quickstart.md
-  - User Guide:
-      - Design of Experiment:
-          - Overview: user-guide/doe/overviewdoe.md
-          - Usage: user-guide/doe/usagedoe.md
-      - Efficient Global Optimization:
-          - Overview: user-guide/ego/overviewego.md
-          - Usage: user-guide/ego/usageego.md
-      - Surrogate Modeling:
-          - Overview: user-guide/meta/overviewmeta.md
-          - Usage: user-guide/meta/usagemeta.md
+  - Basic Usage:
+      - Design of Experiment: basic-usage/doe/doe_examples.md
+      - Metamodeling:
+          - GPR: basic-usage/meta/gpr/gpr_examples.md
+          - Cokriging: basic-usage/meta/cokriging/cokriging_examples.md
+          - EGO-GPR: basic-usage/meta/ego-gpr/egogpr_examples.md
+          - EGO-Cokriging: basic-usage/meta/ego-cokriging/egocokriging_examples.md          
+          - Model Evaluation: basic-usage/meta/model-evalulation/modeltesting_examples.md
       - Robust Optimization:
-          - Overview: user-guide/robustopt/overviewrobust.md
-          - Usage: user-guide/robustopt/usagerobust.md
+          - MCS Approach: basic-usage/robustopt/approach-mcs/robustopt_mcs_examples.md
+          - PCE Approach: basic-usage/robustopt/approach-pce/robustopt_pce_examples.md
+          - NNMCS Approach: basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md
       - Sensitivity Analysis:
-          - Overview: user-guide/sensitivity/overviewsensitivity.md
-          - Usage: user-guide/sensitivity/usagesensitivity.md
+          - MCS Approach: basic-usage/sensitivity/approach-mcs/samcs_examples.md
+          - PCE Approach: basic-usage/sensitivity/approach-pce/sapce_examples.md
       - Uncertainty Quantification:
-          - Overview: user-guide/uq/overviewuq.md
-          - Usage: user-guide/uq/usageuq.md
+          - MCS Approach: basic-usage/uncertainty/approach-mcs/uqmcs_examples.md
   - Application Examples:
-      - Overview: examples/overview.md
-      - DOE Examples: examples/doe-examples.md
-      - EGO Examples: examples/ego-examples.md
-  - API Reference: api-reference.md
+      - Basics Metamodel Training: examples/basics-metamodel-examples/basics-metamodel-examples.md
+      - Metamodel Training via EGO: examples/ego-metamodel-examples.md
+      - Uncertainty Propagation: examples/uq-examples.md
+      - Robust Optimization: examples/robust-example.md
+  - API Reference:
+      - Design of Experiment: api-reference/doe/doe_api_reference.md
+      - Metamodeling:
+          - GPR: api-reference/meta/gpr/gpr_api_reference.md
+          - Cokriging: api-reference/meta/cokriging/cokriging_api_reference.md
+          - EGO-GPR: api-reference/meta/ego-gpr/egogpr_api_reference.md
+          - EGO-Cokriging: api-reference/meta/ego-cokriging/egocokriging_api_reference.md         
+          - Model Evaluation: api-reference/meta/model-evalulation/modeltesting_api_reference.md
+      - Robust Optimization:
+          - MCS Approach: api-reference/robustopt/approach-mcs/robust_mcs_api_reference.md
+          - PCE Approach: api-reference/robustopt/approach-pce/robust_pce_api_reference.md
+          - NNMCS Approach: api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference.md
+      - Sensitivity Analysis:
+          - MCS Approach: api-reference/sensitivity/approach-mcs/samcs_api_reference.md
+          - PCE Approach: api-reference/sensitivity/approach-pce/sapce_api_reference.md
+      - Uncertainty Quantification:
+          - MCS Approach: api-reference/uncertainty/approach-mcs/uqmcs_api_reference.md
