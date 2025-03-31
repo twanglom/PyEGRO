@@ -249,7 +249,7 @@
 <li><code>data_dir</code> (str, optional): Directory containing input data. Default: <code>'DATA_PREPARATION'</code></li>
 <li><code>data_info_file</code> (str, optional): Path to data info JSON file. Default: <code>None</code></li>
 <li><code>data_training_file</code> (str, optional): Path to training data CSV file. Default: <code>None</code></li>
-<li><code>kernel</code> (str, optional): Kernel to use for GPR model. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>, <code>'linear'</code>. Default: <code>'matern15'</code></li>
+<li><code>kernel</code> (str, optional): Kernel to use for GPR model. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>. Default: <code>'matern15'</code></li>
 <li><code>learning_rate</code> (float, optional): Learning rate for optimizer. Default: <code>0.01</code></li>
 <li><code>patience</code> (int, optional): Number of iterations to wait for improvement before early stopping. Default: <code>50</code></li>
 </ul>
@@ -312,7 +312,7 @@
 <li><code>train_x</code> (torch.Tensor): Training input data</li>
 <li><code>train_y</code> (torch.Tensor): Training target data</li>
 <li><code>likelihood</code> (gpytorch.likelihoods.Likelihood): GP likelihood function</li>
-<li><code>kernel</code> (str, optional): Kernel type. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>, <code>'linear'</code>. Default: <code>'matern15'</code></li>
+<li><code>kernel</code> (str, optional): Kernel type. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>. Default: <code>'matern15'</code></li>
 </ul>
 <h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
 <h4 id="forward">forward<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h4>
