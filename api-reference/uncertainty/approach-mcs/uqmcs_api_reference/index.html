@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/uncertainty/approach-mcs/uqmcs_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>MCS Approach - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MCS Approach";
+        var mkdocs_page_input_path = "api-reference\\uncertainty\\approach-mcs\\uqmcs_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/uncertainty/approach-mcs/uqmcs_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Uncertainty Quantification</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MCS Approach</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uncertaintypropagation-class">UncertaintyPropagation Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor-parameters">Constructor Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convenience-functions">Convenience Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#run_uncertainty_analysis">run_uncertainty_analysis</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#analyze_specific_point_1">analyze_specific_point</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#informationvisualization-class">InformationVisualization Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor-parameters_1">Constructor Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-configuration-format">Data Configuration Format</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#design-variables">Design Variables</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#environmental-variables">Environmental Variables</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-configuration">Example Configuration</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Uncertainty Quantification</li>
+      <li class="breadcrumb-item active">MCS Approach</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/uncertainty/approach-mcs/uqmcs_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegro-uqmcs-api-reference">PyEGRO UQmcs API Reference<a class="headerlink" href="#pyegro-uqmcs-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed information about the API for PyEGRO's Uncertainty Quantification Monte Carlo Simulation (UQmcs) module.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#uncertaintypropagation-class">UncertaintyPropagation Class</a></li>
+<li><a href="#constructor-parameters">Constructor Parameters</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#convenience-functions">Convenience Functions</a></li>
+<li><a href="#run_uncertainty_analysis">run_uncertainty_analysis</a></li>
+<li><a href="#analyze_specific_point">analyze_specific_point</a></li>
+<li><a href="#informationvisualization-class">InformationVisualization Class</a></li>
+<li><a href="#constructor-parameters-1">Constructor Parameters</a></li>
+<li><a href="#methods-1">Methods</a></li>
+<li><a href="#data-configuration-format">Data Configuration Format</a></li>
+<li><a href="#design-variables">Design Variables</a></li>
+<li><a href="#environmental-variables">Environmental Variables</a></li>
+<li><a href="#example-configuration">Example Configuration</a></li>
+</ol>
+<h2 id="uncertaintypropagation-class">UncertaintyPropagation Class<a class="headerlink" href="#uncertaintypropagation-class" title="Permanent link">&para;</a></h2>
+<p>The main class for uncertainty propagation analysis in PyEGRO.</p>
+<h3 id="constructor-parameters">Constructor Parameters<a class="headerlink" href="#constructor-parameters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">UncertaintyPropagation</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">data_info_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">model_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">model_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">use_gpu</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RESULT_QOI&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">show_variables_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_info_path</td>
+<td>str</td>
+<td>Path to the data configuration JSON file</td>
+<td>"DATA_PREPARATION/data_info.json"</td>
+</tr>
+<tr>
+<td>model_handler</td>
+<td>Optional[Any]</td>
+<td>Model handler for surrogate model</td>
+<td>None</td>
+</tr>
+<tr>
+<td>true_func</td>
+<td>Optional[callable]</td>
+<td>True objective function for direct evaluation</td>
+<td>None</td>
+</tr>
+<tr>
+<td>model_path</td>
+<td>Optional[str]</td>
+<td>Path to trained GPR model (if using surrogate)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>use_gpu</td>
+<td>bool</td>
+<td>Whether to use GPU if available for surrogate model</td>
+<td>True</td>
+</tr>
+<tr>
+<td>output_dir</td>
+<td>str</td>
+<td>Directory for saving results</td>
+<td>"RESULT_QOI"</td>
+</tr>
+<tr>
+<td>show_variables_info</td>
+<td>bool</td>
+<td>Whether to display variable information</td>
+<td>True</td>
+</tr>
+<tr>
+<td>random_seed</td>
+<td>int</td>
+<td>Random seed for reproducibility</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: At least one of <code>true_func</code>, <code>model_handler</code>, or <code>model_path</code> must be provided.</p>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="from_initial_design-class-method">from_initial_design (class method)<a class="headerlink" href="#from_initial_design-class-method" title="Permanent link">&para;</a></h4>
+<p>Creates a UncertaintyPropagation instance directly from an InitialDesign object.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@classmethod</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span> <span class="nf">from_initial_design</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> 
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                        <span class="n">design</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                        <span class="n">design_infos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                        <span class="n">true_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                        <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_QOI&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                        <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>                        <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>                        <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>design</td>
+<td>InitialDesign</td>
+<td>InitialDesign instance</td>
+<td>None</td>
+</tr>
+<tr>
+<td>design_infos</td>
+<td>InitialDesign</td>
+<td>Alternative name for design (for backward compatibility)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>true_func</td>
+<td>Optional[callable]</td>
+<td>Optional override for objective function</td>
+<td>None</td>
+</tr>
+<tr>
+<td>output_dir</td>
+<td>str</td>
+<td>Directory for saving results</td>
+<td>"RESULT_QOI"</td>
+</tr>
+<tr>
+<td>use_gpu</td>
+<td>bool</td>
+<td>Whether to use GPU if available</td>
+<td>True</td>
+</tr>
+<tr>
+<td>show_variables_info</td>
+<td>bool</td>
+<td>Whether to display variable information</td>
+<td>True</td>
+</tr>
+<tr>
+<td>random_seed</td>
+<td>int</td>
+<td>Random seed for reproducibility</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+<h4 id="display_variable_info">display_variable_info<a class="headerlink" href="#display_variable_info" title="Permanent link">&para;</a></h4>
+<p>Displays detailed information about all variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">display_variable_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="run_analysis">run_analysis<a class="headerlink" href="#run_analysis" title="Permanent link">&para;</a></h4>
+<p>Runs the uncertainty propagation analysis.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                <span class="n">num_design_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                <span class="n">num_mcs_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true_func</td>
+<td>Optional[callable]</td>
+<td>Optional override for the true function</td>
+<td>None</td>
+</tr>
+<tr>
+<td>num_design_samples</td>
+<td>int</td>
+<td>Number of design points to evaluate</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>num_mcs_samples</td>
+<td>int</td>
+<td>Number of Monte Carlo samples per design point</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>show_progress</td>
+<td>bool</td>
+<td>Whether to show progress bar</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: pandas.DataFrame containing the analysis results.</p>
+<h4 id="analyze_specific_point">analyze_specific_point<a class="headerlink" href="#analyze_specific_point" title="Permanent link">&para;</a></h4>
+<p>Analyzes uncertainty at a specific design point with customized environmental variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span> <span class="nf">analyze_specific_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                         <span class="n">design_point</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                         <span class="n">env_vars_override</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>                         <span class="n">num_mcs_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                         <span class="n">create_pdf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                         <span class="n">create_reliability</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>design_point</td>
+<td>Dict[str, float]</td>
+<td value="value" var_name:="var_name:">Dictionary of design variable values</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>env_vars_override</td>
+<td>Optional[Dict[str, Dict[str, float]]]</td>
+<td>Dictionary to override env variable distributions</td>
+<td>None</td>
+</tr>
+<tr>
+<td>num_mcs_samples</td>
+<td>int</td>
+<td>Number of Monte Carlo samples</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>create_pdf</td>
+<td>bool</td>
+<td>Whether to create PDF visualization</td>
+<td>True</td>
+</tr>
+<tr>
+<td>create_reliability</td>
+<td>bool</td>
+<td>Whether to create reliability plot</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: Dictionary containing analysis results.</p>
+<h2 id="convenience-functions">Convenience Functions<a class="headerlink" href="#convenience-functions" title="Permanent link">&para;</a></h2>
+<h3 id="run_uncertainty_analysis">run_uncertainty_analysis<a class="headerlink" href="#run_uncertainty_analysis" title="Permanent link">&para;</a></h3>
+<p>Convenience function to run uncertainty propagation analysis.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span> <span class="nf">run_uncertainty_analysis</span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">data_info_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">model_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">model_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">num_design_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">num_mcs_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">use_gpu</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RESULT_QOI&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">show_progress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_info_path</td>
+<td>str</td>
+<td>Path to the data configuration file</td>
+<td>"DATA_PREPARATION/data_info.json"</td>
+</tr>
+<tr>
+<td>true_func</td>
+<td>Optional[callable]</td>
+<td>True objective function (if using direct evaluation)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>model_handler</td>
+<td>Optional[Any]</td>
+<td>Model handler for surrogate model</td>
+<td>None</td>
+</tr>
+<tr>
+<td>model_path</td>
+<td>Optional[str]</td>
+<td>Path to trained GPR model (if using surrogate)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>num_design_samples</td>
+<td>int</td>
+<td>Number of design points to evaluate</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>num_mcs_samples</td>
+<td>int</td>
+<td>Number of Monte Carlo samples per design point</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>use_gpu</td>
+<td>bool</td>
+<td>Whether to use GPU if available for surrogate model</td>
+<td>True</td>
+</tr>
+<tr>
+<td>output_dir</td>
+<td>str</td>
+<td>Directory for saving results</td>
+<td>"RESULT_QOI"</td>
+</tr>
+<tr>
+<td>random_seed</td>
+<td>int</td>
+<td>Random seed for reproducibility</td>
+<td>42</td>
+</tr>
+<tr>
+<td>show_progress</td>
+<td>bool</td>
+<td>Whether to show progress bar</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: pandas.DataFrame containing the analysis results.</p>
+<h3 id="analyze_specific_point_1">analyze_specific_point<a class="headerlink" href="#analyze_specific_point_1" title="Permanent link">&para;</a></h3>
+<p>Convenience function to analyze uncertainty at a specific design point.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">analyze_specific_point</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">data_info_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">design_point</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">true_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">model_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">env_vars_override</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">num_mcs_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RESULT_QOI_POINT&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">create_pdf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">create_reliability</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data_info_path</td>
+<td>str</td>
+<td>Path to the data configuration file</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>design_point</td>
+<td>Dict[str, float]</td>
+<td value="value" var_name:="var_name:">Dictionary of design variable values</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>true_func</td>
+<td>Optional[callable]</td>
+<td>True objective function (if using direct evaluation)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>model_handler</td>
+<td>Optional[Any]</td>
+<td>Model handler for surrogate model</td>
+<td>None</td>
+</tr>
+<tr>
+<td>env_vars_override</td>
+<td>Optional[Dict[str, Dict[str, float]]]</td>
+<td>Optional dictionary to override env variable distributions</td>
+<td>None</td>
+</tr>
+<tr>
+<td>num_mcs_samples</td>
+<td>int</td>
+<td>Number of Monte Carlo samples</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>output_dir</td>
+<td>str</td>
+<td>Directory for saving results</td>
+<td>"RESULT_QOI_POINT"</td>
+</tr>
+<tr>
+<td>random_seed</td>
+<td>int</td>
+<td>Random seed for reproducibility</td>
+<td>42</td>
+</tr>
+<tr>
+<td>create_pdf</td>
+<td>bool</td>
+<td>Whether to create PDF visualization</td>
+<td>True</td>
+</tr>
+<tr>
+<td>create_reliability</td>
+<td>bool</td>
+<td>Whether to create reliability plot</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: Dictionary containing analysis results.</p>
+<h2 id="informationvisualization-class">InformationVisualization Class<a class="headerlink" href="#informationvisualization-class" title="Permanent link">&para;</a></h2>
+<p>Handles visualization of uncertainty analysis results.</p>
+<h3 id="constructor-parameters_1">Constructor Parameters<a class="headerlink" href="#constructor-parameters_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">InformationVisualization</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>output_dir</td>
+<td>str or Path</td>
+<td>Directory for saving visualizations</td>
+<td>None (defaults to 'RESULT_QOI')</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<h4 id="create_visualization">create_visualization<a class="headerlink" href="#create_visualization" title="Permanent link">&para;</a></h4>
+<p>Creates appropriate visualization based on number of design variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">create_visualization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">design_vars</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>results_df</td>
+<td>pd.DataFrame</td>
+<td>DataFrame containing the analysis results</td>
+</tr>
+<tr>
+<td>design_vars</td>
+<td>List[Dict[str, Any]]</td>
+<td>List of design variable dictionaries</td>
+</tr>
+</tbody>
+</table>
+<h4 id="create_pdf_visualization">create_pdf_visualization<a class="headerlink" href="#create_pdf_visualization" title="Permanent link">&para;</a></h4>
+<p>Creates PDF visualization for a specific design point.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">create_pdf_visualization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>                            <span class="n">design_point</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> 
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>                            <span class="n">samples</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                            <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Probability Density Function at Design Point&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>                            <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pdf_visualization.png&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>design_point</td>
+<td>Dict[str, Any]</td>
+<td>Dictionary of design variable values</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>samples</td>
+<td>np.ndarray</td>
+<td>Array of samples from Monte Carlo simulation</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>title</td>
+<td>str</td>
+<td>Title for the plot</td>
+<td>"Probability Density Function at Design Point"</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>Filename for saving the plot</td>
+<td>"pdf_visualization.png"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: Matplotlib figure object.</p>
+<h4 id="create_reliability_plot">create_reliability_plot<a class="headerlink" href="#create_reliability_plot" title="Permanent link">&para;</a></h4>
+<p>Creates reliability plot showing probability of exceedance vs threshold value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span> <span class="nf">create_reliability_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                          <span class="n">samples</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>                          <span class="n">threshold_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>                          <span class="n">threshold_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;upper&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>                          <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Reliability Analysis&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>                          <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;reliability_analysis.png&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>samples</td>
+<td>np.ndarray</td>
+<td>Array of samples from Monte Carlo simulation</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>threshold_values</td>
+<td>np.ndarray</td>
+<td>Array of threshold values to evaluate</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>threshold_type</td>
+<td>str</td>
+<td>'upper' for P(X &gt; threshold) or 'lower' for P(X &lt; threshold)</td>
+<td>'upper'</td>
+</tr>
+<tr>
+<td>title</td>
+<td>str</td>
+<td>Title for the plot</td>
+<td>"Reliability Analysis"</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>Filename for saving the plot</td>
+<td>"reliability_analysis.png"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: Matplotlib figure object.</p>
+<h4 id="create_joint_pdf_visualization">create_joint_pdf_visualization<a class="headerlink" href="#create_joint_pdf_visualization" title="Permanent link">&para;</a></h4>
+<p>Creates a joint PDF visualization showing the relationship between an input variable and the output response.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span> <span class="nf">create_joint_pdf_visualization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>                                 <span class="n">design_point</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>                                 <span class="n">samples</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>                                 <span class="n">target_variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>                                 <span class="n">input_variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>                                 <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Joint Probability Distribution&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>                                 <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;joint_pdf_visualization.png&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>design_point</td>
+<td>Dict[str, Any]</td>
+<td>Dictionary of design variable values</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>samples</td>
+<td>np.ndarray</td>
+<td>2D array of samples - first column is input variable, second is output</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>target_variable</td>
+<td>str</td>
+<td>Name of the target/output variable</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>input_variable</td>
+<td>str</td>
+<td>Name of the input variable to analyze</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>title</td>
+<td>str</td>
+<td>Title for the plot</td>
+<td>"Joint Probability Distribution"</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>str</td>
+<td>Filename for saving the plot</td>
+<td>"joint_pdf_visualization.png"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong>: Matplotlib figure object.</p>
+<h2 id="data-configuration-format">Data Configuration Format<a class="headerlink" href="#data-configuration-format" title="Permanent link">&para;</a></h2>
+<p>The data configuration is stored in a JSON file with specific structure for design and environmental variables.</p>
+<h3 id="design-variables">Design Variables<a class="headerlink" href="#design-variables" title="Permanent link">&para;</a></h3>
+<p>Design variables are controllable inputs with the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>Variable name</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>vars_type</td>
+<td>str</td>
+<td>Must be 'design_vars'</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>range_bounds</td>
+<td>[float, float]</td>
+<td>Lower and upper bounds for the variable</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>cov</td>
+<td>float</td>
+<td>Coefficient of Variation (uncertainty)</td>
+<td>No (default = 0, deterministic)</td>
+</tr>
+<tr>
+<td>distribution</td>
+<td>str</td>
+<td>Probability distribution (e.g., 'normal')</td>
+<td>No (required if cov &gt; 0)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>Description of the variable</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environmental-variables">Environmental Variables<a class="headerlink" href="#environmental-variables" title="Permanent link">&para;</a></h3>
+<p>Environmental variables are uncontrollable inputs or noise factors:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>Variable name</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>vars_type</td>
+<td>str</td>
+<td>Must be 'env_vars'</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>distribution</td>
+<td>str</td>
+<td>Probability distribution (e.g., 'normal', 'uniform')</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>float</td>
+<td>Mean value (for 'normal' distribution)</td>
+<td>Yes (for 'normal')</td>
+</tr>
+<tr>
+<td>std</td>
+<td>float</td>
+<td>Standard deviation (for 'normal' distribution)</td>
+<td>Yes (if 'cov' not specified)</td>
+</tr>
+<tr>
+<td>cov</td>
+<td>float</td>
+<td>Coefficient of variation (for 'normal' distribution)</td>
+<td>Yes (if 'std' not specified)</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>Lower bound (for 'uniform' distribution)</td>
+<td>Yes (for 'uniform')</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>Upper bound (for 'uniform' distribution)</td>
+<td>Yes (for 'uniform')</td>
+</tr>
+<tr>
+<td>description</td>
+<td>str</td>
+<td>Description of the variable</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-configuration">Example Configuration<a class="headerlink" href="#example-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x1&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;design_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">      </span><span class="nt">&quot;range_bounds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">],</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">      </span><span class="nt">&quot;cov&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First design variable&quot;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x2&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;design_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">      </span><span class="nt">&quot;range_bounds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">      </span><span class="nt">&quot;cov&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deterministic design variable&quot;</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;noise1&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;env_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">      </span><span class="nt">&quot;mean&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">      </span><span class="nt">&quot;std&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Measurement noise&quot;</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">      </span><span class="nt">&quot;vars_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;env_vars&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="w">      </span><span class="nt">&quot;low&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">      </span><span class="nt">&quot;high&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Operating temperature&quot;</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="p">}</span>
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../sensitivity/approach-pce/sapce_api_reference/" class="btn btn-neutral float-left" title="PCE Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../sensitivity/approach-pce/sapce_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

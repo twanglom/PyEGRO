@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/doe/doe_api_reference/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Design of Experiment - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Design of Experiment";
+        var mkdocs_page_input_path = "api-reference\\doe\\doe_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/doe/doe_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../..">
+          <img src="../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Design of Experiment</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#initialdesign">InitialDesign</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adaptivedistributionsampler">AdaptiveDistributionSampler</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#variable">Variable</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#supported-distributions">Supported Distributions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#module-functions">Module Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_version">get_version</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_citation">get_citation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#print_usage">print_usage</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-example">Basic Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#with-multiple-distribution-types">With Multiple Distribution Types</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output-file-formats">Output File Formats</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#data_infojson">data_info.json</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#training_datacsv">training_data.csv</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+      <li class="breadcrumb-item active">Design of Experiment</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/doe/doe_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegro-doe-module-api-reference">PyEGRO DOE Module API Reference<a class="headerlink" href="#pyegro-doe-module-api-reference" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Design of Experiments (DOE) module in PyEGRO provides tools for generating initial design samples with support for multiple sampling methods and variable types. This reference details the classes, methods, and parameters available in the module.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="initialdesign"><code>InitialDesign</code><a class="headerlink" href="#initialdesign" title="Permanent link">&para;</a></h3>
+<p>The main class for creating and managing design samples.</p>
+<h4 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">InitialDesign</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">show_result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">sampling_criterion</span><span class="o">=</span><span class="s1">&#39;maximin&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">results_filename</span><span class="o">=</span><span class="s1">&#39;training_data&#39;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>output_dir</code> (str, optional): Directory for saving files. Default: 'DATA_PREPARATION'</li>
+<li><code>show_progress</code> (bool, optional): Whether to show progress bars during execution. Default: True</li>
+<li><code>show_result</code> (bool, optional): Whether to show result summary after execution. Default: True</li>
+<li><code>sampling_method</code> (str, optional): Sampling method to use ('lhs', 'sobol', 'halton', or 'random'). Default: 'lhs'</li>
+<li><code>sampling_criterion</code> (str, optional): Criterion for LHS (only used when <code>sampling_method</code> is 'lhs'). Default: 'maximin'</li>
+<li><code>results_filename</code> (str, optional): Base filename for saving results CSV. Default: 'training_data'</li>
+</ul>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="add_design_variable"><code>add_design_variable</code><a class="headerlink" href="#add_design_variable" title="Permanent link">&para;</a></h5>
+<p>Add a design variable to the experiment.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">range_bounds</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>name</code> (str): Name of the variable</li>
+<li><code>range_bounds</code> (List[float]): List containing [min, max] bounds</li>
+<li><code>cov</code> (float, optional): Coefficient of variation</li>
+<li><code>std</code> (float, optional): Standard deviation</li>
+<li><code>delta</code> (float, optional): -+ Uniform bounds</li>
+<li><code>distribution</code> (str, optional): Distribution type ('normal' or 'lognormal'). Default: 'normal'</li>
+<li><code>description</code> (str, optional): Optional description of the variable. Default: ''</li>
+</ul>
+<h6 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h6>
+<ul>
+<li>None</li>
+</ul>
+<h5 id="add_env_variable"><code>add_env_variable</code><a class="headerlink" href="#add_env_variable" title="Permanent link">&para;</a></h5>
+<p>Add an environmental variable to the experiment.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">add_env_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>name</code> (str): Name of the variable</li>
+<li><code>distribution</code> (str): Distribution type (see Supported Distributions)</li>
+<li><code>description</code> (str, optional): Optional description of the variable. Default: ''</li>
+<li><code>mean</code> (float, optional): Mean value (for normal, lognormal, etc.). Default: None</li>
+<li><code>cov</code> (float, optional): Coefficient of variation (alternative to std). Default: None</li>
+<li><code>std</code> (float, optional): Standard deviation (alternative to cov). Default: None</li>
+<li><code>low</code> (float, optional): Lower bound (for uniform, triangular, etc.). Default: None</li>
+<li><code>high</code> (float, optional): Upper bound (for uniform, triangular, etc.). Default: None</li>
+</ul>
+<h6 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h6>
+<ul>
+<li>None</li>
+</ul>
+<h5 id="save"><code>save</code><a class="headerlink" href="#save" title="Permanent link">&para;</a></h5>
+<p>Save design configuration to a JSON file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;data_info&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>filename</code> (str, optional): Base name for the JSON file (without extension). Default: 'data_info'</li>
+</ul>
+<h6 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h6>
+<ul>
+<li>None</li>
+</ul>
+<h5 id="load"><code>load</code><a class="headerlink" href="#load" title="Permanent link">&para;</a></h5>
+<p>Load design configuration from a previously saved JSON file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>filename</code> (str): Base name of the JSON file to load (without extension)</li>
+</ul>
+<h6 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h6>
+<ul>
+<li>None</li>
+</ul>
+<h5 id="run"><code>run</code><a class="headerlink" href="#run" title="Permanent link">&para;</a></h5>
+<p>Run the sampling process and evaluate the objective function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">save_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>objective_function</code> (Callable): Function to evaluate samples</li>
+<li><code>num_samples</code> (int): Number of samples to generate</li>
+<li><code>save_results</code> (bool, optional): Whether to save results to file. Default: True</li>
+</ul>
+<h6 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h6>
+<ul>
+<li>pandas.DataFrame containing samples and objective values</li>
+</ul>
+<h5 id="print_summary"><code>print_summary</code><a class="headerlink" href="#print_summary" title="Permanent link">&para;</a></h5>
+<p>Print summary statistics of the sampling results.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">print_summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>df</code> (pandas.DataFrame): DataFrame containing the sampling results</li>
+</ul>
+<h6 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h6>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="adaptivedistributionsampler"><code>AdaptiveDistributionSampler</code><a class="headerlink" href="#adaptivedistributionsampler" title="Permanent link">&para;</a></h3>
+<p>A class for generating samples from different distributions.</p>
+<h4 id="class-attributes">Class Attributes<a class="headerlink" href="#class-attributes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>SAMPLING_METHODS</code> (list): List of supported sampling methods: ['random', 'lhs', 'sobol', 'halton']</li>
+</ul>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="generate_samples"><code>generate_samples</code><a class="headerlink" href="#generate_samples" title="Permanent link">&para;</a></h5>
+<p>Generate samples for a given distribution type.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">generate_samples</span><span class="p">(</span><span class="n">distribution</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>distribution</code> (str): Distribution type (see Supported Distributions)</li>
+<li><code>mean</code> (float, optional): Mean value. Default: None</li>
+<li><code>cov</code> (float, optional): Coefficient of variation. Default: None</li>
+<li><code>std</code> (float, optional): Standard deviation (alternative to cov). Default: None</li>
+<li><code>lower</code> (float, optional): Lower bound. Default: None</li>
+<li><code>upper</code> (float, optional): Upper bound. Default: None</li>
+<li><code>size</code> (int, optional): Number of samples to generate. Default: 1000</li>
+<li><code>**kwargs</code> (dict): Additional parameters for specific distributions</li>
+</ul>
+<h6 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h6>
+<ul>
+<li>numpy.ndarray of samples</li>
+</ul>
+<h5 id="generate_design_samples"><code>generate_design_samples</code><a class="headerlink" href="#generate_design_samples" title="Permanent link">&para;</a></h5>
+<p>Generate samples for design variables using specified method.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">generate_design_samples</span><span class="p">(</span><span class="n">design_vars</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;maximin&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>design_vars</code> (List[Variable]): List of design variables</li>
+<li><code>num_samples</code> (int): Number of samples to generate</li>
+<li><code>method</code> (str, optional): Sampling method. Default: 'lhs'</li>
+<li><code>criterion</code> (str, optional): Criterion for LHS. Default: 'maximin'</li>
+</ul>
+<h6 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h6>
+<ul>
+<li>numpy.ndarray of samples scaled to variable bounds</li>
+</ul>
+<h5 id="generate_env_samples"><code>generate_env_samples</code><a class="headerlink" href="#generate_env_samples" title="Permanent link">&para;</a></h5>
+<p>Generate samples for an environmental variable.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">generate_env_samples</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>var</code> (Variable or dict): Environmental variable to sample</li>
+<li><code>num_samples</code> (int): Number of samples to generate</li>
+</ul>
+<h6 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h6>
+<ul>
+<li>numpy.ndarray of samples</li>
+</ul>
+<h5 id="generate_all_samples"><code>generate_all_samples</code><a class="headerlink" href="#generate_all_samples" title="Permanent link">&para;</a></h5>
+<p>Generate samples for all variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">generate_all_samples</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>variables</code> (List[Variable]): List of Variable objects</li>
+<li><code>num_samples</code> (int): Number of samples to generate</li>
+<li><code>method</code> (str, optional): Sampling method. Default: 'lhs'</li>
+<li><code>criterion</code> (str, optional): Criterion for LHS. Default: None</li>
+</ul>
+<h6 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h6>
+<ul>
+<li>numpy.ndarray of samples</li>
+</ul>
+<h5 id="calculate_input_bounds"><code>calculate_input_bounds</code><a class="headerlink" href="#calculate_input_bounds" title="Permanent link">&para;</a></h5>
+<p>Calculate input bounds for all variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">calculate_input_bounds</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">&para;</a></h6>
+<ul>
+<li><code>variables</code> (List[Variable]): List of variables</li>
+</ul>
+<h6 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h6>
+<ul>
+<li>List[List[float]] containing [min, max] bounds for each variable</li>
+</ul>
+<h3 id="variable"><code>Variable</code><a class="headerlink" href="#variable" title="Permanent link">&para;</a></h3>
+<p>A dataclass representing a variable in the design.</p>
+<h4 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>name</code> (str): Name of the variable</li>
+<li><code>vars_type</code> (str): Variable type ('design_vars' or 'env_vars')</li>
+<li><code>distribution</code> (str): Distribution type (see Supported Distributions)</li>
+<li><code>description</code> (str): Optional description</li>
+<li><code>range_bounds</code> (List[float], optional): List containing [min, max] bounds (for design variables)</li>
+<li><code>low</code> (float, optional): Lower bound (for various distributions)</li>
+<li><code>high</code> (float, optional): Upper bound (for various distributions)</li>
+<li><code>mean</code> (float, optional): Mean value (for various distributions)</li>
+<li><code>cov</code> (float, optional): Coefficient of variation</li>
+<li><code>std</code> (float, optional): Standard deviation (alternative to cov)</li>
+</ul>
+<h2 id="supported-distributions">Supported Distributions<a class="headerlink" href="#supported-distributions" title="Permanent link">&para;</a></h2>
+<p>The following distributions are supported for environment variables:</p>
+<ol>
+<li><strong>Uniform</strong>: Constant probability within range</li>
+<li>
+<p>Required parameters: <code>low</code>, <code>high</code></p>
+</li>
+<li>
+<p><strong>Normal</strong>: Gaussian distribution</p>
+</li>
+<li>Required parameters: <code>mean</code> plus either <code>cov</code> or <code>std</code> </li>
+<li>
+<p>Optional parameters: <code>low</code>, <code>high</code> (for truncation)</p>
+</li>
+<li>
+<p><strong>Lognormal</strong>: Natural logarithm follows normal distribution</p>
+</li>
+<li>Required parameters: <code>mean</code> plus either <code>cov</code> or <code>std</code></li>
+<li>Optional parameters: <code>low</code>, <code>high</code> (for truncation)</li>
+</ol>
+<h2 id="module-functions">Module Functions<a class="headerlink" href="#module-functions" title="Permanent link">&para;</a></h2>
+<h3 id="get_version"><code>get_version</code><a class="headerlink" href="#get_version" title="Permanent link">&para;</a></h3>
+<p>Return the current version of the module.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">get_version</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li>str - Version string</li>
+</ul>
+<h3 id="get_citation"><code>get_citation</code><a class="headerlink" href="#get_citation" title="Permanent link">&para;</a></h3>
+<p>Return citation information for the module.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">get_citation</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>str - Citation text</li>
+</ul>
+<h3 id="print_usage"><code>print_usage</code><a class="headerlink" href="#print_usage" title="Permanent link">&para;</a></h3>
+<p>Print detailed usage instructions for the module.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">print_usage</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="basic-example">Basic Example<a class="headerlink" href="#basic-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.doe</span> <span class="kn">import</span> <span class="n">InitialDesign</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Define objective function</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">def</span> <span class="nf">objective_func_2D</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">return</span> <span class="o">-</span><span class="p">((</span><span class="n">X1</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">X2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># Create initial design</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;my_experiment&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>    <span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;lhs&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>    <span class="n">sampling_criterion</span><span class="o">=</span><span class="s1">&#39;maximin&#39;</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">)</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1"># Add variables</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func_2D</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="with-multiple-distribution-types">With Multiple Distribution Types<a class="headerlink" href="#with-multiple-distribution-types" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Create design</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">design</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span><span class="n">sampling_method</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Add design variables</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">design</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Add environmental variables with different distributions</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;normal_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  <span class="c1"># Using std instead of cov</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;uniform_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>    <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="p">)</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="n">design</span><span class="o">.</span><span class="n">add_env_variable</span><span class="p">(</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lognormal_var&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>    <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;lognormal&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="n">mean</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>    <span class="n">std</span><span class="o">=</span><span class="mf">2.0</span>  
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="p">)</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="c1"># Define objective function that uses all variables</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="k">def</span> <span class="nf">objective_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>    <span class="n">design_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>    <span class="n">normal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>    <span class="n">uniform_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>    <span class="n">lognormal_var</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>    <span class="k">return</span> <span class="n">design_var</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">normal_var</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">uniform_var</span> <span class="o">+</span> <span class="n">lognormal_var</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="n">results</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">objective_function</span><span class="o">=</span><span class="n">objective_func</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="output-file-formats">Output File Formats<a class="headerlink" href="#output-file-formats" title="Permanent link">&para;</a></h2>
+<h3 id="data_infojson">data_info.json<a class="headerlink" href="#data_infojson" title="Permanent link">&para;</a></h3>
+<p>Contains configuration information including:
+- Variable definitions (name, type, distribution, bounds, etc.)
+- Sampling configuration (method, criterion)
+- Metadata (creation time, variable counts)</p>
+<h3 id="training_datacsv">training_data.csv<a class="headerlink" href="#training_datacsv" title="Permanent link">&para;</a></h3>
+<p>Contains the sample data:
+- Columns for each variable (design and environmental)
+- Final column 'y' with objective function values</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../examples/robust-example/" class="btn btn-neutral float-left" title="Robust Optimization"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../meta/gpr/gpr_api_reference/" class="btn btn-neutral float-right" title="GPR">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../examples/robust-example/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../meta/gpr/gpr_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/meta/model-evalulation/modeltesting_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Model Evaluation - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Model Evaluation";
+        var mkdocs_page_input_path = "api-reference\\meta\\model-evalulation\\modeltesting_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/meta/model-evalulation/modeltesting_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Metamodeling</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Model Evaluation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modeltester-class">ModelTester Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#utility-functions">Utility Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#load_and_test_model">load_and_test_model</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Metamodeling</li>
+      <li class="breadcrumb-item active">Model Evaluation</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/meta/model-evalulation/modeltesting_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegro-modeltesting-api-reference">PyEGRO ModelTesting API Reference<a class="headerlink" href="#pyegro-modeltesting-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API reference for the Model Testing module in the PyEGRO package, which allows evaluation of trained GPR and Co-Kriging models on unseen data.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#modeltester-class">ModelTester Class</a></li>
+<li><a href="#utility-functions">Utility Functions</a></li>
+</ul>
+<h2 id="modeltester-class">ModelTester Class<a class="headerlink" href="#modeltester-class" title="Permanent link">&para;</a></h2>
+<p>The <code>ModelTester</code> class provides functionality for loading trained models and evaluating their performance on test data.</p>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ModelTester</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_GPR&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">logger</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>model_dir</code> (str, optional): Directory containing trained model files. Default: <code>'RESULT_MODEL_GPR'</code></li>
+<li><code>model_name</code> (str, optional): Base name of the model file without extension. Default: <code>None</code> (will be inferred from directory or file path)</li>
+<li><code>model_path</code> (str, optional): Direct path to the model file. Default: <code>None</code></li>
+<li><code>logger</code> (logging.Logger, optional): Logger object for logging messages. Default: <code>None</code></li>
+</ul>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="load_model">load_model<a class="headerlink" href="#load_model" title="Permanent link">&para;</a></h4>
+<p>Load the trained model and scalers from disk.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">load_model</span><span class="p">()</span>
+</code></pre></div>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>self</code>: Returns the ModelTester instance for method chaining</li>
+</ul>
+<h4 id="load_test_data">load_test_data<a class="headerlink" href="#load_test_data" title="Permanent link">&para;</a></h4>
+<p>Load test data from CSV file or generate synthetic test data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">load_test_data</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>data_path</code> (str, optional): Path to the CSV file containing test data. Default: <code>None</code></li>
+<li><code>feature_cols</code> (list of str, optional): List of feature column names. Default: <code>None</code> (all columns except target)</li>
+<li><code>target_col</code> (str, optional): Target column name. Default: <code>'y'</code></li>
+<li><code>n_samples</code> (int, optional): Number of samples for synthetic data if no data_path provided. Default: <code>100</code></li>
+<li><code>n_features</code> (int, optional): Number of features for synthetic data if no data_path provided. Default: <code>2</code></li>
+</ul>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Tuple of <code>(X_test, y_test)</code>: Test features and targets as numpy arrays</li>
+</ul>
+<h4 id="evaluate">evaluate<a class="headerlink" href="#evaluate" title="Permanent link">&para;</a></h4>
+<p>Evaluate the model performance on test data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>X_test</code> (numpy.ndarray): Test features</li>
+<li><code>y_test</code> (numpy.ndarray): Test targets</li>
+</ul>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>self</code>: Returns the ModelTester instance for method chaining with updated test_results property</li>
+</ul>
+<h4 id="save_results">save_results<a class="headerlink" href="#save_results" title="Permanent link">&para;</a></h4>
+<p>Save test results and generate plots.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">save_results</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;test_results&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>output_dir</code> (str, optional): Directory to save results. Default: <code>'test_results'</code></li>
+</ul>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>self</code>: Returns the ModelTester instance for method chaining</li>
+</ul>
+<h4 id="plot_results">plot_results<a class="headerlink" href="#plot_results" title="Permanent link">&para;</a></h4>
+<p>Generate and optionally save plots of test results.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">plot_results</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;test_results&#39;</span><span class="p">,</span> <span class="n">show_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">smooth_window</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>output_dir</code> (str, optional): Directory to save plots. Default: <code>'test_results'</code></li>
+<li><code>show_plots</code> (bool, optional): Whether to display plots. Default: <code>True</code></li>
+<li><code>save_plots</code> (bool, optional): Whether to save plots to disk. Default: <code>True</code></li>
+<li><code>smooth</code> (bool, optional): Whether to apply smoothing to uncertainty plots. Default: <code>True</code></li>
+<li><code>smooth_window</code> (int, optional): Window size for smoothing filter. Default: <code>11</code></li>
+</ul>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>figures</code> (dict): Dictionary of matplotlib figure objects</li>
+</ul>
+<h3 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>test_results</code> (dict): Contains test metrics and predictions after running <code>evaluate</code>. Keys include:</li>
+<li><code>r2</code>: R² score</li>
+<li><code>mse</code>: Mean squared error</li>
+<li><code>rmse</code>: Root mean squared error</li>
+<li><code>mae</code>: Mean absolute error</li>
+<li><code>y_test</code>: Test targets</li>
+<li><code>y_pred</code>: Model predictions</li>
+<li><code>std_dev</code>: Standard deviations of predictions</li>
+<li><code>model_type</code>: Type of model ('gpr' or 'cokriging')</li>
+</ul>
+<h2 id="utility-functions">Utility Functions<a class="headerlink" href="#utility-functions" title="Permanent link">&para;</a></h2>
+<h3 id="load_and_test_model">load_and_test_model<a class="headerlink" href="#load_and_test_model" title="Permanent link">&para;</a></h3>
+<p>A convenience function to load a model and test it in one call.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">load_and_test_model</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">data_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">model_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;test_results&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">feature_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">target_col</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">show_plots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">smooth</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">smooth_window</span><span class="o">=</span><span class="mi">11</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data_path</code> (str, optional): Path to the CSV file containing test data. Default: <code>None</code></li>
+<li><code>model_dir</code> (str, optional): Directory containing trained model files. Default: <code>None</code></li>
+<li><code>model_name</code> (str, optional): Base name of the model file without extension. Default: <code>None</code></li>
+<li><code>model_path</code> (str, optional): Direct path to the model file. Default: <code>None</code></li>
+<li><code>output_dir</code> (str, optional): Directory to save results. Default: <code>'test_results'</code></li>
+<li><code>feature_cols</code> (list of str, optional): List of feature column names. Default: <code>None</code></li>
+<li><code>target_col</code> (str, optional): Target column name. Default: <code>'y'</code></li>
+<li><code>logger</code> (logging.Logger, optional): Logger object for logging messages. Default: <code>None</code></li>
+<li><code>show_plots</code> (bool, optional): Whether to display plots. Default: <code>True</code></li>
+<li><code>smooth</code> (bool, optional): Whether to apply smoothing to uncertainty plots. Default: <code>True</code></li>
+<li><code>smooth_window</code> (int, optional): Window size for smoothing filter. Default: <code>11</code></li>
+</ul>
+<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>test_results</code> (dict): Dictionary containing test metrics and predictions</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../ego-cokriging/egocokriging_api_reference/" class="btn btn-neutral float-left" title="EGO-Cokriging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../robustopt/approach-mcs/robust_mcs_api_reference/" class="btn btn-neutral float-right" title="MCS Approach">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../ego-cokriging/egocokriging_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../robustopt/approach-mcs/robust_mcs_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

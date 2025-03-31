@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/examples/basics-metamodel-examples/basics-metamodel-examples/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Basics Metamodel Training - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Basics Metamodel Training";
+        var mkdocs_page_input_path = "examples\\basics-metamodel-examples\\basics-metamodel-examples.md";
+        var mkdocs_page_url = "/PyEGRO/examples/basics-metamodel-examples/basics-metamodel-examples/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../..">
+          <img src="../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Basics Metamodel Training</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objective-function">Objective Function</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deterministic-optimal-points">Deterministic Optimal Points</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-define-the-test-function">1. Define the Test Function</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-generate-design-samples">2. Generate Design Samples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-train-the-surrogate-model">3. Train the Surrogate Model</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../api-reference/doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Application Examples</li>
+      <li class="breadcrumb-item active">Basics Metamodel Training</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/examples/basics-metamodel-examples/basics-metamodel-examples.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="basics-surrogate-model-training-examples">Basics Surrogate Model Training Examples<a class="headerlink" href="#basics-surrogate-model-training-examples" title="Permanent link">&para;</a></h1>
+<hr />
+<p><img alt="alt text" src="../objective.png" /></p>
+<h3 id="objective-function"><strong>Objective Function</strong><a class="headerlink" href="#objective-function" title="Permanent link">&para;</a></h3>
+<p>The Gaussian-shaped test function is defined as:</p>
+<div class="arithmatex">\[
+    f(X_1, X_2) = - \left[ A_1 \cdot \exp \left( - \left( \frac{(X_1 - \mu_1)^2}{2 \sigma_1^2} + \frac{(X_2 - \mu_2)^2}{2 \sigma_2^2} \right) \right) +
+    A_2 \cdot \exp \left( - \left( \frac{(X_1 - \mu_3)^2}{2 \sigma_3^2} + \frac{(X_2 - \mu_4)^2}{2 \sigma_4^2} \right) \right) \right] - 200
+\]</div>
+<p>Where:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A_1, A_2\)</span>: Amplitudes of the Gaussian peaks.  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mu_1, \mu_2, \mu_3, \mu_4\)</span>: Centers of the peaks.  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\sigma_1, \sigma_2, \sigma_3, \sigma_4\)</span>: Standard deviations controlling the spread of the peaks.  </p>
+</li>
+</ul>
+<hr />
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<p>The constants for the Gaussian peaks are defined as follows:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A_1 = 100, A_2 = 150\)</span>  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\mu_1 = 3, \mu_2 = 2.1, \mu_3 = -1.5, \mu_4 = -1.2\)</span>  </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\sigma_1 = 3, \sigma_2 = 3, \sigma_3 = 1, \sigma_4 = 1\)</span>  </p>
+</li>
+</ul>
+<hr />
+<h2 id="deterministic-optimal-points">Deterministic Optimal Points<a class="headerlink" href="#deterministic-optimal-points" title="Permanent link">&para;</a></h2>
+<p>The deterministic solution yields the following minima in the design variables <span class="arithmatex">\(X_1\)</span> and <span class="arithmatex">\(X_2\)</span> from the ranges <span class="arithmatex">\([-5, 5]\)</span> and <span class="arithmatex">\([-6, 6]\)</span>:</p>
+<p><strong>Global Minimum:</strong></p>
+<ul>
+<li>
+<p>Function Value: <span class="arithmatex">\(f(X_1, X_2) = -31.85\)</span>  </p>
+</li>
+<li>
+<p>At <span class="arithmatex">\((X_1, X_2) = (-1.44, -1.16)\)</span>  </p>
+</li>
+</ul>
+<p><strong>Local Minimum:</strong></p>
+<ul>
+<li>
+<p>Function Value: <span class="arithmatex">\(f(X_1, X_2) = -100\)</span>  </p>
+</li>
+<li>
+<p>At <span class="arithmatex">\((X_1, X_2) = (3.0, 2.10)\)</span>  </p>
+</li>
+</ul>
+<hr />
+<p>This setup allows the function to test optimization algorithms for their ability to handle varying sensitivities across both global and local optima, as demonstrated by the deterministic solutions. The response surface across the entire design variable range is visualized in the Figure.</p>
+<h2 id="1-define-the-test-function"><strong>1. Define the Test Function</strong><a class="headerlink" href="#1-define-the-test-function" title="Permanent link">&para;</a></h2>
+<p>To define the Gaussian-shaped test function, create a separate Python file named <code>objective.py</code>:</p>
+<p><strong>File: objective.py</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">def</span> <span class="nf">true_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">a1</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">sigma_x1</span><span class="p">,</span> <span class="n">sigma_y1</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">a2</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">sigma_x2</span><span class="p">,</span> <span class="n">sigma_y2</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="n">a1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">X1</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_x1</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">X2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_y1</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span> <span class="o">+</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">a2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">X1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_x2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">X2</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_y2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">200</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">return</span> <span class="n">f</span>
+</code></pre></div></p>
+<p>This function represents two Gaussian peaks, one for the global minimum and another for the local minimum.</p>
+<hr />
+<h2 id="2-generate-design-samples"><strong>2. Generate Design Samples</strong><a class="headerlink" href="#2-generate-design-samples" title="Permanent link">&para;</a></h2>
+<p><strong>Steps Explained</strong>:</p>
+<ol>
+<li>
+<p><strong>Define Variables:</strong> Add design variables <code>x1</code> and <code>x2</code> with their respective bounds and covariance values.</p>
+</li>
+<li>
+<p><strong>Save Configuration:</strong> Save the configuration for reproducibility.</p>
+</li>
+<li>
+<p><strong>Run Sampling:</strong> Generate 200 samples using the defined test function.</p>
+</li>
+</ol>
+<p>To generate initial design samples using LHS, create a file named <code>run_initial_design.py</code>:</p>
+<p><strong>File: run_initial_design.py</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.doe.initial_design</span> <span class="kn">import</span> <span class="n">InitialDesign</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">objective</span> <span class="kn">import</span> <span class="n">true_function</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Create design with LHS sampling</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">design_lhs</span> <span class="o">=</span> <span class="n">InitialDesign</span><span class="p">(</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;lhs&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Add design variables</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">design_lhs</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">cov</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;first design variable&#39;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">design_lhs</span><span class="o">.</span><span class="n">add_design_variable</span><span class="p">(</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="n">range_bounds</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="n">cov</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;second design variable&#39;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1"># Save configuration</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="n">design_lhs</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1"># Run sampling</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="n">results_lhs</span> <span class="o">=</span> <span class="n">design_lhs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">objective_function</span><span class="o">=</span><span class="n">true_function</span><span class="p">,</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">200</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Output</strong></p>
+<ul>
+<li>Command line Displays</li>
+</ul>
+<p><img alt="alt text" src="../command_display.png" /></p>
+<ul>
+<li>Save Output Directory <strong><code>DATA_PREPARATION</code></strong></li>
+</ul>
+<p><img alt="alt text" src="../output_dir.png" /></p>
+<hr />
+<h2 id="3-train-the-surrogate-model"><strong>3. Train the Surrogate Model</strong><a class="headerlink" href="#3-train-the-surrogate-model" title="Permanent link">&para;</a></h2>
+<p><strong>Steps Explained</strong>:</p>
+<ol>
+<li>
+<p><strong>Initialize MetaTraining:</strong> Set up the training configuration and preprocessing options.</p>
+</li>
+<li>
+<p><strong>Train Model:</strong> Train the Gaussian Process Regression (GPR) surrogate model using the sampled data.</p>
+</li>
+<li>
+<p><strong>Save Results:</strong> Save the trained model and data scalers for future use.</p>
+</li>
+</ol>
+<p>Use the generated design samples to train the surrogate model. Below is an example script for surrogate model training:</p>
+<p><strong>File: train_surrogate.py</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.meta_trainer</span> <span class="kn">import</span> <span class="n">MetaTraining</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Initialize MetaTraining</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">meta</span> <span class="o">=</span> <span class="n">MetaTraining</span><span class="p">()</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Train surrogate model</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">model</span><span class="p">,</span> <span class="n">scaler_X</span><span class="p">,</span> <span class="n">scaler_y</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Save trained model and scalers</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">meta</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div></p>
+<hr />
+<p><strong>Output</strong></p>
+<ul>
+<li>Command line Displays</li>
+</ul>
+<p><img alt="alt text" src="../training_state.png" /></p>
+<ul>
+<li>Save Output Directory <strong><code>RESULT_MODEL_GPR</code></strong></li>
+</ul>
+<p><img alt="alt text" src="../savemodel.png" /></p>
+<ul>
+<li>Performance plot example</li>
+</ul>
+<p><img alt="alt text" src="../performance_plot.png" /></p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/" class="btn btn-neutral float-left" title="MCS Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../ego-metamodel-examples/" class="btn btn-neutral float-right" title="Metamodel Training via EGO">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../ego-metamodel-examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

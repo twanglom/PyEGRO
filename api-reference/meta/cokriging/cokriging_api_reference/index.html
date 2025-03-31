@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/meta/cokriging/cokriging_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Cokriging - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cokriging";
+        var mkdocs_page_input_path = "api-reference\\meta\\cokriging\\cokriging_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/meta/cokriging/cokriging_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Metamodeling</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Cokriging</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#metatrainingcokriging-class">MetaTrainingCoKriging Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cokrigingmodel-class">CoKrigingModel Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor_1">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cokrigingkernel-class">CoKrigingKernel Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor_2">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deviceagnosticcokriging-class">DeviceAgnosticCoKriging Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor_3">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualization-functions">Visualization Functions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#visualize_cokriging">visualize_cokriging</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../robustopt/approach-nnmcs/robust_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Metamodeling</li>
+      <li class="breadcrumb-item active">Cokriging</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/meta/cokriging/cokriging_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegro-co-kriging-module-api-reference">PyEGRO Co-Kriging Module API Reference<a class="headerlink" href="#pyegro-co-kriging-module-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API reference for the Co-Kriging (multi-fidelity) module in the PyEGRO package.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#metatrainingcokriging-class">MetaTrainingCoKriging Class</a></li>
+<li><a href="#cokrigingmodel-class">CoKrigingModel Class</a></li>
+<li><a href="#cokrigingkernel-class">CoKrigingKernel Class</a></li>
+<li><a href="#deviceagnosticcokriging-class">DeviceAgnosticCoKriging Class</a></li>
+<li><a href="#visualization-functions">Visualization Functions</a></li>
+</ul>
+<h2 id="metatrainingcokriging-class">MetaTrainingCoKriging Class<a class="headerlink" href="#metatrainingcokriging-class" title="Permanent link">&para;</a></h2>
+<p>The <code>MetaTrainingCoKriging</code> class provides a high-level interface for training and managing Co-Kriging models that combine low and high-fidelity data sources.</p>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">MetaTrainingCoKriging</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">num_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">show_hardware_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">show_model_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_COKRIGING&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;matern25&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">patience</span><span class="o">=</span><span class="mi">50</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>num_iterations</code> (int, optional): Number of training iterations. Default: <code>1000</code></li>
+<li><code>prefer_gpu</code> (bool, optional): Whether to use GPU if available. Default: <code>True</code></li>
+<li><code>show_progress</code> (bool, optional): Whether to show detailed progress. Default: <code>True</code></li>
+<li><code>show_hardware_info</code> (bool, optional): Whether to show system hardware info. Default: <code>True</code></li>
+<li><code>show_model_info</code> (bool, optional): Whether to show model architecture info. Default: <code>True</code></li>
+<li><code>output_dir</code> (str, optional): Directory for saving results. Default: <code>'RESULT_MODEL_COKRIGING'</code></li>
+<li><code>kernel</code> (str, optional): Kernel to use for base GP model. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>. Default: <code>'matern25'</code></li>
+<li><code>learning_rate</code> (float, optional): Learning rate for optimizer. Default: <code>0.01</code></li>
+<li><code>patience</code> (int, optional): Number of iterations to wait for improvement before early stopping. Default: <code>50</code></li>
+</ul>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="train">train<a class="headerlink" href="#train" title="Permanent link">&para;</a></h4>
+<p>Train the Co-Kriging model with low and high-fidelity data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">train</span><span class="p">(</span><span class="n">X_low</span><span class="p">,</span> <span class="n">y_low</span><span class="p">,</span> <span class="n">X_high</span><span class="p">,</span> <span class="n">y_high</span><span class="p">,</span> <span class="n">X_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>X_low</code> (numpy.ndarray or pandas.DataFrame): Low-fidelity input features</li>
+<li><code>y_low</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series): Low-fidelity target values</li>
+<li><code>X_high</code> (numpy.ndarray or pandas.DataFrame): High-fidelity input features</li>
+<li><code>y_high</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series): High-fidelity target values</li>
+<li><code>X_test</code> (numpy.ndarray or pandas.DataFrame, optional): Test features. Default: <code>None</code></li>
+<li><code>y_test</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series, optional): Test targets. Default: <code>None</code></li>
+<li><code>feature_names</code> (list of str, optional): List of feature names. Default: <code>None</code></li>
+</ul>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>model</code> (CoKrigingModel): Trained model</li>
+<li><code>scaler_X</code> (StandardScaler): Feature scaler</li>
+<li><code>scaler_y</code> (StandardScaler): Target scaler</li>
+</ul>
+<h4 id="predict">predict<a class="headerlink" href="#predict" title="Permanent link">&para;</a></h4>
+<p>Make predictions with the trained Co-Kriging model.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fidelity</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>X</code> (numpy.ndarray or pandas.DataFrame): Input features for prediction</li>
+<li><code>fidelity</code> (str, optional): 'high' or 'low' to specify which fidelity level to predict. Default: <code>'high'</code></li>
+</ul>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>mean</code> (numpy.ndarray): Mean predictions</li>
+<li><code>std</code> (numpy.ndarray): Standard deviations of predictions</li>
+</ul>
+<h4 id="load_model">load_model<a class="headerlink" href="#load_model" title="Permanent link">&para;</a></h4>
+<p>Load a trained model from disk.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>model_path</code> (str, optional): Path to the saved model file. If None, uses the default path. Default: <code>None</code></li>
+</ul>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>model</code> (CoKrigingModel): Loaded model</li>
+</ul>
+<h4 id="print_hyperparameters">print_hyperparameters<a class="headerlink" href="#print_hyperparameters" title="Permanent link">&para;</a></h4>
+<p>Print the learned hyperparameters of the model.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">print_hyperparameters</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="cokrigingmodel-class">CoKrigingModel Class<a class="headerlink" href="#cokrigingmodel-class" title="Permanent link">&para;</a></h2>
+<p>The <code>CoKrigingModel</code> class implements a Gaussian Process model for Co-Kriging/multi-fidelity modeling using the Kennedy &amp; O'Hagan (2000) approach.</p>
+<h3 id="constructor_1">Constructor<a class="headerlink" href="#constructor_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">CoKrigingModel</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;matern15&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>train_x</code> (torch.Tensor): Training input data (with fidelity indicator as last column)</li>
+<li><code>train_y</code> (torch.Tensor): Training target data</li>
+<li><code>likelihood</code> (gpytorch.likelihoods.Likelihood): GP likelihood function</li>
+<li><code>kernel</code> (str, optional): Kernel type. Options: <code>'matern25'</code>, <code>'matern15'</code>, <code>'matern05'</code>, <code>'rbf'</code>. Default: <code>'matern15'</code></li>
+</ul>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<h4 id="forward">forward<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h4>
+<p>Computes the mean and covariance of the GP posterior.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>x</code> (torch.Tensor): Input data (with fidelity indicator as last column)</li>
+</ul>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>gpytorch.distributions.MultivariateNormal</code>: Distribution with predicted mean and covariance</li>
+</ul>
+<h2 id="cokrigingkernel-class">CoKrigingKernel Class<a class="headerlink" href="#cokrigingkernel-class" title="Permanent link">&para;</a></h2>
+<p>The <code>CoKrigingKernel</code> class implements a custom kernel for Co-Kriging that handles multi-fidelity data following the auto-regressive structure of the Kennedy &amp; O'Hagan model.</p>
+<h3 id="constructor_2">Constructor<a class="headerlink" href="#constructor_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">CoKrigingKernel</span><span class="p">(</span><span class="n">base_kernel</span><span class="p">,</span> <span class="n">num_dims</span><span class="p">,</span> <span class="n">active_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>base_kernel</code> (gpytorch.kernels.Kernel): Base kernel to use for both low-fidelity and difference components</li>
+<li><code>num_dims</code> (int): Number of dimensions including the fidelity indicator</li>
+<li><code>active_dims</code> (tuple, optional): Dimensions that the kernel operates on. Default: <code>None</code></li>
+</ul>
+<h3 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
+<h4 id="rho">rho<a class="headerlink" href="#rho" title="Permanent link">&para;</a></h4>
+<p>Returns the scaling parameter ρ that controls the correlation between fidelity levels.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">rho</span>
+</code></pre></div>
+<h3 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h3>
+<h4 id="forward_1">forward<a class="headerlink" href="#forward_1" title="Permanent link">&para;</a></h4>
+<p>Compute the covariance matrix between inputs x1 and x2 based on the Kennedy &amp; O'Hagan multi-fidelity formulation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">forward</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">diag</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>x1</code> (torch.Tensor): First input</li>
+<li><code>x2</code> (torch.Tensor): Second input</li>
+<li><code>diag</code> (bool, optional): Whether to return just the diagonal of the covariance matrix. Default: <code>False</code></li>
+<li><code>**params</code>: Additional parameters for the base kernels</li>
+</ul>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>torch.Tensor</code>: Covariance matrix</li>
+</ul>
+<h2 id="deviceagnosticcokriging-class">DeviceAgnosticCoKriging Class<a class="headerlink" href="#deviceagnosticcokriging-class" title="Permanent link">&para;</a></h2>
+<p>The <code>DeviceAgnosticCoKriging</code> class provides a device-agnostic handler for Co-Kriging models.</p>
+<h3 id="constructor_3">Constructor<a class="headerlink" href="#constructor_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">DeviceAgnosticCoKriging</span><span class="p">(</span><span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>prefer_gpu</code> (bool, optional): Whether to use GPU if available. Default: <code>False</code></li>
+</ul>
+<h3 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h3>
+<h4 id="load_model_1">load_model<a class="headerlink" href="#load_model_1" title="Permanent link">&para;</a></h4>
+<p>Load model using state dict approach.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">load_model</span><span class="p">(</span><span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_COKRIGING&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>model_dir</code> (str, optional): Directory containing the model files. Default: <code>'RESULT_MODEL_COKRIGING'</code></li>
+</ul>
+<h5 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>bool</code>: True if model was loaded successfully, False otherwise</li>
+</ul>
+<h4 id="predict_1">predict<a class="headerlink" href="#predict_1" title="Permanent link">&para;</a></h4>
+<p>Make predictions with the loaded Co-Kriging model.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fidelity</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>X</code> (numpy.ndarray): Input features (n_samples, n_features)</li>
+<li><code>fidelity</code> (str, optional): 'high' or 'low' to specify which fidelity level to predict. Default: <code>'high'</code></li>
+<li><code>batch_size</code> (int, optional): Batch size for processing large datasets. Default: <code>1000</code></li>
+</ul>
+<h5 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Tuple of <code>(mean_predictions, std_predictions)</code> as numpy arrays</li>
+</ul>
+<h2 id="visualization-functions">Visualization Functions<a class="headerlink" href="#visualization-functions" title="Permanent link">&para;</a></h2>
+<h3 id="visualize_cokriging">visualize_cokriging<a class="headerlink" href="#visualize_cokriging" title="Permanent link">&para;</a></h3>
+<p>Create comprehensive visualizations for Co-Kriging model performance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">visualize_cokriging</span><span class="p">(</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">meta</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">X_low</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">y_low</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">X_high</span><span class="p">,</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">y_high</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">X_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    <span class="n">y_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="n">variable_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>meta</code> (MetaTrainingCoKriging): Trained MetaTrainingCoKriging instance</li>
+<li><code>X_low</code> (numpy.ndarray or pandas.DataFrame): Low-fidelity inputs</li>
+<li><code>y_low</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series): Low-fidelity targets</li>
+<li><code>X_high</code> (numpy.ndarray or pandas.DataFrame): High-fidelity inputs</li>
+<li><code>y_high</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series): High-fidelity targets</li>
+<li><code>X_test</code> (numpy.ndarray or pandas.DataFrame, optional): Test inputs. Default: <code>None</code></li>
+<li><code>y_test</code> (numpy.ndarray, pandas.DataFrame, or pandas.Series, optional): Test targets. Default: <code>None</code></li>
+<li><code>variable_names</code> (list of str, optional): Names of input variables. Default: <code>None</code></li>
+<li><code>bounds</code> (numpy.ndarray, optional): Bounds of input variables for sampling. Default: <code>None</code></li>
+<li><code>savefig</code> (bool, optional): Whether to save figures to disk. Default: <code>False</code></li>
+<li><code>output_dir</code> (str, optional): Directory to save figures. Default: <code>None</code>, uses meta.output_dir</li>
+</ul>
+<h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>figures</code> (dict): Dictionary of figure handles</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../gpr/gpr_api_reference/" class="btn btn-neutral float-left" title="GPR"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../ego-gpr/egogpr_api_reference/" class="btn btn-neutral float-right" title="EGO-GPR">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../gpr/gpr_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../ego-gpr/egogpr_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

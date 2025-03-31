@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://your-username.github.io/PyEGRO/api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference/" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>NNMCS Approach - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "NNMCS Approach";
+        var mkdocs_page_input_path = "api-reference\\robustopt\\approach-nnmcs\\robust_nnmcs_api_reference.md";
+        var mkdocs_page_url = "/PyEGRO/api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../..">
+          <img src="../../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../home-page/">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples.md">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples.md">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/basics-metamodel-examples/basics-metamodel-examples/">Basics Metamodel Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../../doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Robust Optimization</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../approach-mcs/robust_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../approach-pce/robust_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">NNMCS Approach</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-classes">Configuration Classes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#annconfig">ANNConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#samplingconfig">SamplingConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#optimizationconfig">OptimizationConfig</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pathconfig">PathConfig</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-optimization-class">Main Optimization Class</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#robustoptimization">RobustOptimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-stages">Pipeline Stages</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#1-uncertainty-propagation">1. Uncertainty Propagation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#2-hyperparameter-optimization">2. Hyperparameter Optimization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3-neural-network-training">3. Neural Network Training</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4-two-stage-optimization">4. Two-Stage Optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-notes">Usage Notes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#gpu-acceleration">GPU Acceleration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#file-structure">File Structure</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#model-types">Model Types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#customization">Customization</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">Robust Optimization</li>
+      <li class="breadcrumb-item active">NNMCS Approach</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/your-username/PyEGRO.git/edit/master/docs/api-reference/robustopt/approach-nnmcs/robust_nnmcs_api_reference.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pyegrorobustoptmethod_nnmcs-api-reference">PyEGRO.robustopt.method_nnmcs API Reference<a class="headerlink" href="#pyegrorobustoptmethod_nnmcs-api-reference" title="Permanent link">&para;</a></h1>
+<p>This document provides detailed API documentation for the PyEGRO.robustopt.method_nnmcs module, a two-stage approach for robust optimization that combines Neural Networks (NN) with Monte Carlo Simulation (MCS) for efficient uncertainty quantification.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#configuration-classes">Configuration Classes</a></li>
+<li><a href="#main-optimization-class">Main Optimization Class</a></li>
+<li><a href="#pipeline-stages">Pipeline Stages</a></li>
+<li><a href="#usage-notes">Usage Notes</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Two-Stage Robust Optimization approach addresses the computational challenge in traditional robust optimization by using neural networks to accelerate the optimization process. It consists of the following main steps:</p>
+<ol>
+<li><strong>Uncertainty Propagation</strong>: Sample design points and perform low-fidelity MCS to generate training data</li>
+<li><strong>Hyperparameter Optimization</strong>: Find optimal neural network architectures for predicting mean and standard deviation</li>
+<li><strong>Neural Network Training</strong>: Train surrogate models to predict statistical moments</li>
+<li><strong>Two-Stage Optimization</strong>: Use neural networks in optimization loop with verification by high-fidelity MCS</li>
+</ol>
+<p>This approach provides a balance between computational efficiency and solution accuracy.</p>
+<hr />
+<h2 id="configuration-classes">Configuration Classes<a class="headerlink" href="#configuration-classes" title="Permanent link">&para;</a></h2>
+<h3 id="annconfig"><code>ANNConfig</code><a class="headerlink" href="#annconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for neural network hyperparameters and training settings.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_nnmcs</span> <span class="kn">import</span> <span class="n">ANNConfig</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">ann_config</span> <span class="o">=</span> <span class="n">ANNConfig</span><span class="p">(</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">n_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">hyperparameter_ranges</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="s1">&#39;n_layers&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="s1">&#39;n_units&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">),</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="s1">&#39;max_epochs&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="s1">&#39;activations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ReLU&#39;</span><span class="p">,</span> <span class="s1">&#39;LeakyReLU&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="s1">&#39;optimizers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Adam&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="s1">&#39;loss_functions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MSELoss&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>n_trials</code> (int): Number of hyperparameter optimization trials</li>
+<li><code>n_jobs</code> (int): Number of parallel jobs (-1 for all available cores)</li>
+<li><code>hyperparameter_ranges</code> (Dict): Dictionary of hyperparameter ranges for optimization</li>
+</ul>
+<h3 id="samplingconfig"><code>SamplingConfig</code><a class="headerlink" href="#samplingconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for sampling parameters in the pipeline.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_nnmcs</span> <span class="kn">import</span> <span class="n">SamplingConfig</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">sampling_config</span> <span class="o">=</span> <span class="n">SamplingConfig</span><span class="p">(</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">n_lhs_samples</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">n_mcs_samples_low</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">n_mcs_samples_high</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>n_lhs_samples</code> (int): Number of LHS design samples for initial sampling</li>
+<li><code>n_mcs_samples_low</code> (int): Number of MCS samples for low-fidelity uncertainty propagation (training)</li>
+<li><code>n_mcs_samples_high</code> (int): Number of MCS samples for high-fidelity verification</li>
+<li><code>random_seed</code> (int): Random seed for reproducibility</li>
+</ul>
+<h3 id="optimizationconfig"><code>OptimizationConfig</code><a class="headerlink" href="#optimizationconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for optimization parameters.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_nnmcs</span> <span class="kn">import</span> <span class="n">OptimizationConfig</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">opt_config</span> <span class="o">=</span> <span class="n">OptimizationConfig</span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">pop_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">n_gen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;hv&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">reference_point</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>pop_size</code> (int): Population size for NSGA-II</li>
+<li><code>n_gen</code> (int): Number of generations for optimization</li>
+<li><code>prefer_gpu</code> (bool): Whether to use GPU if available</li>
+<li><code>verbose</code> (bool): Whether to print detailed information</li>
+<li><code>random_seed</code> (int): Random seed for reproducibility</li>
+<li><code>metric</code> (str): Performance metric ('hv' for hypervolume)</li>
+<li><code>reference_point</code> (np.ndarray, optional): Reference point for hypervolume calculation</li>
+</ul>
+<h3 id="pathconfig"><code>PathConfig</code><a class="headerlink" href="#pathconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for file paths used in the pipeline.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_nnmcs</span> <span class="kn">import</span> <span class="n">PathConfig</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">path_config</span> <span class="o">=</span> <span class="n">PathConfig</span><span class="p">(</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;gpr&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_GPR&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">ann_model_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_MODEL_ANN&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">results_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_PARETO_FRONT_TWOSTAGE&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">qoi_dir</span><span class="o">=</span><span class="s1">&#39;RESULT_QOI&#39;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>model_type</code> (str): Type of metamodel ('gpr', 'cokriging', etc.)</li>
+<li><code>model_dir</code> (str): Directory for surrogate model</li>
+<li><code>ann_model_dir</code> (str): Directory for neural network models</li>
+<li><code>data_info_path</code> (str): Path to data_info.json file</li>
+<li><code>results_dir</code> (str): Directory for optimization results</li>
+<li><code>qoi_dir</code> (str): Directory for uncertainty quantification results</li>
+</ul>
+<hr />
+<h2 id="main-optimization-class">Main Optimization Class<a class="headerlink" href="#main-optimization-class" title="Permanent link">&para;</a></h2>
+<h3 id="robustoptimization"><code>RobustOptimization</code><a class="headerlink" href="#robustoptimization" title="Permanent link">&para;</a></h3>
+<p>Main class that orchestrates the two-stage robust optimization process.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.robustopt.method_nnmcs</span> <span class="kn">import</span> <span class="n">RobustOptimization</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RobustOptimization</span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">ann_config</span><span class="o">=</span><span class="n">ann_config</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">sampling_config</span><span class="o">=</span><span class="n">sampling_config</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">optimization_config</span><span class="o">=</span><span class="n">opt_config</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">path_config</span><span class="o">=</span><span class="n">path_config</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">pareto_set</span><span class="p">,</span> <span class="n">pareto_front</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="constructor-parameters">Constructor Parameters<a class="headerlink" href="#constructor-parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>ann_config</code> (ANNConfig): Neural network configuration</li>
+<li><code>sampling_config</code> (SamplingConfig): Sampling configuration</li>
+<li><code>optimization_config</code> (OptimizationConfig): Optimization configuration</li>
+<li><code>path_config</code> (PathConfig): Path configuration</li>
+</ul>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="run-tuplenpndarray-npndarray"><code>run() -&gt; Tuple[np.ndarray, np.ndarray]</code><a class="headerlink" href="#run-tuplenpndarray-npndarray" title="Permanent link">&para;</a></h5>
+<p>Run the complete two-stage robust optimization pipeline.</p>
+<p><strong>Returns:</strong> Tuple containing the Pareto set and Pareto front</p>
+<hr />
+<h2 id="pipeline-stages">Pipeline Stages<a class="headerlink" href="#pipeline-stages" title="Permanent link">&para;</a></h2>
+<p>The two-stage robust optimization pipeline consists of four main stages:</p>
+<h3 id="1-uncertainty-propagation">1. Uncertainty Propagation<a class="headerlink" href="#1-uncertainty-propagation" title="Permanent link">&para;</a></h3>
+<p>Samples design points using Latin Hypercube Sampling (LHS) and performs low-fidelity Monte Carlo Simulation (MCS) to generate training data for the neural networks. This stage produces a dataset of design points and their corresponding statistical moments (mean and standard deviation).</p>
+<h3 id="2-hyperparameter-optimization">2. Hyperparameter Optimization<a class="headerlink" href="#2-hyperparameter-optimization" title="Permanent link">&para;</a></h3>
+<p>Uses Optuna to find optimal neural network architectures for predicting the mean and standard deviation. This stage searches through the hyperparameter space defined in <code>ANNConfig</code> to find configurations that minimize validation loss.</p>
+<h3 id="3-neural-network-training">3. Neural Network Training<a class="headerlink" href="#3-neural-network-training" title="Permanent link">&para;</a></h3>
+<p>Trains two neural networks using the best hyperparameters:
+- One for predicting the mean of the objective function
+- One for predicting the standard deviation of the objective function</p>
+<p>These neural networks serve as fast surrogate models for the statistical moments.</p>
+<h3 id="4-two-stage-optimization">4. Two-Stage Optimization<a class="headerlink" href="#4-two-stage-optimization" title="Permanent link">&para;</a></h3>
+<p>Performs multi-objective optimization using the trained neural networks for fast evaluations. The optimization seeks to find the Pareto front balancing performance (mean) and robustness (standard deviation). Final solutions are verified using high-fidelity MCS.</p>
+<hr />
+<h2 id="usage-notes">Usage Notes<a class="headerlink" href="#usage-notes" title="Permanent link">&para;</a></h2>
+<h3 id="gpu-acceleration">GPU Acceleration<a class="headerlink" href="#gpu-acceleration" title="Permanent link">&para;</a></h3>
+<p>The pipeline supports GPU acceleration for both neural network training and surrogate model evaluations. Set <code>prefer_gpu=True</code> in <code>OptimizationConfig</code> to use GPU if available.</p>
+<h3 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h3>
+<p>The pipeline creates several directories to store intermediate and final results:
+- <code>qoi_dir</code>: Contains uncertainty propagation results
+- <code>ann_model_dir</code>: Contains trained neural network models
+- <code>results_dir</code>: Contains final optimization results</p>
+<h3 id="model-types">Model Types<a class="headerlink" href="#model-types" title="Permanent link">&para;</a></h3>
+<p>The pipeline supports different types of surrogate models through the <code>model_type</code> parameter in <code>PathConfig</code>:
+- 'gpr': Gaussian Process Regression
+- 'cokriging': Cokriging (multi-fidelity) models</p>
+<h3 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h3>
+<p>The pipeline can be customized through the configuration classes:
+- Modify <code>hyperparameter_ranges</code> in <code>ANNConfig</code> to explore different neural network architectures
+- Adjust sample sizes in <code>SamplingConfig</code> to balance accuracy and computational cost
+- Change optimization parameters in <code>OptimizationConfig</code> to control convergence behavior</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../approach-pce/robust_pce_api_reference/" class="btn btn-neutral float-left" title="PCE Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../sensitivity/approach-mcs/samcs_api_reference/" class="btn btn-neutral float-right" title="MCS Approach">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/your-username/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../approach-pce/robust_pce_api_reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../sensitivity/approach-mcs/samcs_api_reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="../../../../javascripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

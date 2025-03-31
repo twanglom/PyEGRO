@@ -1,38 +1,107 @@
-/* Adjust the logo size */
-.md-header__button.md-logo img {
-    width: 90px;  /* Adjust this value to make logo smaller/larger */
-    height: 60px;
+/* Fix ReadTheDocs theme for MathJax */
+
+/* Ensure code blocks have copy buttons */
+pre {
+    position: relative;
+  }
+  
+  pre::after {
+    content: "Copy";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2980b9;
+    color: white;
+    padding: 2px 7px;
+    font-size: 12px;
+    cursor: pointer;
+    display: none;
+    border-radius: 0 0 0 4px;
+  }
+  
+  pre:hover::after {
+    display: block;
+  }
+  
+  /* This script will be added by the JavaScript */
+  pre::after:active {
+    content: "Copied!";
+    background: #27ae60;
+  }
+  
+  /* Math formatting for ReadTheDocs */
+  .math {
+    overflow-x: auto;
+    padding: 1em 0;
+  }
+  
+  /* Prevent line-breaking within math expressions */
+  mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  /* Add some visual indication while MathJax is loading */
+  .mathjax-loading .math {
+    min-height: 2em;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mathjax-loading .math::before {
+    content: "Loading math...";
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  /* Additional styles to make ReadTheDocs navigation better */ 
+  .wy-nav-side {
+    background: #2e3d4d;
+  }
+  
+  .wy-menu-vertical li.current {
+    background: #e3e3e3;
+  }
+  
+  .wy-menu-vertical li.current > a {
+    color: #444;
+    border-right: solid 1px #c9c9c9;
+    padding: 0.4em 1em;
+  }
+  
+  /* Improve spacing for tables */
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  table td, table th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+  }
+  
+
+
+
+/* Make main content use more of the available space */
+.wy-nav-content {
+    max-width: 1200px !important; /* Increase from default (~800px) */
 }
 
-/* Center the logo */
-.md-header__button.md-logo {
-    margin: auto;
-    padding: 0.3rem;
+/* For very wide screens, you can remove the max width entirely */
+@media screen and (min-width: 1500px) {
+    .wy-nav-content {
+        max-width: none !important;
+    }
 }
 
-/* Adjust header height if needed */
-.md-header {
-    height: 3rem;
+/* Ensure content expands properly */
+.rst-content {
+    width: 100%;
 }
-
-/* Make site title larger or smaller */
-.md-header__title {
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-}
-
-/* Optional: Add some spacing between logo and title */
-.md-header__title {
-    margin-left: 1rem;
-}
-
-
-.mathjax-loading {
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-}
-
-.mathjax-loaded {
-    opacity: 1;
-}
-
