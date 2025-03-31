@@ -124,8 +124,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#supported-distributions">Supported Distributions</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#uncertainty-specification-methods">Uncertainty Specification Methods</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#module-functions">Module Functions</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#get_version">get_version</a>
@@ -483,50 +481,32 @@
 </ul>
 <h2 id="supported-distributions">Supported Distributions<a class="headerlink" href="#supported-distributions" title="Permanent link">&para;</a></h2>
 <p>The following distributions are supported for design and environment variables:</p>
-<ol>
-<li><strong>Uniform</strong>: Constant probability within range</li>
-<li>Required parameters for env variables: <code>low</code>/<code>high</code> or <code>min</code>/<code>max</code></li>
+<p><strong>Uniform</strong>: Constant probability within interval</p>
+<ul>
 <li>
-<p>For design variables: <code>delta</code> (when using uniform uncertainty)</p>
+<p>Required parameters  </p>
+<p>env variables: <code>low</code>/<code>high</code> or <code>min</code>/<code>max</code></p>
+<p>design variables: <code>delta</code> </p>
 </li>
-<li>
+</ul>
 <p><strong>Normal</strong>: Gaussian distribution</p>
-</li>
-<li>Required parameters for env variables: <code>mean</code> plus either <code>cov</code> or <code>std</code> </li>
-<li>For design variables: <code>cov</code> or <code>std</code> for uncertainty specification</li>
+<ul>
 <li>
+<p>Required parameters </p>
+<p>env variables: <code>mean</code> plus either <code>cov</code> or <code>std</code> </p>
+<p>design variables: <code>cov</code> or <code>std</code> </p>
 <p>Optional parameters: <code>lower</code>, <code>upper</code> (for truncation)</p>
 </li>
-<li>
+</ul>
 <p><strong>Lognormal</strong>: Natural logarithm follows normal distribution</p>
-</li>
-<li>Required parameters: <code>mean</code> plus either <code>cov</code> or <code>std</code></li>
-<li>Optional parameters: <code>lower</code>, <code>upper</code> (for truncation)</li>
-</ol>
-<h2 id="uncertainty-specification-methods">Uncertainty Specification Methods<a class="headerlink" href="#uncertainty-specification-methods" title="Permanent link">&para;</a></h2>
-<p>PyEGRO supports three approaches for specifying uncertainty in design variables:</p>
-<ol>
-<li><strong>Coefficient of Variation (CoV)</strong>: Uses a value proportional to the design point</li>
-<li>Good for: Variables where uncertainty scales with magnitude</li>
-<li>Parameter: <code>cov</code> </li>
+<ul>
 <li>
-<p>Example: <code>cov=0.1</code> means 10% uncertainty around design point</p>
+<p>Required parameters </p>
+<p>env variables: <code>mean</code> plus either <code>cov</code> or <code>std</code> </p>
+<p>design variables: <code>cov</code> or <code>std</code> </p>
+<p>Optional parameters: <code>lower</code>, <code>upper</code> (for truncation)</p>
 </li>
-<li>
-<p><strong>Standard Deviation (Std)</strong>: Uses a fixed value for all design points</p>
-</li>
-<li>Good for: Variables where uncertainty is constant regardless of magnitude</li>
-<li>Parameter: <code>std</code></li>
-<li>
-<p>Example: <code>std=0.5</code> means fixed uncertainty of 0.5 units</p>
-</li>
-<li>
-<p><strong>Delta (Uniform Uncertainty)</strong>: Uses uniform distribution with fixed half-width</p>
-</li>
-<li>Good for: Variables with bounded, uniform uncertainty</li>
-<li>Parameter: <code>delta</code></li>
-<li>Example: <code>delta=0.1</code> means uniform distribution ±0.1 around design point</li>
-</ol>
+</ul>
 <h2 id="module-functions">Module Functions<a class="headerlink" href="#module-functions" title="Permanent link">&para;</a></h2>
 <h3 id="get_version"><code>get_version</code><a class="headerlink" href="#get_version" title="Permanent link">&para;</a></h3>
 <p>Return the current version of the module.</p>
