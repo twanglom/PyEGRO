@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://twanglom.github.io/PyEGRO/examples/sensitivity-analysis-benchmarks/using-analytical-function/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Benchmarks - PyEGRO Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Benchmarks";
+        var mkdocs_page_input_path = "examples\\sensitivity-analysis-benchmarks\\using-analytical-function.md";
+        var mkdocs_page_url = "/PyEGRO/examples/sensitivity-analysis-benchmarks/using-analytical-function/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../..">
+          <img src="../../../assets/logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../getting-started/quickstart/">Quick Start</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Basic Usage</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../basic-usage/doe/doe_examples/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/gpr/gpr_examples/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/cokriging/cokriging_examples/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-gpr/egogpr_examples/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/ego-cokriging/egocokriging_examples/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/meta/model-evalulation/modeltesting_examples/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/robustopt/approach-mcs/robustopt_mcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/robustopt/approach-pce/robustopt_pce_examples/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/robustopt/approach-nnmcs/robustopt_nnmcs_examples/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-mcs/samcs_examples/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/sensitivity/approach-pce/sapce_examples/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Examples</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Sensitivity Analysis</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Benchmarks</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#1-introduction">1. Introduction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-theoretical-values">2. Theoretical Values</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#21-ishigami-function">2.1 Ishigami Function</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22-hartmann-6-d-function">2.2 Hartmann 6-D Function</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#23-a1-function-k-function">2.3 A1 Function (k-function)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-implementation-with-pyegro">3. Implementation with PyEGRO</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#31-ishigami-function-implementation">3.1 Ishigami Function Implementation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#32-hartmann-6-d-function-implementation">3.2 Hartmann 6-D Function Implementation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#33-a1-function-k-function-implementation">3.3 A1 Function (k-function) Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-comparison-of-mcs-and-pce">4. Comparison of MCS and PCE</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#41-monte-carlo-simulation-mcs">4.1 Monte Carlo Simulation (MCS)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#42-polynomial-chaos-expansion-pce">4.2 Polynomial Chaos Expansion (PCE)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../using-metamodel/">Benchmarks (using metamodel)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ego-metamodel-examples/">Metamodel Training via EGO</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../uq-examples/">Uncertainty Propagation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../robust-example/">Robust Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../api-reference/doe/doe_api_reference/">Design of Experiment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Metamodeling</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/gpr/gpr_api_reference/">GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/cokriging/cokriging_api_reference/">Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/ego-gpr/egogpr_api_reference/">EGO-GPR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/ego-cokriging/egocokriging_api_reference/">EGO-Cokriging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/meta/model-evalulation/modeltesting_api_reference/">Model Evaluation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Robust Optimization</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-mcs/robustopt_mcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-pce/robustopt_pce_api_reference/">PCE Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/robustopt/approach-nnmcs/robustopt_nnmcs_api_reference/">NNMCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Sensitivity Analysis</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/sensitivity/approach-mcs/samcs_api_reference/">MCS Approach</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/sensitivity/approach-pce/sapce_api_reference/">PCE Approach</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Uncertainty Quantification</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../api-reference/uncertainty/approach-mcs/uqmcs_api_reference/">MCS Approach</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">PyEGRO Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Application Examples</li>
+          <li class="breadcrumb-item">Sensitivity Analysis</li>
+      <li class="breadcrumb-item active">Benchmarks</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/twanglom/PyEGRO.git/edit/master/docs/examples/sensitivity-analysis-benchmarks/using-analytical-function.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sensitivity-analysis-benchmarking-with-pyegro">Sensitivity Analysis Benchmarking with PyEGRO<a class="headerlink" href="#sensitivity-analysis-benchmarking-with-pyegro" title="Permanent link">&para;</a></h1>
+<p>This document demonstrates the implementation of benchmark functions for sensitivity analysis using the PyEGRO library. The theoretical values are based on the paper: <strong>[1] Azzini, I., &amp; Rosati, R. (2022). A function dataset for benchmarking in sensitivity analysis. <em>Data in Brief</em>, <em>42</em>, 108071.</strong></p>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>Sensitivity analysis helps identify how different input variables affect model outputs. The PyEGRO library provides tools to perform sensitivity analysis on various functions. In this benchmarking, we'll implement three well-known test functions:</p>
+<ol>
+<li>Ishigami function</li>
+<li>Hartmann 6-D function</li>
+<li>A1 function (k-function)</li>
+</ol>
+<p>We'll compare our computed sensitivity indices with the analytical values provided in the literature using two different methods:
+- Monte Carlo simulation (MCS)
+- Polynomial Chaos Expansion (PCE)</p>
+<h2 id="2-theoretical-values">2. Theoretical Values<a class="headerlink" href="#2-theoretical-values" title="Permanent link">&para;</a></h2>
+<h3 id="21-ishigami-function">2.1 Ishigami Function<a class="headerlink" href="#21-ishigami-function" title="Permanent link">&para;</a></h3>
+<p><strong>Formula</strong>:
+<span class="arithmatex">\(f(X) = \sin(x_1) + 7 \cdot \sin^2(x_2) + 0.1 \cdot x_3^4 \cdot \sin(x_1)\)</span></p>
+<p><strong>Analytical Sensitivity Indices</strong>:</p>
+<p>First-order indices (Si):
+- <code>S₁ = 0.3138, S₂ = 0.4413, S₃ = 0</code></p>
+<p>Total-order indices (STi):
+- <code>ST₁ = 0.5575889, ST₂ = 0.4424111, ST₃ = 0.2436837</code></p>
+<h3 id="22-hartmann-6-d-function">2.2 Hartmann 6-D Function<a class="headerlink" href="#22-hartmann-6-d-function" title="Permanent link">&para;</a></h3>
+<p><strong>Formula</strong>:
+<span class="arithmatex">\(f(X) = -\sum_{j=1}^{4} \alpha_j \exp(-\sum_{k=1}^{6} A_{j,k}(x_k - P_{j,k})^2)\)</span></p>
+<p>With:
+- alpha = [1.0, 1.2, 3.0, 3.2]
+- A = [10, 3, 17, 3.50, 1.7, 8; 0.05, 10, 17, 0.1, 8, 14; 3, 3.5, 1.7, 10, 17, 8; 17, 8, 0.05, 10, 0.1, 14]
+- P = 10⁻⁴ × [1312, 1696, 5569, 124, 8283, 5886; 2329, 4135, 8307, 3736, 1004, 9991; 2348, 1451, 3522, 2883, 3047, 6650; 4047, 8828, 8732, 5743, 1091, 381]</p>
+<p><strong>Analytical Sensitivity Indices</strong>:</p>
+<p>First-order indices (Si):
+- <code>S₁ = 0.115, S₂ = 0.00699, S₃ = 0.00715, S₄ = 0.0888, S₅ = 0.109, S₆ = 0.0139</code></p>
+<p>Total-order indices (STi):
+- <code>ST₁ = 0.344, ST₂ = 0.398, ST₃ = 0.0515, ST₄ = 0.381, ST₅ = 0.297, ST₆ = 0.482</code></p>
+<h3 id="23-a1-function-k-function">2.3 A1 Function (k-function)<a class="headerlink" href="#23-a1-function-k-function" title="Permanent link">&para;</a></h3>
+<p><strong>Formula</strong>: 
+<span class="arithmatex">\(f(X) = \sum_{j=1}^{k} (-1)^j \cdot \prod_{i=1}^j x_i\)</span></p>
+<p><strong>Analytical Sensitivity Indices (n = 10)</strong>:</p>
+<p>First-order indices (Si):
+- <code>S₁ = 0.67, S₂ = 0.17, S₃ = 0.041, S₄ = 0.01, S₅ = 0.0025, S₆ = 0.00069, S₇ = 0.00014, S₈ = 0.000051, S₉ = S₁₀ = 0.0000057</code></p>
+<p>Total-order indices (STi):
+- <code>ST₁ = 0.75, ST₂ = 0.25, ST₃ = 0.083, ST₄ = 0.028, ST₅ = 0.0092, ST₆ = 0.0032, ST₇ = 0.00093, ST₈ = 0.00042, ST₉ = ST₁₀ = 0.000076</code></p>
+<h2 id="3-implementation-with-pyegro">3. Implementation with PyEGRO<a class="headerlink" href="#3-implementation-with-pyegro" title="Permanent link">&para;</a></h2>
+<h3 id="31-ishigami-function-implementation">3.1 Ishigami Function Implementation<a class="headerlink" href="#31-ishigami-function-implementation" title="Permanent link">&para;</a></h3>
+<h4 id="311-monte-carlo-simulation-approach">3.1.1 Monte Carlo Simulation Approach<a class="headerlink" href="#311-monte-carlo-simulation-approach" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Define the Ishigami function</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span> <span class="nf">ishigami_function</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">7</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">b</span> <span class="o">=</span> <span class="mf">0.1</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">x1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">x2</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">x3</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x3</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Define data_info with variable definitions</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">data_info</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="s1">&#39;variables&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;x1&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="s1">&#39;vars_type&#39;</span><span class="p">:</span> <span class="s1">&#39;design_vars&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            <span class="s1">&#39;range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;First input variable&#39;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="p">},</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="p">{</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="s1">&#39;vars_type&#39;</span><span class="p">:</span> <span class="s1">&#39;design_vars&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>            <span class="s1">&#39;range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Second input variable&#39;</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="p">},</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="p">{</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>            <span class="s1">&#39;vars_type&#39;</span><span class="p">:</span> <span class="s1">&#39;design_vars&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>            <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            <span class="s1">&#39;range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Third input variable&#39;</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="p">}</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="p">]</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="p">}</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="c1"># Save data_info to a JSON file</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_info</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="c1"># Run the analysis</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">results_df</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">ishigami_function</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># Increased sample size for better accuracy</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA_ISHIGAMI&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="p">)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="c1"># Display and compare results with theoretical values</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ishigami Function Sensitivity Analysis Results (Monte Carlo):&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="nb">print</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="312-polynomial-chaos-expansion-approach">3.1.2 Polynomial Chaos Expansion Approach<a class="headerlink" href="#312-polynomial-chaos-expansion-approach" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">###===============================</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Using Polynomial Chaos Expansion</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">###===============================</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SApce</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Run the analysis</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">results_df_pce</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">ishigami_function</span><span class="p">,</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA_ISHIGAMI_PCE&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Sensitivity Indices Simulation for Ishigami Function" src="../sensitivity_indices_Ishigami.png" width="800" /></p>
+<h3 id="32-hartmann-6-d-function-implementation">3.2 Hartmann 6-D Function Implementation<a class="headerlink" href="#32-hartmann-6-d-function-implementation" title="Permanent link">&para;</a></h3>
+<h4 id="321-monte-carlo-simulation-approach">3.2.1 Monte Carlo Simulation Approach<a class="headerlink" href="#321-monte-carlo-simulation-approach" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Define the Hartmann 6-D function</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">def</span> <span class="nf">hartmann_6d_function</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">])</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="p">])</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="n">P</span> <span class="o">=</span> <span class="mf">1e-4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="p">[</span><span class="mi">1312</span><span class="p">,</span> <span class="mi">1696</span><span class="p">,</span> <span class="mi">5569</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">8283</span><span class="p">,</span> <span class="mi">5886</span><span class="p">],</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="p">[</span><span class="mi">2329</span><span class="p">,</span> <span class="mi">4135</span><span class="p">,</span> <span class="mi">8307</span><span class="p">,</span> <span class="mi">3736</span><span class="p">,</span> <span class="mi">1004</span><span class="p">,</span> <span class="mi">9991</span><span class="p">],</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="p">[</span><span class="mi">2348</span><span class="p">,</span> <span class="mi">1451</span><span class="p">,</span> <span class="mi">3522</span><span class="p">,</span> <span class="mi">2883</span><span class="p">,</span> <span class="mi">3047</span><span class="p">,</span> <span class="mi">6650</span><span class="p">],</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="p">[</span><span class="mi">4047</span><span class="p">,</span> <span class="mi">8828</span><span class="p">,</span> <span class="mi">8732</span><span class="p">,</span> <span class="mi">5743</span><span class="p">,</span> <span class="mi">1091</span><span class="p">,</span> <span class="mi">381</span><span class="p">]</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="p">])</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="n">outer_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>            <span class="n">inner_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>                <span class="n">inner_sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">P</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>            <span class="n">outer_sum</span> <span class="o">+=</span> <span class="n">alpha</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">inner_sum</span><span class="p">)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">outer_sum</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    <span class="k">return</span> <span class="n">result</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="c1"># Define data_info with variable definitions for Hartmann function</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="n">data_info</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>    <span class="s1">&#39;variables&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;x</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>         <span class="s1">&#39;vars_type&#39;</span><span class="p">:</span> <span class="s1">&#39;design_vars&#39;</span><span class="p">,</span> 
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>         <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> 
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>         <span class="s1">&#39;range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Input variable </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span> 
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>    <span class="p">]</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="p">}</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="c1"># Save data_info to a JSON file</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION/data_info_hartmann.json&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_info</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="c1"># Run the analysis</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="n">results_df</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info_hartmann.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">hartmann_6d_function</span><span class="p">,</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span>  <span class="c1"># Higher sample size for 6D function</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA_HARTMANN&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="p">)</span>
+</code></pre></div>
+<h4 id="322-polynomial-chaos-expansion-approach">3.2.2 Polynomial Chaos Expansion Approach<a class="headerlink" href="#322-polynomial-chaos-expansion-approach" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">###===============================</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Using Polynomial Chaos Expansion</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">###===============================</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SApce</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Run the analysis with PCE</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">results_df_pce</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info_hartmann.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">hartmann_6d_function</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>   
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA_HARTMANN_PCE&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># Run PCE analysis for the Hartmann 6-D function</span>
+</code></pre></div>
+<p><img alt="Sensitivity Indices Simulation for Hartmann Function" src="../sensitivity_indices_Hartmann.png" width="800" /></p>
+<h3 id="33-a1-function-k-function-implementation">3.3 A1 Function (k-function) Implementation<a class="headerlink" href="#33-a1-function-k-function-implementation" title="Permanent link">&para;</a></h3>
+<h4 id="331-monte-carlo-simulation-approach">3.3.1 Monte Carlo Simulation Approach<a class="headerlink" href="#331-monte-carlo-simulation-approach" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Define the A1 function (k-function)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">def</span> <span class="nf">a1_function</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">n_vars</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">sample_result</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_vars</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>            <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">j</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>                <span class="n">term</span> <span class="o">*=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="n">sample_result</span> <span class="o">+=</span> <span class="n">term</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_result</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="k">return</span> <span class="n">result</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c1"># Define data_info with variable definitions for A1 function (k-function)</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="n">data_info</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="s1">&#39;variables&#39;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;x</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>         <span class="s1">&#39;vars_type&#39;</span><span class="p">:</span> <span class="s1">&#39;design_vars&#39;</span><span class="p">,</span> 
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>         <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> 
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>         <span class="s1">&#39;range_bounds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Input variable </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span> 
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># n = 10 as specified in the paper</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>    <span class="p">]</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="p">}</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="c1"># Save data_info to a JSON file</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;DATA_PREPARATION/data_info_a1.json&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_info</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="c1"># Run the analysis</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="n">results_df</span> <span class="o">=</span> <span class="n">run_sensitivity_analysis</span><span class="p">(</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info_a1.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>    <span class="n">true_func</span><span class="o">=</span><span class="n">a1_function</span><span class="p">,</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>    <span class="n">num_samples</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">,</span>  
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_SA_A1&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Sensitivity Indices Simulation for A1 k-function" src="../sensitivity_indices_k_function.png" width="800" /></p>
+<h2 id="4-comparison-of-mcs-and-pce">4. Comparison of MCS and PCE<a class="headerlink" href="#4-comparison-of-mcs-and-pce" title="Permanent link">&para;</a></h2>
+<p>The two methods used in this analysis have different characteristics:</p>
+<h3 id="41-monte-carlo-simulation-mcs">4.1 Monte Carlo Simulation (MCS)<a class="headerlink" href="#41-monte-carlo-simulation-mcs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pros</strong>: </li>
+<li>Robust for any type of model</li>
+<li>Can handle non-linear, non-monotonic relationships</li>
+<li>Convergence is independent of problem dimension</li>
+<li><strong>Cons</strong>:</li>
+<li>Computationally expensive, requiring many model evaluations</li>
+<li>Convergence rate is relatively slow (proportional to 1/√N)</li>
+</ul>
+<h3 id="42-polynomial-chaos-expansion-pce">4.2 Polynomial Chaos Expansion (PCE)<a class="headerlink" href="#42-polynomial-chaos-expansion-pce" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pros</strong>:</li>
+<li>More efficient for smooth functions</li>
+<li>Requires fewer model evaluations</li>
+<li>Provides analytical sensitivity indices from the polynomial representation</li>
+<li>Better convergence rates for low-dimensional smooth problems</li>
+<li><strong>Cons</strong>:</li>
+<li>Performance degrades in high dimensions (curse of dimensionality)</li>
+<li>Less suitable for highly non-linear or discontinuous functions</li>
+<li>Requires selection of polynomial order</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Azzini, I., &amp; Rosati, R. (2022). A function dataset for benchmarking in sensitivity analysis. <em>Data in Brief</em>, <em>42</em>, 108071.</li>
+<li>Sobol, I.M. (2001). Global sensitivity indices for nonlinear mathematical models and their Monte Carlo estimates. <em>Mathematics and Computers in Simulation</em>, <em>55</em>(1-3), 271-280.</li>
+<li>Saltelli, A., Ratto, M., Andres, T., Campolongo, F., Cariboni, J., Gatelli, D., Saisana, M., &amp; Tarantola, S. (2008). <em>Global Sensitivity Analysis: The Primer</em>. John Wiley &amp; Sons.</li>
+<li>Sudret, B. (2008). Global sensitivity analysis using polynomial chaos expansions. <em>Reliability Engineering &amp; System Safety</em>, <em>93</em>(7), 964-979.</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/" class="btn btn-neutral float-left" title="MCS Approach"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../using-metamodel/" class="btn btn-neutral float-right" title="Benchmarks (using metamodel)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/twanglom/PyEGRO.git" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../basic-usage/uncertainty/approach-mcs/uqmcs_examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../using-metamodel/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../scripts/mathjax.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
