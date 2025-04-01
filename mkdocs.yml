@@ -63,7 +63,9 @@ nav:
       - Uncertainty Quantification:
           - MCS Approach: basic-usage/uncertainty/approach-mcs/uqmcs_examples.md
   - Application Examples:
-      - Basics Metamodel Training: examples/basics-metamodel-examples/basics-metamodel-examples.md
+      - Sensitivity Analysis:
+          - Benchmarks: examples/sensitivity-analysis-benchmarks/using-analytical-function.md
+          - Benchmarks (using metamodel): examples/sensitivity-analysis-benchmarks/using-metamodel.md
       - Metamodel Training via EGO: examples/ego-metamodel-examples.md
       - Uncertainty Propagation: examples/uq-examples.md
       - Robust Optimization: examples/robust-example.md

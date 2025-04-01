@@ -55,6 +55,7 @@ Comprehensive training configurations for meta models and Built-in visualization
 - Monte Carlo Simulation methods for uncertainty propagation:
 - Moment estimation.
 - Distribution analysis (Kernel density function, KDF).
+- Reliability and Risk Assessment
 - Visualization of Mean and Confidence bounds on surrogate model (1D and 2D)
 - Data logging in .csv for post-processing 
 
@@ -65,13 +66,10 @@ Comprehensive training configurations for meta models and Built-in visualization
 **Thanasak Wanglomklang**  
 PhD Student in Mechanical Engineering  
 
-- **Email**: [thanasak.wanglomklang@ec-lyon.fr](mailto:thanasak.wanglomklang@ec-lyon.fr)  
-- **Phone**: +33 06 51 22 45 69  
-- **Location**: Lyon, France  
-- **Personal Website**: [twanglom.github.io](https://twanglom.github.io)  
-
 Hi, I’m Thanasak, a PhD student in Mechanical Engineering at École Centrale de Lyon, supervised by [Sébastien Besset](https://scholar.google.com/citations?user=mX1HMLcAAAAJ&hl=en) and [Frédéric Gillot](https://scholar.google.fr/citations?user=SuvV3LoAAAAJ&hl=fr). My research focuses on optimization under uncertainty, and computational vibro-acoustics, with applications in aircraft cabin shape optimization for noise reduction. I’m developing PyEGRO, a tool to address these challenges in my research. In future, aiming to support uncertainty-aware engineering design.
 
+- **Email**: [thanasak.wanglomklang@ec-lyon.fr](mailto:thanasak.wanglomklang@ec-lyon.fr)  
+- **Personal Website**: [twanglom.github.io](https://twanglom.github.io)  
 
 ---
 

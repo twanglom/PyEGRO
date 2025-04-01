@@ -209,20 +209,20 @@ print("\nVariables Ranked by Total-order Influence:")
 print(sorted_results[['Parameter', 'Total-order', 'First-order']])
 ```
 
-### Using a Surrogate Model
+### Using a Metamodel
 
-For computationally expensive models, you can use a surrogate model:
+For computationally expensive models, you can use a Metamodel:
 
 ```python
 import numpy as np
 from PyEGRO.sensitivity.SAmcs import run_sensitivity_analysis
 from PyEGRO.meta.gpr.gpr_utils import DeviceAgnosticGPR
 
-# Load a pre-trained surrogate model
+# Load a pre-trained Metamodel
 model_handler = DeviceAgnosticGPR(prefer_gpu=True)
 model_handler.load_model('RESULT_MODEL_GPR')
 
-# Run analysis with the surrogate model
+# Run analysis with the Metamodel
 results_df = run_sensitivity_analysis(
     data_info_path="DATA_PREPARATION/data_info.json",
     model_handler=model_handler,
