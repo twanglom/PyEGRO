@@ -245,19 +245,230 @@ Result folder:
 
 ![Pareto Front Folder Structure](pareto_folder.png){ width="150" }
 
-Looking at the Pareto front and the final solutions, we can observe two distinct regions:
 
-<span style="color:blue">**Solution A (around x=10)**</span>: This solution offers the best mean performance (lowest function value) but has higher uncertainty (standard deviation). This is because the peak at x=10 is very narrow, so small variations in x can lead to large changes in the output.
 
-<span style="color:blue">**Solution B (around x=20)**</span>: This solution has slightly worse mean performance but much better robustness (lower standard deviation). The peak at x=20 is wider, making the function less sensitive to variations in x.
+## Step 5: Perform Robustness Result Analysis
 
-This trade-off is clearly visible in the convergence history and final Pareto front, where we have two distinct clusters of solutions. A decision maker would need to choose between better performance (Solution A) or better robustness (Solution B) based on their specific requirements.
+After identifying the potential robust solutions from the Pareto front, we need to analyze them in detail to understand their reliability and performance characteristics under uncertainty. We'll separately analyze the two key solutions we identified: 
+
+> <span style="color:blue">**Solution B (x=20)**</span> which appears more robust.
+
+> <span style="color:blue">**Solution A (x=10)**</span> which has better mean performance
+
+
+### Solution B (x=20): 
+
+First, let's analyze the robustness characteristics of the solution at x=20:
+
+```python
+#===============================================================================
+# Analysis of Solution B (X = 20) - The More Robust Solution
+#===============================================================================
+
+import numpy as np
+from PyEGRO.uncertainty.UQmcs import UncertaintyPropagation
+from PyEGRO.meta.gpr import gpr_utils
+
+# Load a pre-trained surrogate model
+model_handler = gpr_utils.DeviceAgnosticGPR(prefer_gpu=True)
+model_handler.load_model('RESULT_MODEL_GPR')
+
+# Create UncertaintyPropagation instance with the surrogate model for X=20
+uq_study_x20 = UncertaintyPropagation(
+    data_info_path="DATA_PREPARATION/data_info.json",
+    model_handler=model_handler,
+    output_dir="RESULT_UQ_ANALYSIS_X20",
+    show_variables_info=True
+)
+
+# Analyze the point at x=20 (robust solution)
+robust_point = {'X1': 20.0}
+robust_result = uq_study_x20.analyze_specific_point(
+    design_point=robust_point,
+    num_mcs_samples=100000,
+    create_pdf=True,
+    create_reliability=True
+)
+
+# Print summary statistics for the robust solution
+print("\nRobust Solution (X = 20) Statistics:")
+print(f"Mean: {robust_result['statistics']['mean']:.4f}")
+print(f"Std Dev: {robust_result['statistics']['std']:.4f}")
+print(f"CoV: {robust_result['statistics']['cov']:.4f}")
+print(f"95% CI: [{robust_result['statistics']['percentiles']['2.5']:.4f}, "
+      f"{robust_result['statistics']['percentiles']['97.5']:.4f}]")
+
+# Calculate reliability index manually
+threshold = 130.0
+reliability_index = (threshold - robust_result['statistics']['mean']) / robust_result['statistics']['std']
+print(f"Reliability index for threshold {threshold}: {reliability_index:.4f}")
+```
+
+![Robustness Analysis for Solution x=20](robust_solution_x20.png){ width="1000" }
+
+The analysis for Solution B (x=20) shows:
+
+- **Mean response**: 120.31
+- **Standard deviation**: 0.54
+- **Coefficient of variation (CoV)**: 0.0045 (very low, indicating high robustness)
+- **95% Confidence Interval**: [119.92, 121.84] (narrow band)
+
+The PDF (left) shows a tight distribution with little spread, indicating high reliability. The Probability of Failure Curve (right) shows:
+
+- 95% probability of response being below 121.39
+- 50% probability of response being below 120.11
+- Very steep Probability of Failure Curve indicates predictable performance
+
+The **reliability index** for a threshold of `130.0` would be approximately `17.95`
+
+### Solution A (x=10): 
+
+Now, let's analyze the solution at x=10 separately:
+
+```python
+#===============================================================================
+# Analysis of Solution A (X = 10) - The Better Mean Performance Solution
+#===============================================================================
+
+# Create a separate UncertaintyPropagation instance for X=10
+uq_study_x10 = UncertaintyPropagation(
+    data_info_path="DATA_PREPARATION/data_info.json",
+    model_handler=model_handler,
+    output_dir="RESULT_UQ_ANALYSIS_X10",
+    show_variables_info=True
+)
+
+# Analyze the point at x=10 (better mean performance solution)
+optimal_point = {'X1': 10.0}
+optimal_result = uq_study_x10.analyze_specific_point(
+    design_point=optimal_point,
+    num_mcs_samples=100000,
+    create_pdf=True,
+    create_reliability=True
+)
+
+# Print summary statistics for the optimal solution
+print("\nOptimal Solution (X = 10) Statistics:")
+print(f"Mean: {optimal_result['statistics']['mean']:.4f}")
+print(f"Std Dev: {optimal_result['statistics']['std']:.4f}")
+print(f"CoV: {optimal_result['statistics']['cov']:.4f}")
+print(f"95% CI: [{optimal_result['statistics']['percentiles']['2.5']:.4f}, "
+      f"{optimal_result['statistics']['percentiles']['97.5']:.4f}]")
+
+# Calculate reliability index manually using the same threshold
+threshold = 130.0
+reliability_index = (threshold - optimal_result['statistics']['mean']) / optimal_result['statistics']['std']
+print(f"Reliability index for threshold {threshold}: {reliability_index:.4f}")
+```
+
+![Robustness Analysis for Solution x=10](robust_solution_x10.png){ width="1000" }
+
+The analysis for Solution A (x=10) shows:
+
+- **Mean response**: 110.49 (better than Solution B)
+- **Standard deviation**: 22.35 (much higher than Solution B)
+- **Coefficient of variation (CoV)**: 0.2023 (44.9 times higher than Solution B)
+- **95% Confidence Interval**: [89.18, 167.08] (very wide band)
+
+The PDF (left) shows a wide, spread-out distribution, indicating high variability. The Probability of Failure Curve (right) shows:
+
+- 95% probability of response being below 158.76
+- 50% probability of response being below 102.39
+- Shallow Probability of Failure Curve indicates unpredictable performance
+
+The reliability index for a threshold of 130.0 would be approximately 0.87, indicating relatively low reliability compared to Solution B.
+
+### Comparative Analysis
+
+The results clearly demonstrate the trade-off between optimality and robustness:
+
+## Solution Comparison
+
+<table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background-color: #3a506b; color: white; text-align: left;">
+      <th style="padding: 12px 15px; border-top-left-radius: 8px;">Metric</th>
+      <th style="padding: 12px 15px; text-align: center;">Solution A<br/><span style="font-weight: normal; font-size: 0.9em;">(x=10)</span></th>
+      <th style="padding: 12px 15px; text-align: center;">Solution B<br/><span style="font-weight: normal; font-size: 0.9em;">(x=20)</span></th>
+      <th style="padding: 12px 15px; border-top-right-radius: 8px;">Comparison</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Mean Response</td>
+      <td style="padding: 12px 15px; text-align: center; color: #2e7d32; font-weight: bold;">110.49</td>
+      <td style="padding: 12px 15px; text-align: center;">120.31</td>
+      <td style="padding: 12px 15px;"><span style="color: #2e7d32; font-weight: 500;">Solution A is 8.2% better</span></td>
+    </tr>
+    <tr style="background-color: white;">
+      <td style="padding: 12px 15px; font-weight: 500;">Standard Deviation</td>
+      <td style="padding: 12px 15px; text-align: center;">22.35</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">0.54</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is 41.4× more stable</span></td>
+    </tr>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Coefficient of Variation (CoV)</td>
+      <td style="padding: 12px 15px; text-align: center;">0.2023</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">0.0045</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is 44.9× more robust</span></td>
+    </tr>
+    <tr style="background-color: white;">
+      <td style="padding: 12px 15px; font-weight: 500;">95% CI Width</td>
+      <td style="padding: 12px 15px; text-align: center;">77.90</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">1.92</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B has 40.6× narrower confidence band</span></td>
+    </tr>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Reliability Index (β)<br/><span style="font-weight: normal; font-size: 0.85em;">(threshold = 130.0)</span></td>
+      <td style="padding: 12px 15px; text-align: center;">0.87</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">17.95</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is far more reliable</span></td>
+    </tr>
+  </tbody>
+</table>
+
+> **Common interpretation:** β > 3: Highly reliable | 2 < β < 3: Reliable | 1 < β < 2: Moderately reliable | β < 1: Less reliable
+
+### Understanding Reliability Index
+
+The reliability index (β) is a measure used in reliability engineering to quantify how far the mean response is from a critical threshold in terms of standard deviations:
+
+β = (Threshold - Mean) / StdDev
+
+- A **positive β** means the mean is below the threshold (desirable if we want to stay below the threshold)
+- A **negative β** means the mean is above the threshold
+- A **larger absolute value** of β indicates greater reliability
+
+
+For Solution B (x=20), the reliability index of 17.95 indicates virtually zero probability of exceeding the threshold of 130.0, whereas Solution A (x=10) with a reliability index of 0.87 has a non-negligible probability of exceeding the same threshold.
+
+## Decision Making
+
+When making a decision between these solutions, consider:
+
+> **Risk tolerance**: 
+
+- If you can tolerate variability for better mean performance, Solution A might be preferred
+- If consistent, predictable performance is critical, Solution B is superior
+
+> **Threshold requirements**:
+
+- If staying below 130.0 is critical, Solution B offers much greater reliability
+- If performance below 110.0 is highly desirable and occasional exceedances of higher thresholds are acceptable, Solution A might be preferred
+
+> **Worst-case scenarios**:
+
+- Solution B has a tight worst-case bound
+- Solution A could perform significantly worse in some cases
+
+
+
 
 ## Optional Extensions
 
-### 1. Uncertainty Quantification
+### 1. Uncertainty Quantification (entire input space)
 
-You can further analyze the uncertainty propagation at specific points:
+You can further analyze the uncertainty propagation entire input space:
 
 ```python
 from PyEGRO.meta.gpr import gpr_utils

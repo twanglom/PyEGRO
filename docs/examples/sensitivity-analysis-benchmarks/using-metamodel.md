@@ -471,19 +471,7 @@ results_df = run_sensitivity_analysis(
 
 ![Sensitivity Indices for A1 k-function using Metamodel](sensitivity_indices_metamodel_k_function.png){ width="800" }
 
-## 3. Metamodel Performance and Comparison
-
-The main benefit of metamodel-based sensitivity analysis is computational efficiency. With this approach, we only need a limited number of evaluations of the original function to train the metamodel, after which the sensitivity analysis can be performed using the much faster metamodel evaluations.
-
-| Function | Training Samples | Test Samples | Total Original Function Evaluations | SA Samples (on Metamodel) |
-|----------|------------------|-------------|-------------------------------------|---------------------------|
-| Ishigami | 200              | 50          | 250                                 | 8,192                     |
-| Hartmann | 500              | 100         | 600                                 | 16,384                    |
-| A1       | 1,000            | 200         | 1,200                               | 32,768                    |
-
-[This section can be used to display your comparison graphs showing metamodel-based vs. direct sensitivity indices]
-
-## 4. Conclusion
+## 3. Conclusion
 
 Metamodel-based sensitivity analysis provides a powerful approach for analyzing computationally expensive models. The key advantages include:
 

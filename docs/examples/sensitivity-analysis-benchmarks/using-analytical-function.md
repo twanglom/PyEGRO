@@ -255,8 +255,6 @@ results_df_pce = run_sensitivity_analysis(
 
 ### 3.3 A1 Function (k-function) Implementation
 
-#### 3.3.1 Monte Carlo Simulation Approach
-
 ```python
 import numpy as np
 from PyEGRO.sensitivity.SAmcs import run_sensitivity_analysis
