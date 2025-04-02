@@ -115,9 +115,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-metamodel-performance-and-comparison">3. Metamodel Performance and Comparison</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-conclusion">4. Conclusion</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-conclusion">3. Conclusion</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#references">References</a>
     </li>
@@ -640,44 +638,7 @@
 <a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="p">)</span>
 </code></pre></div>
 <p><img alt="Sensitivity Indices for A1 k-function using Metamodel" src="sensitivity_indices_metamodel_k_function.png" width="800" /></p>
-<h2 id="3-metamodel-performance-and-comparison">3. Metamodel Performance and Comparison<a class="headerlink" href="#3-metamodel-performance-and-comparison" title="Permanent link">&para;</a></h2>
-<p>The main benefit of metamodel-based sensitivity analysis is computational efficiency. With this approach, we only need a limited number of evaluations of the original function to train the metamodel, after which the sensitivity analysis can be performed using the much faster metamodel evaluations.</p>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Training Samples</th>
-<th>Test Samples</th>
-<th>Total Original Function Evaluations</th>
-<th>SA Samples (on Metamodel)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ishigami</td>
-<td>200</td>
-<td>50</td>
-<td>250</td>
-<td>8,192</td>
-</tr>
-<tr>
-<td>Hartmann</td>
-<td>500</td>
-<td>100</td>
-<td>600</td>
-<td>16,384</td>
-</tr>
-<tr>
-<td>A1</td>
-<td>1,000</td>
-<td>200</td>
-<td>1,200</td>
-<td>32,768</td>
-</tr>
-</tbody>
-</table>
-<p>[This section can be used to display your comparison graphs showing metamodel-based vs. direct sensitivity indices]</p>
-<h2 id="4-conclusion">4. Conclusion<a class="headerlink" href="#4-conclusion" title="Permanent link">&para;</a></h2>
+<h2 id="3-conclusion">3. Conclusion<a class="headerlink" href="#3-conclusion" title="Permanent link">&para;</a></h2>
 <p>Metamodel-based sensitivity analysis provides a powerful approach for analyzing computationally expensive models. The key advantages include:</p>
 <ol>
 <li><strong>Computational Efficiency</strong>: Only a limited number of original function evaluations are needed</li>
