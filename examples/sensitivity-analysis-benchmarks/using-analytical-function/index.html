@@ -341,7 +341,7 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Sensitivity Indices Simulation for Ishigami Function" src="../sensitivity_indices_Ishigami.png" width="800" /></p>
+<p><img alt="Sensitivity Indices Simulation for Ishigami Function" src="../sensitivity_indices_Ishigami.png" width="1000" /></p>
 <h3 id="32-hartmann-6-d-function-implementation">3.2 Hartmann 6-D Function Implementation<a class="headerlink" href="#32-hartmann-6-d-function-implementation" title="Permanent link">&para;</a></h3>
 <h4 id="321-monte-carlo-simulation-approach">3.2.1 Monte Carlo Simulation Approach<a class="headerlink" href="#321-monte-carlo-simulation-approach" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -427,7 +427,7 @@
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># Run PCE analysis for the Hartmann 6-D function</span>
 </code></pre></div>
-<p><img alt="Sensitivity Indices Simulation for Hartmann Function" src="../sensitivity_indices_Hartmann.png" width="800" /></p>
+<p><img alt="Sensitivity Indices Simulation for Hartmann Function" src="../sensitivity_indices_Hartmann.png" width="1000" /></p>
 <h3 id="33-a1-function-k-function-implementation">3.3 A1 Function (k-function) Implementation<a class="headerlink" href="#33-a1-function-k-function-implementation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.sensitivity.SAmcs</span> <span class="kn">import</span> <span class="n">run_sensitivity_analysis</span>
@@ -479,27 +479,31 @@
 <a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
 <a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Sensitivity Indices Simulation for A1 k-function" src="../sensitivity_indices_k_function.png" width="800" /></p>
+<p><img alt="Sensitivity Indices Simulation for A1 k-function" src="../sensitivity_indices_k_function.png" width="1000" /></p>
 <h2 id="4-comparison-of-mcs-and-pce">4. Comparison of MCS and PCE<a class="headerlink" href="#4-comparison-of-mcs-and-pce" title="Permanent link">&para;</a></h2>
 <p>The two methods used in this analysis have different characteristics:</p>
 <h3 id="41-monte-carlo-simulation-mcs">4.1 Monte Carlo Simulation (MCS)<a class="headerlink" href="#41-monte-carlo-simulation-mcs" title="Permanent link">&para;</a></h3>
+<p><strong>Pros</strong>: </p>
 <ul>
-<li><strong>Pros</strong>: </li>
 <li>Robust for any type of model</li>
 <li>Can handle non-linear, non-monotonic relationships</li>
 <li>Convergence is independent of problem dimension</li>
-<li><strong>Cons</strong>:</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
 <li>Computationally expensive, requiring many model evaluations</li>
 <li>Convergence rate is relatively slow (proportional to 1/√N)</li>
 </ul>
 <h3 id="42-polynomial-chaos-expansion-pce">4.2 Polynomial Chaos Expansion (PCE)<a class="headerlink" href="#42-polynomial-chaos-expansion-pce" title="Permanent link">&para;</a></h3>
+<p><strong>Pros</strong>:</p>
 <ul>
-<li><strong>Pros</strong>:</li>
 <li>More efficient for smooth functions</li>
 <li>Requires fewer model evaluations</li>
 <li>Provides analytical sensitivity indices from the polynomial representation</li>
 <li>Better convergence rates for low-dimensional smooth problems</li>
-<li><strong>Cons</strong>:</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
 <li>Performance degrades in high dimensions (curse of dimensionality)</li>
 <li>Less suitable for highly non-linear or discontinuous functions</li>
 <li>Requires selection of polynomial order</li>
