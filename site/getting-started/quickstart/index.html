@@ -63,9 +63,27 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#results">Results</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-5-perform-robustness-result-analysis">Step 5: Perform Robustness Result Analysis</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#solution-b-x20">Solution B (x=20):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#solution-a-x10">Solution A (x=10):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparative-analysis">Comparative Analysis</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#solution-comparison">Solution Comparison</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#understanding-reliability-index">Understanding Reliability Index</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#decision-making">Decision Making</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#optional-extensions">Optional Extensions</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-uncertainty-quantification">1. Uncertainty Quantification</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-uncertainty-quantification-entire-input-space">1. Uncertainty Quantification (entire input space)</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-efficient-global-optimization-ego">2. Efficient Global Optimization (EGO)</a>
     </li>
@@ -414,111 +432,304 @@
 <p><img alt="Pareto Front" src="../pareto_front.png" width="800" /></p>
 <p>Result folder:</p>
 <p><img alt="Pareto Front Folder Structure" src="../pareto_folder.png" width="150" /></p>
-<p>Looking at the Pareto front and the final solutions, we can observe two distinct regions:</p>
-<p><span style="color:blue"><strong>Solution A (around x=10)</strong></span>: This solution offers the best mean performance (lowest function value) but has higher uncertainty (standard deviation). This is because the peak at x=10 is very narrow, so small variations in x can lead to large changes in the output.</p>
-<p><span style="color:blue"><strong>Solution B (around x=20)</strong></span>: This solution has slightly worse mean performance but much better robustness (lower standard deviation). The peak at x=20 is wider, making the function less sensitive to variations in x.</p>
-<p>This trade-off is clearly visible in the convergence history and final Pareto front, where we have two distinct clusters of solutions. A decision maker would need to choose between better performance (Solution A) or better robustness (Solution B) based on their specific requirements.</p>
+<h2 id="step-5-perform-robustness-result-analysis">Step 5: Perform Robustness Result Analysis<a class="headerlink" href="#step-5-perform-robustness-result-analysis" title="Permanent link">&para;</a></h2>
+<p>After identifying the potential robust solutions from the Pareto front, we need to analyze them in detail to understand their reliability and performance characteristics under uncertainty. We'll separately analyze the two key solutions we identified: </p>
+<blockquote>
+<p><span style="color:blue"><strong>Solution B (x=20)</strong></span> which appears more robust.</p>
+<p><span style="color:blue"><strong>Solution A (x=10)</strong></span> which has better mean performance</p>
+</blockquote>
+<h3 id="solution-b-x20">Solution B (x=20):<a class="headerlink" href="#solution-b-x20" title="Permanent link">&para;</a></h3>
+<p>First, let's analyze the robustness characteristics of the solution at x=20:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Analysis of Solution B (X = 20) - The More Robust Solution</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kn">from</span> <span class="nn">PyEGRO.uncertainty.UQmcs</span> <span class="kn">import</span> <span class="n">UncertaintyPropagation</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.gpr</span> <span class="kn">import</span> <span class="n">gpr_utils</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Load a pre-trained surrogate model</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">model_handler</span> <span class="o">=</span> <span class="n">gpr_utils</span><span class="o">.</span><span class="n">DeviceAgnosticGPR</span><span class="p">(</span><span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">model_handler</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;RESULT_MODEL_GPR&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># Create UncertaintyPropagation instance with the surrogate model for X=20</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">uq_study_x20</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_UQ_ANALYSIS_X20&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="p">)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># Analyze the point at x=20 (robust solution)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="n">robust_point</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X1&#39;</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">robust_result</span> <span class="o">=</span> <span class="n">uq_study_x20</span><span class="o">.</span><span class="n">analyze_specific_point</span><span class="p">(</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">design_point</span><span class="o">=</span><span class="n">robust_point</span><span class="p">,</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="n">create_pdf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="n">create_reliability</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="p">)</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="c1"># Print summary statistics for the robust solution</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Robust Solution (X = 20) Statistics:&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Std Dev: </span><span class="si">{</span><span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CoV: </span><span class="si">{</span><span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;cov&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;95% CI: [</span><span class="si">{</span><span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;percentiles&#39;</span><span class="p">][</span><span class="s1">&#39;2.5&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, &quot;</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;percentiles&#39;</span><span class="p">][</span><span class="s1">&#39;97.5&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="c1"># Calculate reliability index manually</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="n">threshold</span> <span class="o">=</span> <span class="mf">130.0</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="n">reliability_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">threshold</span> <span class="o">-</span> <span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">robust_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reliability index for threshold </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">reliability_index</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Robustness Analysis for Solution x=20" src="../robust_solution_x20.png" width="1000" /></p>
+<p>The analysis for Solution B (x=20) shows:</p>
+<ul>
+<li><strong>Mean response</strong>: 120.31</li>
+<li><strong>Standard deviation</strong>: 0.54</li>
+<li><strong>Coefficient of variation (CoV)</strong>: 0.0045 (very low, indicating high robustness)</li>
+<li><strong>95% Confidence Interval</strong>: [119.92, 121.84] (narrow band)</li>
+</ul>
+<p>The PDF (left) shows a tight distribution with little spread, indicating high reliability. The Probability of Failure Curve (right) shows:</p>
+<ul>
+<li>95% probability of response being below 121.39</li>
+<li>50% probability of response being below 120.11</li>
+<li>Very steep Probability of Failure Curve indicates predictable performance</li>
+</ul>
+<p>The <strong>reliability index</strong> for a threshold of <code>130.0</code> would be approximately <code>17.95</code></p>
+<h3 id="solution-a-x10">Solution A (x=10):<a class="headerlink" href="#solution-a-x10" title="Permanent link">&para;</a></h3>
+<p>Now, let's analyze the solution at x=10 separately:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Analysis of Solution A (X = 10) - The Better Mean Performance Solution</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">#===============================================================================</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Create a separate UncertaintyPropagation instance for X=10</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">uq_study_x10</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s2">&quot;DATA_PREPARATION/data_info.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;RESULT_UQ_ANALYSIS_X10&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># Analyze the point at x=10 (better mean performance solution)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">optimal_point</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X1&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">optimal_result</span> <span class="o">=</span> <span class="n">uq_study_x10</span><span class="o">.</span><span class="n">analyze_specific_point</span><span class="p">(</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">design_point</span><span class="o">=</span><span class="n">optimal_point</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">create_pdf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">create_reliability</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Print summary statistics for the optimal solution</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimal Solution (X = 10) Statistics:&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Std Dev: </span><span class="si">{</span><span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CoV: </span><span class="si">{</span><span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;cov&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;95% CI: [</span><span class="si">{</span><span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;percentiles&#39;</span><span class="p">][</span><span class="s1">&#39;2.5&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, &quot;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;percentiles&#39;</span><span class="p">][</span><span class="s1">&#39;97.5&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="c1"># Calculate reliability index manually using the same threshold</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="n">threshold</span> <span class="o">=</span> <span class="mf">130.0</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="n">reliability_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">threshold</span> <span class="o">-</span> <span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">optimal_result</span><span class="p">[</span><span class="s1">&#39;statistics&#39;</span><span class="p">][</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reliability index for threshold </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">reliability_index</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Robustness Analysis for Solution x=10" src="../robust_solution_x10.png" width="1000" /></p>
+<p>The analysis for Solution A (x=10) shows:</p>
+<ul>
+<li><strong>Mean response</strong>: 110.49 (better than Solution B)</li>
+<li><strong>Standard deviation</strong>: 22.35 (much higher than Solution B)</li>
+<li><strong>Coefficient of variation (CoV)</strong>: 0.2023 (44.9 times higher than Solution B)</li>
+<li><strong>95% Confidence Interval</strong>: [89.18, 167.08] (very wide band)</li>
+</ul>
+<p>The PDF (left) shows a wide, spread-out distribution, indicating high variability. The Probability of Failure Curve (right) shows:</p>
+<ul>
+<li>95% probability of response being below 158.76</li>
+<li>50% probability of response being below 102.39</li>
+<li>Shallow Probability of Failure Curve indicates unpredictable performance</li>
+</ul>
+<p>The reliability index for a threshold of 130.0 would be approximately 0.87, indicating relatively low reliability compared to Solution B.</p>
+<h3 id="comparative-analysis">Comparative Analysis<a class="headerlink" href="#comparative-analysis" title="Permanent link">&para;</a></h3>
+<p>The results clearly demonstrate the trade-off between optimality and robustness:</p>
+<h2 id="solution-comparison">Solution Comparison<a class="headerlink" href="#solution-comparison" title="Permanent link">&para;</a></h2>
+<table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background-color: #3a506b; color: white; text-align: left;">
+      <th style="padding: 12px 15px; border-top-left-radius: 8px;">Metric</th>
+      <th style="padding: 12px 15px; text-align: center;">Solution A<br/><span style="font-weight: normal; font-size: 0.9em;">(x=10)</span></th>
+      <th style="padding: 12px 15px; text-align: center;">Solution B<br/><span style="font-weight: normal; font-size: 0.9em;">(x=20)</span></th>
+      <th style="padding: 12px 15px; border-top-right-radius: 8px;">Comparison</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Mean Response</td>
+      <td style="padding: 12px 15px; text-align: center; color: #2e7d32; font-weight: bold;">110.49</td>
+      <td style="padding: 12px 15px; text-align: center;">120.31</td>
+      <td style="padding: 12px 15px;"><span style="color: #2e7d32; font-weight: 500;">Solution A is 8.2% better</span></td>
+    </tr>
+    <tr style="background-color: white;">
+      <td style="padding: 12px 15px; font-weight: 500;">Standard Deviation</td>
+      <td style="padding: 12px 15px; text-align: center;">22.35</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">0.54</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is 41.4× more stable</span></td>
+    </tr>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Coefficient of Variation (CoV)</td>
+      <td style="padding: 12px 15px; text-align: center;">0.2023</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">0.0045</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is 44.9× more robust</span></td>
+    </tr>
+    <tr style="background-color: white;">
+      <td style="padding: 12px 15px; font-weight: 500;">95% CI Width</td>
+      <td style="padding: 12px 15px; text-align: center;">77.90</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">1.92</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B has 40.6× narrower confidence band</span></td>
+    </tr>
+    <tr style="background-color: #f8f9fa;">
+      <td style="padding: 12px 15px; font-weight: 500;">Reliability Index (β)<br/><span style="font-weight: normal; font-size: 0.85em;">(threshold = 130.0)</span></td>
+      <td style="padding: 12px 15px; text-align: center;">0.87</td>
+      <td style="padding: 12px 15px; text-align: center; color: #1565c0; font-weight: bold;">17.95</td>
+      <td style="padding: 12px 15px;"><span style="color: #1565c0; font-weight: 500;">Solution B is far more reliable</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<p><strong>Common interpretation:</strong> β &gt; 3: Highly reliable | 2 &lt; β &lt; 3: Reliable | 1 &lt; β &lt; 2: Moderately reliable | β &lt; 1: Less reliable</p>
+</blockquote>
+<h3 id="understanding-reliability-index">Understanding Reliability Index<a class="headerlink" href="#understanding-reliability-index" title="Permanent link">&para;</a></h3>
+<p>The reliability index (β) is a measure used in reliability engineering to quantify how far the mean response is from a critical threshold in terms of standard deviations:</p>
+<p>β = (Threshold - Mean) / StdDev</p>
+<ul>
+<li>A <strong>positive β</strong> means the mean is below the threshold (desirable if we want to stay below the threshold)</li>
+<li>A <strong>negative β</strong> means the mean is above the threshold</li>
+<li>A <strong>larger absolute value</strong> of β indicates greater reliability</li>
+</ul>
+<p>For Solution B (x=20), the reliability index of 17.95 indicates virtually zero probability of exceeding the threshold of 130.0, whereas Solution A (x=10) with a reliability index of 0.87 has a non-negligible probability of exceeding the same threshold.</p>
+<h2 id="decision-making">Decision Making<a class="headerlink" href="#decision-making" title="Permanent link">&para;</a></h2>
+<p>When making a decision between these solutions, consider:</p>
+<blockquote>
+<p><strong>Risk tolerance</strong>: </p>
+</blockquote>
+<ul>
+<li>If you can tolerate variability for better mean performance, Solution A might be preferred</li>
+<li>If consistent, predictable performance is critical, Solution B is superior</li>
+</ul>
+<blockquote>
+<p><strong>Threshold requirements</strong>:</p>
+</blockquote>
+<ul>
+<li>If staying below 130.0 is critical, Solution B offers much greater reliability</li>
+<li>If performance below 110.0 is highly desirable and occasional exceedances of higher thresholds are acceptable, Solution A might be preferred</li>
+</ul>
+<blockquote>
+<p><strong>Worst-case scenarios</strong>:</p>
+</blockquote>
+<ul>
+<li>Solution B has a tight worst-case bound</li>
+<li>Solution A could perform significantly worse in some cases</li>
+</ul>
 <h2 id="optional-extensions">Optional Extensions<a class="headerlink" href="#optional-extensions" title="Permanent link">&para;</a></h2>
-<h3 id="1-uncertainty-quantification">1. Uncertainty Quantification<a class="headerlink" href="#1-uncertainty-quantification" title="Permanent link">&para;</a></h3>
-<p>You can further analyze the uncertainty propagation at specific points:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.gpr</span> <span class="kn">import</span> <span class="n">gpr_utils</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.uncertainty.UQmcs</span> <span class="kn">import</span> <span class="n">UncertaintyPropagation</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Initialize the GPR handler</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">model_handler</span> <span class="o">=</span> <span class="n">gpr_utils</span><span class="o">.</span><span class="n">DeviceAgnosticGPR</span><span class="p">(</span><span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">model_handler</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;RESULT_MODEL_GPR&#39;</span><span class="p">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Create UncertaintyPropagation instance</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">propagation</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;UQ_GPR&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">)</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># Run the analysis</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="n">results</span> <span class="o">=</span> <span class="n">propagation</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="n">num_design_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">)</span>
+<h3 id="1-uncertainty-quantification-entire-input-space">1. Uncertainty Quantification (entire input space)<a class="headerlink" href="#1-uncertainty-quantification-entire-input-space" title="Permanent link">&para;</a></h3>
+<p>You can further analyze the uncertainty propagation entire input space:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.gpr</span> <span class="kn">import</span> <span class="n">gpr_utils</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">PyEGRO.uncertainty.UQmcs</span> <span class="kn">import</span> <span class="n">UncertaintyPropagation</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Initialize the GPR handler</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">model_handler</span> <span class="o">=</span> <span class="n">gpr_utils</span><span class="o">.</span><span class="n">DeviceAgnosticGPR</span><span class="p">(</span><span class="n">prefer_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">model_handler</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;RESULT_MODEL_GPR&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Create UncertaintyPropagation instance</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">propagation</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;UQ_GPR&#39;</span><span class="p">,</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">)</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># Run the analysis</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="n">results</span> <span class="o">=</span> <span class="n">propagation</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">num_design_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="p">)</span>
 </code></pre></div>
 <p>The upper plot shows the mean response (blue line) with a ±2σ confidence band (light blue region). The lower plot shows the standard deviation across the input space. Notice how the standard deviation increases dramatically around x=10, confirming our observation about the sensitivity of this region to small variations in input.</p>
 <p><img alt="Uncertainty Analysis (STD of X = 0.8)" src="../uncertainty_analysis.png" width="400" /></p>
 <h5 id="effect-of-increasing-uncertainty">Effect of Increasing Uncertainty<a class="headerlink" href="#effect-of-increasing-uncertainty" title="Permanent link">&para;</a></h5>
 <p>To further demonstrate the importance of robust optimization, we can increase the uncertainty in our input variable from <span style="color:blue">σ = 0.5</span> to <span style="color:blue">σ = 1.5</span>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Create UncertaintyPropagation with higher standard deviation</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">propagation_high_std</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;UQ_GPR_HIGH_STD&#39;</span><span class="p">,</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Modify the standard deviation in the data_info</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">data_info_high_std</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_info_high_std</span><span class="p">[</span><span class="s1">&#39;variables&#39;</span><span class="p">]:</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">if</span> <span class="n">var</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X1&#39;</span><span class="p">:</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="n">var</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># Increase std from 0.5 to 1.5</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># Save modified data_info</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;UQ_GPR_HIGH_STD/data_info_high_std.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_info_high_std</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Run analysis with increased uncertainty</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">results_high_std</span> <span class="o">=</span> <span class="n">propagation_high_std</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    <span class="n">num_design_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="n">data_info</span><span class="o">=</span><span class="n">data_info_high_std</span><span class="p">,</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Create UncertaintyPropagation with higher standard deviation</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">propagation_high_std</span> <span class="o">=</span> <span class="n">UncertaintyPropagation</span><span class="p">(</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">data_info_path</span><span class="o">=</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">model_handler</span><span class="o">=</span><span class="n">model_handler</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;UQ_GPR_HIGH_STD&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">show_variables_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># Modify the standard deviation in the data_info</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="n">data_info_high_std</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_info_high_std</span><span class="p">[</span><span class="s1">&#39;variables&#39;</span><span class="p">]:</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="k">if</span> <span class="n">var</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X1&#39;</span><span class="p">:</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        <span class="n">var</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># Increase std from 0.5 to 1.5</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="c1"># Save modified data_info</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;UQ_GPR_HIGH_STD/data_info_high_std.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data_info_high_std</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="c1"># Run analysis with increased uncertainty</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="n">results_high_std</span> <span class="o">=</span> <span class="n">propagation_high_std</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    <span class="n">num_design_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="n">num_mcs_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    <span class="n">data_info</span><span class="o">=</span><span class="n">data_info_high_std</span><span class="p">,</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>    <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="p">)</span>
 </code></pre></div>
 <p><img alt="Uncertainty Analysis (STD of X = 1.5)" src="../uncertainty_analysis-2.png" width="400" /></p>
 <p>As shown in the figure, with increased uncertainty (σ=1.5), the global minimum at x=10 is no longer reliable, with extremely wide confidence bounds. </p>
 <p>Meanwhile, the solution at x=20 maintains relatively stable performance, confirming it as the robust optimum for this problem.</p>
 <h3 id="2-efficient-global-optimization-ego">2. Efficient Global Optimization (EGO)<a class="headerlink" href="#2-efficient-global-optimization-ego" title="Permanent link">&para;</a></h3>
 <p>To improve the metamodel accuracy, you can use EGO to adaptively add samples where they're most needed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">json</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egogpr</span> <span class="kn">import</span> <span class="n">EfficientGlobalOptimization</span><span class="p">,</span> <span class="n">TrainingConfig</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Load initial data and problem configuration</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">data_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">initial_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/training_data.csv&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_info</span><span class="p">[</span><span class="s1">&#39;input_bound&#39;</span><span class="p">])</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="n">variable_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_info</span><span class="p">[</span><span class="s1">&#39;variables&#39;</span><span class="p">]]</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># Configure the optimization</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="n">config</span> <span class="o">=</span> <span class="n">TrainingConfig</span><span class="p">(</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="n">training_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="n">early_stopping_patience</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">rmse_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">relative_improvement</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>  <span class="c1"># 1% of relative improvement</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="n">rmse_patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">acquisition_name</span><span class="o">=</span><span class="s2">&quot;cri3&quot;</span><span class="p">,</span>    <span class="c1"># CRI3 acquisition function</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;matern15&quot;</span><span class="p">,</span>          <span class="c1"># Matérn kernel with ν=1.5</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span>          <span class="c1"># Learning rate for training</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="p">)</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="c1"># Initialize and run optimization</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="n">ego</span> <span class="o">=</span> <span class="n">EfficientGlobalOptimization</span><span class="p">(</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="n">objective_func</span><span class="o">=</span><span class="n">multimodal_peaks</span><span class="p">,</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>    <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="n">variable_names</span><span class="o">=</span><span class="n">variable_names</span><span class="p">,</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">initial_data</span><span class="o">=</span><span class="n">initial_data</span>
-<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="p">)</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="c1"># Run optimization</span>
-<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="n">history</span> <span class="o">=</span> <span class="n">ego</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">from</span> <span class="nn">PyEGRO.meta.egogpr</span> <span class="kn">import</span> <span class="n">EfficientGlobalOptimization</span><span class="p">,</span> <span class="n">TrainingConfig</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Load initial data and problem configuration</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/data_info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">data_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">initial_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;DATA_PREPARATION/training_data.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_info</span><span class="p">[</span><span class="s1">&#39;input_bound&#39;</span><span class="p">])</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">variable_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data_info</span><span class="p">[</span><span class="s1">&#39;variables&#39;</span><span class="p">]]</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Configure the optimization</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="n">config</span> <span class="o">=</span> <span class="n">TrainingConfig</span><span class="p">(</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    <span class="n">training_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">early_stopping_patience</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="n">max_iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="n">rmse_threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="n">relative_improvement</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>  <span class="c1"># 1% of relative improvement</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>    <span class="n">rmse_patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>    <span class="n">acquisition_name</span><span class="o">=</span><span class="s2">&quot;cri3&quot;</span><span class="p">,</span>    <span class="c1"># CRI3 acquisition function</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;matern15&quot;</span><span class="p">,</span>          <span class="c1"># Matérn kernel with ν=1.5</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span>          <span class="c1"># Learning rate for training</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="p">)</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="c1"># Initialize and run optimization</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="n">ego</span> <span class="o">=</span> <span class="n">EfficientGlobalOptimization</span><span class="p">(</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>    <span class="n">objective_func</span><span class="o">=</span><span class="n">multimodal_peaks</span><span class="p">,</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>    <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>    <span class="n">variable_names</span><span class="o">=</span><span class="n">variable_names</span><span class="p">,</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>    <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>    <span class="n">initial_data</span><span class="o">=</span><span class="n">initial_data</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="p">)</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="c1"># Run optimization</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="n">history</span> <span class="o">=</span> <span class="n">ego</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 <p>The following animation shows how the EGO algorithm adaptively adds sampling points to improve the model's accuracy, particularly in regions with high uncertainty or sharp changes in the response:</p>
 <p><img alt="GPR improving by EGO with Crit3 algorithm" src="../optimization_progress.gif" width="400" /></p>

@@ -156,7 +156,7 @@ results_df_pce = run_sensitivity_analysis(
 
 ```
 
-![Sensitivity Indices Simulation for Ishigami Function](sensitivity_indices_Ishigami.png){ width="800" }
+![Sensitivity Indices Simulation for Ishigami Function](sensitivity_indices_Ishigami.png){ width="1000" }
 
 
 ### 3.2 Hartmann 6-D Function Implementation
@@ -251,7 +251,7 @@ results_df_pce = run_sensitivity_analysis(
 # Run PCE analysis for the Hartmann 6-D function
 ```
 
-![Sensitivity Indices Simulation for Hartmann Function](sensitivity_indices_Hartmann.png){ width="800" }
+![Sensitivity Indices Simulation for Hartmann Function](sensitivity_indices_Hartmann.png){ width="1000" }
 
 ### 3.3 A1 Function (k-function) Implementation
 
@@ -307,7 +307,7 @@ results_df = run_sensitivity_analysis(
 )
 ```
 
-![Sensitivity Indices Simulation for A1 k-function](sensitivity_indices_k_function.png){ width="800" }
+![Sensitivity Indices Simulation for A1 k-function](sensitivity_indices_k_function.png){ width="1000" }
 
 
 ## 4. Comparison of MCS and PCE 
@@ -315,21 +315,27 @@ results_df = run_sensitivity_analysis(
 The two methods used in this analysis have different characteristics:
 
 ### 4.1 Monte Carlo Simulation (MCS)
-- **Pros**: 
+**Pros**: 
+
   - Robust for any type of model
   - Can handle non-linear, non-monotonic relationships
   - Convergence is independent of problem dimension
-- **Cons**:
+
+**Cons**:
+
   - Computationally expensive, requiring many model evaluations
   - Convergence rate is relatively slow (proportional to 1/√N)
 
 ### 4.2 Polynomial Chaos Expansion (PCE)
-- **Pros**:
+**Pros**:
+
   - More efficient for smooth functions
   - Requires fewer model evaluations
   - Provides analytical sensitivity indices from the polynomial representation
   - Better convergence rates for low-dimensional smooth problems
-- **Cons**:
+
+**Cons**:
+
   - Performance degrades in high dimensions (curse of dimensionality)
   - Less suitable for highly non-linear or discontinuous functions
   - Requires selection of polynomial order

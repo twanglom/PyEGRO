@@ -28,8 +28,7 @@ The robust optimization problem can be defined in three different ways, just as 
 1. Using a dictionary format with variables and their properties
 2. Loading a pre-defined problem from a JSON file
 
-For detailed variable definition formats and supported distributions, please refer to the [PyEGRO.robustopt.method_mcs API Reference](PyEGRO.robustopt.method_mcs.md).
-
+For detailed variable definition formats and supported distributions, please refer to the [`PyEGRO.robustopt.method_mcs` API Reference]
 ---
 
 ## Main Optimization Function

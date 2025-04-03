@@ -2,7 +2,7 @@
   ![PyEGRO Logo](assets/logo_2.png){ width="1000" }
 </figure>
 
-# PyEGRO: Python for Efficient Global Robust Optimization
+## PyEGRO: <span style="color:dodgerblue">**Python**</span> for <span style="color:limegreen">**Efficient Global Robust Optimization**</span>
 
 ## Overview
 **PyEGRO** is a Python library designed for solving complex engineering problems with efficient global robust optimization. It provides tools for initial design sampling, metamodeling, sensitivity analysis, uncertainty quantification and robust optimization. 
@@ -70,11 +70,6 @@ Hi, I’m Thanasak, a PhD student in Mechanical Engineering at École Centrale d
 
 - **Email**: [thanasak.wanglomklang@ec-lyon.fr](mailto:thanasak.wanglomklang@ec-lyon.fr)  
 - **Personal Website**: [twanglom.github.io](https://twanglom.github.io)  
-
----
-
-## 👥 Community and Contributions
-We welcome contributions to **PyEGRO**! Visit our [GitHub repository](https://github.com/twanglom/PyEGRO) to raise issues, submit pull requests, or explore the source code.
 
 ---
 
