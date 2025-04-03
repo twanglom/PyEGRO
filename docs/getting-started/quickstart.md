@@ -17,7 +17,7 @@ The global minimum is near $x=10$, but in the presence of uncertainty, the robus
 
 ![Test Function with Global and Local Minima](true_response.png){ width="500" }
 
-Our goal is to find the robust optimum of this function when there is uncertainty in the input variable $x$. We'll model this uncertainty as a normal distribution with a standard deviation of 0.5.
+Our goal is to find the robust optimum of this function when there is uncertainty in the input variable $x$. We'll model this uncertainty as a normal distribution with a `standard deviation of 0.5`.
 
 ## Step 1: Define the Test Function
 
@@ -235,8 +235,6 @@ plt.show()
 print("Robust optimization complete!")
 ```
 
-## Results
-
 The robust optimization provides a Pareto front of solutions that balance the mean performance and robustness (low standard deviation). From this front, you can select a solution based on your preference for performance versus robustness.
 
 ![Pareto Front](pareto_front.png){ width="800" }
@@ -249,14 +247,13 @@ Result folder:
 
 ## Step 5: Perform Robustness Result Analysis
 
+This plot indicates output distribution entire input space when `input variation by STD = 0.5 (Normal distribution)`:
+
+![Uncertainty Analysis (STD of X = 0.8)](uncertainty_analysis.png){ width="400" }
+
 After identifying the potential robust solutions from the Pareto front, we need to analyze them in detail to understand their reliability and performance characteristics under uncertainty. We'll separately analyze the two key solutions we identified: 
 
-> <span style="color:blue">**Solution B (x=20)**</span> which appears more robust.
-
-> <span style="color:blue">**Solution A (x=10)**</span> which has better mean performance
-
-
-### Solution B (x=20): 
+<span style="color:blue">**Solution B (x=20)**</span> which appears more robust.
 
 First, let's analyze the robustness characteristics of the solution at x=20:
 
@@ -321,7 +318,8 @@ The PDF (left) shows a tight distribution with little spread, indicating high re
 
 The **reliability index** for a threshold of `130.0` would be approximately `17.95`
 
-### Solution A (x=10): 
+<span style="color:blue">**Solution A (x=10)**</span> which has better mean performance
+
 
 Now, let's analyze the solution at x=10 separately:
 
@@ -378,11 +376,11 @@ The PDF (left) shows a wide, spread-out distribution, indicating high variabilit
 
 The reliability index for a threshold of 130.0 would be approximately 0.87, indicating relatively low reliability compared to Solution B.
 
-### Comparative Analysis
+
+<span style="color:blue">**Solution Comparison**</span> which has better mean performance
 
 The results clearly demonstrate the trade-off between optimality and robustness:
 
-## Solution Comparison
 
 <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   <thead>
@@ -429,7 +427,7 @@ The results clearly demonstrate the trade-off between optimality and robustness:
 
 > **Common interpretation:** β > 3: Highly reliable | 2 < β < 3: Reliable | 1 < β < 2: Moderately reliable | β < 1: Less reliable
 
-### Understanding Reliability Index
+## Understanding Reliability Index
 
 The reliability index (β) is a measure used in reliability engineering to quantify how far the mean response is from a critical threshold in terms of standard deviations:
 
@@ -446,17 +444,17 @@ For Solution B (x=20), the reliability index of 17.95 indicates virtually zero p
 
 When making a decision between these solutions, consider:
 
-> **Risk tolerance**: 
+> <span style="color:red">**Risk tolerance**</span>: 
 
 - If you can tolerate variability for better mean performance, Solution A might be preferred
 - If consistent, predictable performance is critical, Solution B is superior
 
-> **Threshold requirements**:
+> <span style="color:red">**Threshold requirements**</span>: 
 
 - If staying below 130.0 is critical, Solution B offers much greater reliability
 - If performance below 110.0 is highly desirable and occasional exceedances of higher thresholds are acceptable, Solution A might be preferred
 
-> **Worst-case scenarios**:
+> <span style="color:red">**Worst-case scenarios**</span>: 
 
 - Solution B has a tight worst-case bound
 - Solution A could perform significantly worse in some cases
