@@ -69,6 +69,13 @@ nav:
       - Metamodel Training via EGO: examples/ego-metamodel-examples.md
       - Uncertainty Propagation: examples/uq-examples.md
       - Robust Optimization: examples/robust-example.md
+  - Advance in Engineering Application:
+      - Constraints Problem:
+          - Spring Design Optimization : examples-engineering/spring-design/spring-design.md
+          - Three-Bar Truss Design : examples-engineering/three-bar-truss/three-bar-truss-design.md
+          - Weld Beam Design: examples-engineering/weld-beam/weld-beam-design.md
+          - Pressure Vessel Design: examples-engineering/pressure-vessel/pressure-vessel-design.md
+          - Gear Speed Reducer Design: examples-engineering/speed-reducer/speed-reducer-design.md
   - API Reference:
       - Design of Experiment: api-reference/doe/doe_api_reference.md
       - Metamodeling:

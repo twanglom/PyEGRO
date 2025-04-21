@@ -61,23 +61,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-4-perform-robust-optimization">Step 4: Perform Robust Optimization</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#results">Results</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-5-perform-robustness-result-analysis">Step 5: Perform Robustness Result Analysis</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#solution-b-x20">Solution B (x=20):</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#solution-a-x10">Solution A (x=10):</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#comparative-analysis">Comparative Analysis</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#solution-comparison">Solution Comparison</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#understanding-reliability-index">Understanding Reliability Index</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#understanding-reliability-index">Understanding Reliability Index</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#decision-making">Decision Making</a>
     </li>
@@ -233,7 +219,7 @@
 - The peak at <span class="arithmatex">\(x=30\)</span> is short and medium width</p>
 <p>The global minimum is near <span class="arithmatex">\(x=10\)</span>, but in the presence of uncertainty, the robust optimum might be different.</p>
 <p><img alt="Test Function with Global and Local Minima" src="../true_response.png" width="500" /></p>
-<p>Our goal is to find the robust optimum of this function when there is uncertainty in the input variable <span class="arithmatex">\(x\)</span>. We'll model this uncertainty as a normal distribution with a standard deviation of 0.5.</p>
+<p>Our goal is to find the robust optimum of this function when there is uncertainty in the input variable <span class="arithmatex">\(x\)</span>. We'll model this uncertainty as a normal distribution with a <code>standard deviation of 0.5</code>.</p>
 <h2 id="step-1-define-the-test-function">Step 1: Define the Test Function<a class="headerlink" href="#step-1-define-the-test-function" title="Permanent link">&para;</a></h2>
 <p>First, let's implement our multi-modal test function:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -427,18 +413,15 @@
 <a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
 <a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Robust optimization complete!&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
 <p>The robust optimization provides a Pareto front of solutions that balance the mean performance and robustness (low standard deviation). From this front, you can select a solution based on your preference for performance versus robustness.</p>
 <p><img alt="Pareto Front" src="../pareto_front.png" width="800" /></p>
 <p>Result folder:</p>
 <p><img alt="Pareto Front Folder Structure" src="../pareto_folder.png" width="150" /></p>
 <h2 id="step-5-perform-robustness-result-analysis">Step 5: Perform Robustness Result Analysis<a class="headerlink" href="#step-5-perform-robustness-result-analysis" title="Permanent link">&para;</a></h2>
+<p>This plot indicates output distribution entire input space when <code>input variation by STD = 0.5 (Normal distribution)</code>:</p>
+<p><img alt="Uncertainty Analysis (STD of X = 0.8)" src="../uncertainty_analysis.png" width="400" /></p>
 <p>After identifying the potential robust solutions from the Pareto front, we need to analyze them in detail to understand their reliability and performance characteristics under uncertainty. We'll separately analyze the two key solutions we identified: </p>
-<blockquote>
 <p><span style="color:blue"><strong>Solution B (x=20)</strong></span> which appears more robust.</p>
-<p><span style="color:blue"><strong>Solution A (x=10)</strong></span> which has better mean performance</p>
-</blockquote>
-<h3 id="solution-b-x20">Solution B (x=20):<a class="headerlink" href="#solution-b-x20" title="Permanent link">&para;</a></h3>
 <p>First, let's analyze the robustness characteristics of the solution at x=20:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">#===============================================================================</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Analysis of Solution B (X = 20) - The More Robust Solution</span>
@@ -497,7 +480,7 @@
 <li>Very steep Probability of Failure Curve indicates predictable performance</li>
 </ul>
 <p>The <strong>reliability index</strong> for a threshold of <code>130.0</code> would be approximately <code>17.95</code></p>
-<h3 id="solution-a-x10">Solution A (x=10):<a class="headerlink" href="#solution-a-x10" title="Permanent link">&para;</a></h3>
+<p><span style="color:blue"><strong>Solution A (x=10)</strong></span> which has better mean performance</p>
 <p>Now, let's analyze the solution at x=10 separately:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#===============================================================================</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Analysis of Solution A (X = 10) - The Better Mean Performance Solution</span>
@@ -548,9 +531,8 @@
 <li>Shallow Probability of Failure Curve indicates unpredictable performance</li>
 </ul>
 <p>The reliability index for a threshold of 130.0 would be approximately 0.87, indicating relatively low reliability compared to Solution B.</p>
-<h3 id="comparative-analysis">Comparative Analysis<a class="headerlink" href="#comparative-analysis" title="Permanent link">&para;</a></h3>
+<p><span style="color:blue"><strong>Solution Comparison</strong></span> which has better mean performance</p>
 <p>The results clearly demonstrate the trade-off between optimality and robustness:</p>
-<h2 id="solution-comparison">Solution Comparison<a class="headerlink" href="#solution-comparison" title="Permanent link">&para;</a></h2>
 <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
   <thead>
     <tr style="background-color: #3a506b; color: white; text-align: left;">
@@ -597,7 +579,7 @@
 <blockquote>
 <p><strong>Common interpretation:</strong> β &gt; 3: Highly reliable | 2 &lt; β &lt; 3: Reliable | 1 &lt; β &lt; 2: Moderately reliable | β &lt; 1: Less reliable</p>
 </blockquote>
-<h3 id="understanding-reliability-index">Understanding Reliability Index<a class="headerlink" href="#understanding-reliability-index" title="Permanent link">&para;</a></h3>
+<h2 id="understanding-reliability-index">Understanding Reliability Index<a class="headerlink" href="#understanding-reliability-index" title="Permanent link">&para;</a></h2>
 <p>The reliability index (β) is a measure used in reliability engineering to quantify how far the mean response is from a critical threshold in terms of standard deviations:</p>
 <p>β = (Threshold - Mean) / StdDev</p>
 <ul>
@@ -609,21 +591,21 @@
 <h2 id="decision-making">Decision Making<a class="headerlink" href="#decision-making" title="Permanent link">&para;</a></h2>
 <p>When making a decision between these solutions, consider:</p>
 <blockquote>
-<p><strong>Risk tolerance</strong>: </p>
+<p><span style="color:red"><strong>Risk tolerance</strong></span>: </p>
 </blockquote>
 <ul>
 <li>If you can tolerate variability for better mean performance, Solution A might be preferred</li>
 <li>If consistent, predictable performance is critical, Solution B is superior</li>
 </ul>
 <blockquote>
-<p><strong>Threshold requirements</strong>:</p>
+<p><span style="color:red"><strong>Threshold requirements</strong></span>: </p>
 </blockquote>
 <ul>
 <li>If staying below 130.0 is critical, Solution B offers much greater reliability</li>
 <li>If performance below 110.0 is highly desirable and occasional exceedances of higher thresholds are acceptable, Solution A might be preferred</li>
 </ul>
 <blockquote>
-<p><strong>Worst-case scenarios</strong>:</p>
+<p><span style="color:red"><strong>Worst-case scenarios</strong></span>: </p>
 </blockquote>
 <ul>
 <li>Solution B has a tight worst-case bound</li>
